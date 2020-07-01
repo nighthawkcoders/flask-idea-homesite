@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,6 +69,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'homesite.wsgi.application'
+
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ] #added this in order to have project-level static folder
+
 
 
 # Database
