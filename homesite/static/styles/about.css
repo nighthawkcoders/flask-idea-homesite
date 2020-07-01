@@ -1,0 +1,74 @@
+.screen{
+    height: 100vh;
+}
+
+.jumbotron{
+    background: none;
+    padding-top: 10%;
+    margin: 0;
+}
+
+.jumbotron h1{
+    font-size: 8vh;
+}
+
+.floatingv{
+position: fixed;
+bottom: 5%;
+right: 2.5%;
+
+background-color: #f3f3f3ff;
+border-radius: 20px;
+padding-left: 2%;
+padding-right: 2%;
+padding-top: 1%;
+padding-bottom: 1%;
+
+transition-duration: 1s;
+}
+
+.floatingv button{
+    width: 95%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+    font-size: small;
+
+    background-color: rgb(211, 210, 210);
+
+
+}
+
+.floatingv:hover{
+    bottom: 10%;
+    background-color: rgb(218, 213, 213);
+}
+
+#email-form{
+    width: 100%;
+}
+
+#email-form input[type='email']{
+    width: 60%;
+    font-size: 4vh;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: 2px 2px;
+    outline: none;
+}
+
+#email-form input[type='email']:focus{
+    box-shadow: 1px 1px;
+
+}
+
+#email-form input[type='submit']{
+    width: 30%;
+    font-size: 4vh;
+    border-radius: 10px;
+    background-color: #b7b7b7ff;
+    border: 1px solid black;
+    box-shadow: 2px 2px;
+    outline: none;
+
+}
