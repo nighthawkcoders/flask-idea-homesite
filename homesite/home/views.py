@@ -3,3 +3,6 @@ from django.http import HttpResponse
 
 def home_page(request):
     return render(request, 'home/home.html')
+
+def about_page(request):
+    return render(request, 'home/about.html')

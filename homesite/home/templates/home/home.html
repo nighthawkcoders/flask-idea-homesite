@@ -2,31 +2,7 @@
 
     {% block content %}
 
-    <nav class="navbar navbar-expand-lg navbar-light">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-link" href="#">Home</a>
-                <a class="nav-link" href="#">Explore</a>
-                <a class="nav-link" href="#">Courses</a>
-                <a class="nav-link" href="#">Products</a>
-                <a class="nav-link" href="#">Donate</a>
-                <a class="nav-link" href="#">Blog</a>
-                <a class="nav-link" href="#">About</a>
-            </div>
-            
-            <div class="navbar-nav">
-                <a class="nav-link" href="#">Log In</a>
-                <a class="nav-link" href="#">Sign Up</a>
-            </div>
-
-
-        </div>
-      </nav>
 
       <div class="mcontent">
 
@@ -126,51 +102,14 @@
 
       </div>
 
-      <div class="contact" style="height: 80vh;">
 
-        <div class="row justify-content-center" style="margin-bottom: 6vh;" >
-            <h1><i>Contact Us</i></h1>
-        </div>
-
-        <div class="row justify-content-center" >
-            <h3><i>email@email.com</i></h3>
-        </div>
-
-        <div class="row justify-content-center" style="margin-top: 6vh;">
-            <a href="#" class="fa fa-facebook" style="text-decoration: none;"></a>
-            <a href="#" class="fa fa-instagram" style="text-decoration: none;"></a>
-            <a href="#" class="fa fa-twitter" style="text-decoration: none;"></a>
-            <a href="#" class="fa fa-youtube" style="text-decoration: none;"></a>
-        </div>
-        
-
-
-      </div>
+      {% include "contact.html" %}
 
 
 
       <style>
         .ncs{
             margin-top: 10vh;
-        }
-
-        .fa {
-            padding: 18px;
-            font-size: 3rem;
-            width: 5rem;
-            height: 5rem;
-            text-align: center;
-            border-radius: 50%;
-            background-color: rgb(214, 211, 211);
-            margin: 0.5vw;
-            color: black;
-            transition-duration: 1s;
-            text-decoration: none;
-        }
-        .fa:hover{
-            margin-top: -1vh;
-            color: black;
-            text-decoration: none;
         }
 
         .mcontent a{
