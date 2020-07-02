@@ -9,3 +9,6 @@ def about_page(request):
 
 def product_page(request):
     return render(request, 'home/products.html')
+
+def donate_page(request):
+    return render(request, 'home/donate.html')
