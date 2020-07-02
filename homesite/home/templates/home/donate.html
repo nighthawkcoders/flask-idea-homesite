@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+<head>
+
+</head>
+
+{% block content %}
+
+<div class="screen 1">
+    <div class="jumbotron jumbotron-fluid" style="height: 50%;">
+
+        <div class="row justify-content-center" style="text-align: center;">
+            <h1>Products</h1>
+        </div>
+
+        <div class="row justify-content-center" style="text-align: center; margin-top: 3%;">
+            <div class="col-5" style="font-size: 2vh;">
+                <p>I want to kill Nathaniel Cherian.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% include "contact.html" %}
+
+<style>
+    .screen{
+        height: 100vh;
+    }
+
+    .jumbotron{
+        background: none;
+        padding-top: 10%;
+        margin: 0;
+    }
+
+    .jumbotron h1{
+        font-size: 8vh;
+    }
+</style>
+
+{% endblock %}
