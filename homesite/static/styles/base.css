@@ -2,3 +2,13 @@
     font-family: gilroy;
     src: url("../fonts/Gilroy-Bold.woff");
 }
+
+@font-face{
+    font-family: gilroyXB;
+    src: url("../fonts/Gilroy-ExtraBold.woff");
+}
+
+@font-face{
+    font-family: gilroyLIGHT;
+    src: url("../fonts/Gilroy-Light.woff");
+}
