@@ -8,21 +8,63 @@
 {% block content %}
 
 <div class="screen 1">
-    <h1 class="row justify-content-center" style="font-size: 8vh; margin-top: 30%;">Courses</h1>
 
-    <div class="row justify-content-center courses-buttons" style="margin-bottom: 20%;">
-            <button class="btn" style="margin-left: 15%;">Java</button>
-            <button class="btn" style="margin-left: 40%;">Python</button>
-            <button class="btn" style="margin-left: 65%;">Swift</button>
+    <div class="jumbotron jumbotron-fluid" style="height: 50%;">
+
+        <div class="row justify-content-center" style="text-align: center; margin-top: 1%;">
+            <h1 style="font-family: gilroy;">Courses</h1>
+        </div>
+
+
+        <div class="row justify-content-center" style="text-align: center; margin-top: 10%;">
+            <div class="col-7" style="font-size: 1.5vw;">
+
+                <div class="row courses-buttons">
+                    <div class="col-4">
+                        <a href="#java"><button class="btn">Java</button></a>
+                    </div>
+
+                    <div class="col-4">
+                        <a href="#python"><button class="btn">Python</button></a>
+
+                    </div>
+
+                    <div class="col-4">
+                        <a href="#swift"><button class="btn">Swift</button></a>
+
+                    </div>
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+
     </div>
 
+
+
+</div> <!-- End of screen 1-->
+
+
+
+<div class="screen 2" id='java'>
+
 </div>
 
-<div class="screen 2">
+<div class="screen 3" id='python'>
 
 </div>
+
+<div class="screen 4" id='swift'>
+
+</div>
+
 
 {% include "contact.html" %}
+
 
 <style>
     .screen{
@@ -36,16 +78,17 @@
     }
 
     .jumbotron h1{
-        font-size: 8vh;
+        font-size: 5vw;
     }
 
     .courses-buttons button {
         font-size: 7vh;
-        height: 10vh;
-        width: 20vh;
-        background-color: darkgray;
+        width: 80%;
+        background-color: var('--gray');
+        font-size: 2vw;
     }
 </style>
+
 
 <script>
     $(document).ready(function(){
