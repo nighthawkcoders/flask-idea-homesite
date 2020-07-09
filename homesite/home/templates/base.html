@@ -16,6 +16,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <link rel="shortcut icon" href="{% static 'assets/v2ncslogo.png'%}" 
+    type="image/x-icon">
+    <link rel="icon" href="{% static 'assets/v2ncslogo.png'%}"
+    type="image/x-icon"> 
 
     {% if title %}
     <title> {{ title }}</title>
@@ -28,7 +32,7 @@
 
 
 
-<body style="font-family: gilroyLIGHT; color: var(--gray);">
+<body style="font-family: gilroyLIGHT; color: var(--gray);" >
 
     <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -38,17 +42,16 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: gilroy;">
             <div class="navbar-nav mr-auto">
-                <a class="nav-link" href="{% url 'home_page' %}">Home</a>
-                <a class="nav-link" href="#">Courses</a>
-                <a class="nav-link" href="{% url 'product_page' %}">Products</a>
-                <a class="nav-link" href="{% url 'donate_page' %}">Donate</a>
-                <a class="nav-link" href="#">Blog</a>
-                <a class="nav-link" href="{% url 'about_page' %}">About</a>
+                <a class="nav-link home" href="{% url 'home_page' %}">Home</a>
+                <a class="nav-link courses disabled" href="#">Courses</a>
+                <a class="nav-link products " href="{% url 'product_page' %}">Products</a>
+                <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
+                <a class="nav-link about" href="{% url 'about_page' %}">About</a>
             </div>
             
             <div class="navbar-nav">
-                <a class="nav-link" href="#">Log In</a>
-                <a class="nav-link" href="#">Sign Up</a>
+                <a class="nav-link disabled" href="#">Log In</a>
+                <a class="nav-link disabled" href="#">Sign Up</a>
             </div>
 
 
@@ -81,7 +84,7 @@
             -webkit-animation: fadein 2s; /* Safari and Chrome */
             -o-animation: fadein 2s; /* Opera */
         }
-        
+
         @keyframes fadein {
             from {
                 opacity:0;

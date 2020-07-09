@@ -12,13 +12,13 @@
 
             <div class="row justify-content-center" style="margin-top: 20vh;">
                 <div class="col-12" style="text-align: center;">
-                    <h1 style="color: var(--lblue);"><img src="{% static 'assets/v2ncslogo.png'%}" style="width: 5vw; height: 5vw; margin-right: 1.5vw;">Nighthawk Coding</h1>
+                    <h1 style="color: var(--lblue); font-family: gilroy;"><img src="{% static 'assets/v2ncslogo.png'%}" style="width: 5vw; height: 5vw; margin-right: 1.5vw;">Nighthawk Coding</h1>
                 </div>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-12" style="text-align: center;">
-                    <h1 style="color: var(--lblue);">Society</h1>
+                    <h1 style="color: var(--lblue); font-family: gilroy;">Society</h1>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-10" style="text-align: center;">
-                   <h2>NCS Highlights</h2> 
+                   <h2 style="font-family: gilroy;">NCS Highlights</h2> 
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     </div>
                 </div>
 
-                <div class="row ncs">
+                <div class="row ncs" style="margin-top: 3vh;">
                     <div class="col-3">
                         <img src="" alt="image1" style="background-color: gray; height: 17vh; width: 20vh;">
                     </div>
@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <div class="row ncs">
+                <div class="row ncs" style="margin-top: 3vh;">
                     <div class="col-3">
                         <img src="" alt="image1" style="background-color: gray; height: 17vh; width: 20vh;">
                     </div>
@@ -148,6 +148,14 @@
         }
 
     </style>
+
+    <script>
+    $(document).ready(function(){
+        $('.nav-link.home').addClass('active');
+    })
+    
+    </script>
+
     </div>
     
 
