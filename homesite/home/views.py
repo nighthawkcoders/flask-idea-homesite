@@ -12,3 +12,6 @@ def product_page(request):
 
 def donate_page(request):
     return render(request, 'home/donate.html')
+
+def courses_page(request):
+    return render(request, 'home/courses.html')
