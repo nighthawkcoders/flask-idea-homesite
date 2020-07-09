@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="screen 1">
+<div class="screen 1" id='top'>
 
     <div class="jumbotron jumbotron-fluid" style="height: 50%;">
 
@@ -79,17 +79,18 @@
 
         <div class="row justify-content-center difficulty-buttons" style="margin-top: 5%;">
 
-            <div class="col-4">
-                <button class="btn">Easy</button>
-            </div>
-            <div class="col-4">
-                <button class="btn">Medium</button>
-            </div>
-            <div class="col-4">
-                <button class="btn">Hard</button>
+            <div class="col-8">
+                <a href=""><button class="btn">Start Now!</button></a>
             </div>
         </div>
-</div>
+
+        <div class="row justify-content-center backtop" style="margin-top: 0%;">
+            <div class="col-8" style="text-align: center; margin-top: 1%;">
+                <a href="#">Back to Top</a>
+            </div>
+        </div>
+
+    </div>
 </div>
 </div>
 
@@ -120,18 +121,17 @@
 
         <div class="row justify-content-center difficulty-buttons" style="margin-top: 5%;">
 
-            <div class="col-4">
-                <button class="btn">Easy</button>
-            </div>
-            <div class="col-4">
-                <button class="btn">Medium</button>
-            </div>
-            <div class="col-4">
-                <button class="btn">Hard</button>
+            <div class="col-8">
+                <a href=""><button class="btn">Start Now!</button></a>
             </div>
 
         </div>
 
+        <div class="row justify-content-center backtop" style="margin-top: 0%;">
+            <div class="col-8" style="text-align: center; margin-top: 1%;">
+                <a href="#">Back to Top</a>
+            </div>
+        </div>
 
     </div>
 </div>
@@ -163,16 +163,16 @@
 
             <div class="row justify-content-center difficulty-buttons" style="margin-top: 5%;">
 
-                <div class="col-4">
-                    <button class="btn">Easy</button>
-                </div>
-                <div class="col-4">
-                    <button class="btn">Medium</button>
-                </div>
-                <div class="col-4">
-                    <button class="btn">Hard</button>
+                <div class="col-8">
+                    <a href=""><button class="btn">Start Now!</button></a>
                 </div>
     
+            </div>
+
+            <div class="row justify-content-center backtop" style="margin-top: 0%;">
+                <div class="col-8" style="text-align: center; margin-top: 1%;">
+                    <a href="#">Back to Top</a>
+                </div>
             </div>
             
 
@@ -231,6 +231,10 @@
         height:80%;
         width:80%;
         position:absolute;
+    }
+
+    .backtop a{
+        color: black;
     }
 
 </style>
