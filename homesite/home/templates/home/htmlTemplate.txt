@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+<head>
+
+</head>
+
+{% block content %}
+
+add shit here lol
+
+
+{% include "contact.html" %}
+
+<style>
+
+</style>
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+<head>
+
+</head>
+
+{% block content %}
+
+<div class="screen 1">
+    <h1 class="row justify-content-center" style="font-size: 8vh; margin-top: 30%;">Courses</h1>
+
+    <div class="row justify-content-center courses-buttons" style="margin-bottom: 20%;">
+            <button class="btn" style="margin-left: 15%;">Java</button>
+            <button class="btn" style="margin-left: 40%;">Python</button>
+            <button class="btn" style="margin-left: 65%;">Swift</button>
+    </div>
+
+</div>
+
+<div class="screen 2">
+
+</div>
+
+{% include "contact.html" %}
+
+<style>
+    .screen{
+        height: 100vh;
+    }
+
+    .jumbotron{
+        background: none;
+        padding-top: 10%;
+        margin: 0;
+    }
+
+    .jumbotron h1{
+        font-size: 8vh;
+    }
+
+    .courses-buttons button {
+        font-size: 7vh;
+        height: 10vh;
+        width: 20vh;
+        background-color: darkgray;
+    }
+</style>
+
+{% endblock %}
