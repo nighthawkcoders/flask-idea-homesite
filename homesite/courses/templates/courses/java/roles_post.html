@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="row justify-content-center" style="margin-top: 7.5%;">
+    <div class="col-10">
+
+        <div class="row justify-content-center">
+            <h1>Roles in the Computer Science Work Space</h1>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 2.5%;">
+            <h5>By: Nitya Pillai and Sarika Pasumarthy</h5>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 2.5%">
+            <figure style="text-align: center;">
+                <img src="{% static 'assets/courses/java/roles1.png'%}" style="width: 70%;">
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <figcaption>Figure 1: This diagram depicts a system of workspace organization known as <b>safe agile</b>. The system creates an efficient flow of work between product managers, project management, and technical developers.</figcaption>
+                    </div>
+                </div>
+            </figure>
+        </div>
+
+
+        <div class="row justify-content-center" style="margin-top: 2.5%;">
+            <div class="col-7">
+
+                <div class="row">
+                    <h2>Why do we need roles?</h2>
+                </div>
+
+                <div class="row">
+                    <p>When developing a product it is important for workers or students to organize their workspace in a way that best suits their long term goals. A well planned out workspace will improve the efficiency of both product development and presentation. In addition, it is important to establish an appropriate division of work as this will help in the final integration process.</p>
+                </div>
+
+                <div class="row justify-content-center">
+                            
+                    <ol>
+                        <li>Keep the workspace as an open atmosphere where workers or students can easily communicate.</li>
+                        <li>Divide and conquer larger tasks.</li>
+                        <li>Don’t be afraid to ask questions or collaborate with those of other roles.</li>
+                    </ol> 
+
+                </div>
+
+                <div class="row" style="margin-top: 2.5%;">
+                    <h2>What are these roles?</h2>
+                </div>
+
+
+                <div class="row">
+                    <!--
+                    <table>
+                        <tr>
+                            <th>Role Name</th>
+                            <th>In the industry</th>
+                            <th>In the classroom</th>
+                            <th>Acquirable skills</th>
+                        </tr>
+
+                        <tr>
+                            <td>Project manager
+                            </td>
+
+                            <td></td>
+                        </tr>
+
+                    </table>-->
+
+                    <p style="margin-bottom: 20%;">Table will go here</p>
+                </div>
+
+
+                <div class="row" style="margin-top: 2.5%;">
+                    
+                    <div class="col-6">
+                        <img src="{% static 'assets/courses/java/roles2.png'%}" style="width: 80%;">
+                    </div>
+
+                    
+                    <div class="col-6">
+                        <img src="{% static 'assets/courses/java/roles3.png'%}" style="width: 80%;">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <h2>What is a scrum?</h2>
+                </div>
+
+                <div class="row">
+                    <p>A scrum is a term in the sport rugby (shown in fig 2), which is a close-knit group of people in an offensive huddle. Similarly, a scrum master manages smaller groups inside of a larger overall group (fig 3). A project team can have many scrum teams and scrum masters, with one overall project manager. Scrum masters are generally focused on the project requirements, and helps each subunit in the overall team to stay on track and meet their individual goals. Scrum teams generally work in short periods of time to achieve realistic goals, these time periods are known as sprints.</p>
+                </div>
+
+
+            </div>
+        </div>
+
+
+        <div class="row justify-content-center" style="margin-top: 2.5%;">
+            <button class="btn reference-btn">References</button>
+        </div>
+
+        <div class="row justify-content-center reference" style="margin-top: 2.5%;">
+
+            <div class="col-7">
+            <p>Safe agile picture:
+                https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.scaledagileframework.com%2F&psig=AOvVaw1E4lU2zTf9RybK-fjgYWMb&ust=1595640491878000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDvypre5OoCFQAAAAAdAAAAABAD 
+                Safe agile info:
+                https://en.wikipedia.org/wiki/Scaled_agile_framework
+                Scrum picture:
+                https://www.google.com/url?sa=i&url=https%3A%2F%2Fjordanjob.me%2Fblog%2Fscrum-diagram%2F&psig=AOvVaw3xmvEv3eHsN70iUAQjQwpi&ust=1595642597336000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPCpgobm5OoCFQAAAAAdAAAAABAD 
+                Rugby picture:
+                https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fphotos%2Frugby-scrum-heineken-cup-saracens-4498375%2F&psig=AOvVaw23jYe42jfongNjct-eBl_G&ust=1595642797762000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLCwxeXm5OoCFQAAAAAdAAAAABAD </p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div style="margin-top: 30%;">
+        {% include "contact.html" %}
+
+    </div>
+
+</div>
+
+
+<script>
+    $('.reference').hide()
+
+    $('.reference-btn').click(function() {
+        $('.reference').fadeIn(1500)
+
+    })
+
+</script>
+
+<style>
+    h1{
+        font-family: gilroy;
+        font-size: 3vw;
+    }
+
+    h2{
+        font-family: gilroy;
+        font-size: 2vw;
+    }
+
+    p{
+        font-size: 1vw;
+    }
+
+    ol {
+        list-style-type: upper-roman;
+        font-weight: bold;
+        font-size: 1vw;
+    }
+
+    .reference p{
+        font-size: 0.7vw;
+    }
+
+
+
+</style>
+{% endblock %}
