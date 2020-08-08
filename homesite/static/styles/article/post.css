@@ -1,0 +1,39 @@
+.post_content  img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;    
+}
+
+.post_content code{
+    border-radius: 5px;
+
+    display: block;
+    padding: 0%; 
+}
+
+.post_content .codehilitetable{
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.post_content{
+    margin-bottom: 10%;
+}
+
+.roman ol{
+    list-style-type: upper-roman;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+
+.top-10 { margin-top: 10%; }
+.top-20 { margin-top: 20%; }
+.top-30 { margin-top: 30%; }
+.top-40 { margin-top: 40%; }
+.top-50 { margin-top: 50%; }

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.views.decorators.csrf import csrf_exempt
 from .models import Article
@@ -25,25 +25,32 @@ def sync_article(request):
             site = request.POST.get('site') + '/json'
             rj  = requests.get(site).json()
             
-            article = Article(title=rj['title'], 
-            slug=rj['slug'], 
-            summary=rj['summary'], 
-            content=rj['content'], 
-            created=parse(rj['created']), 
-            updated=parse(rj['updated']), 
-            author=(rj['author_firstname']+" "+rj['author_lastname']), 
-            date_posted=parse(rj['date_posted']))
+            article = Article.objects.filter(fid=rj['id'])
+
+            if article:
+                article = article.first()
+            else:
+                article = Article()
+
+            article.title=rj['title']
+            article.summary=rj['summary']
+            article.content=rj['content']
+            article.created=parse(rj['created'])
+            article.updated=parse(rj['updated'])
+            article.author=(rj['author_firstname']+" "+rj['author_lastname'])
+            article.date_posted=parse(rj['date_posted'])
+            article.fid=rj['id']
 
             article.save()
 
 
-            return HttpResponse({'YAAYY':'made it!'}, content_type="application/json")
+            return HttpResponse({'status':'success!'}, content_type="application/json")
 
 
     raise Http404("Page not found")
 
-def pbl_post(request):
 
-    response = requests.get(r'http://167.99.167.145/sarika/project-based-learning/json')
 
-    return render(request, 'courses/pbl.html', response.json())
+def display_article(request, article):
+    article = get_object_or_404(Article, slug=article)
+    return render(request, 'courses/display_article.html', {'article':article})
