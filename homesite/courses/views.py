@@ -51,6 +51,12 @@ def sync_article(request):
 
 
 
+def all_articles(request):
+
+    articles = Article.objects.all()
+
+    return render(request, 'courses/all_articles.html', {'articles':articles})
+
 def display_article(request, article):
     article = get_object_or_404(Article, slug=article)
     return render(request, 'courses/display_article.html', {'article':article})
