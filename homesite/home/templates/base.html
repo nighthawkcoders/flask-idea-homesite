@@ -34,29 +34,55 @@
 
 <body style="font-family: gilroyLIGHT; color: var(--gray);" >
 
-    <nav class="navbar navbar-expand-lg navbar-light">
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: gilroy;">
-            <div class="navbar-nav mr-auto">
-                <a class="nav-link home" href="{% url 'home_page' %}">Home</a>
-                <a class="nav-link courses" href="{% url 'courses_page' %}">Courses</a>
-                <a class="nav-link products " href="{% url 'product_page' %}">Products</a>
-                <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
-                <a class="nav-link about" href="{% url 'about_page' %}">About</a>
-            </div>
-            
-            <div class="navbar-nav">
-                <a class="nav-link disabled" href="#">Log In</a>
-                <a class="nav-link disabled" href="#">Sign Up</a>
-            </div>
 
 
-        </div>
-      </nav>
+<!--Navbar-->
+<nav class="navbar navbar-light navbar-1 white">
+
+    <!-- Navbar brand -->
+  
+    <!-- Collapse button -->
+
+    <div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+      aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation" style="font-size: xx-large; border: 0em;"><span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <a class="navbar-brand" href="{% url 'home_page' %}" style="font-family: gilroyXB; font-size: xx-large; color: var(--gray);">
+        <img src="{% static 'assets/finalncslogo.png'%}" width="50" height="50" class="d-inline-block align-center" alt="">
+        Nighthawk Coding Society
+      </a>
+
+
+    </div>
+
+
+
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+  
+      <!-- Links -->
+      <div class="navbar-nav" style="font-size: large;">
+        <a class="nav-link courses" href="{% url 'courses_page' %}">Courses</a>
+        <a class="nav-link products " href="{% url 'product_page' %}">Products</a>
+        <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
+        <a class="nav-link about" href="{% url 'about_page' %}">About</a>
+        <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
+        <a class="nav-link disabled" href="#">Login</a>
+        <a class="nav-link disabled" href="#">Sign Up</a>
+    </div>
+      <!-- Links -->
+  
+
+    </div>
+    <!-- Collapsible content -->
+  
+
+
+  </nav>
+  <!--/.Navbar-->
 
     {% block content %}
     

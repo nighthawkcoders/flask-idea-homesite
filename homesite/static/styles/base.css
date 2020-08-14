@@ -12,3 +12,11 @@
     font-family: gilroyLIGHT;
     src: url("../fonts/Gilroy-Light.woff");
 }
+
+.active{
+    font-weight: 1000;
+}
+
+.nav-link{
+    font-weight: 600;
+}
