@@ -10,8 +10,19 @@ def courses_page(request):
     return render(request, 'courses/courses.html')
 
 
+def python_home(request):
+    return render(request, 'courses/python/python_home.html')
+
+def java_home(request):
+    return render(request, 'courses/java/java_home.html')
+
+
+# Only Post that is made statically as opposed to an object
 def roles_post(request):
     return render(request, 'courses/java/roles_post.html')
+
+
+
 
 @csrf_exempt
 def sync_article(request):
@@ -52,9 +63,7 @@ def sync_article(request):
 
 
 def all_articles(request):
-
     articles = Article.objects.all()
-
     return render(request, 'courses/all_articles.html', {'articles':articles})
 
 def display_article(request, article):
