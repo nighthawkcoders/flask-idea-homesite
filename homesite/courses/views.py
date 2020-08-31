@@ -15,7 +15,14 @@ def python_home(request):
 
 def java_home(request):
     return render(request, 'courses/java/java_home.html')
-
+def java_repos(request):
+    return render(request, 'courses/java/java_repos.html')
+def java_timeline(request):
+    return render(request, 'courses/java/java_timeline.html')
+def java_guide(request):
+    return render(request, 'courses/java/java_guide.html')
+def java_ap(request):
+    return render(request, 'courses/java/java_ap.html')
 
 # Only Post that is made statically as opposed to an object
 def roles_post(request):
