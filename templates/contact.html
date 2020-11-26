@@ -1,6 +1,4 @@
-{% extends "base.html" %}
-
-{% block content %}
+<!DOCTYPE html>
 
 <div class="contact" style="height: 35vh;">
 
@@ -12,7 +10,6 @@
         <h3><a href="mailto: nighthawkcodingsociety@gmail">nighthawkcodingsociety@gmail</a></h3>
     </div>
 
-
     <div class="row justify-content-center">
             <a href="https://www.instagram.com/nighthawkcodingsociety/" class="fa fa-instagram" style="text-decoration: none;"></a>
             <a href="https://twitter.com/NighthawkCoding" class="fa fa-twitter" style="text-decoration: none;"></a>
@@ -21,25 +18,20 @@
 
 </div>
 
+<style>
+    .fa{
+        font-size: 2vw;
+        padding: 2%;
+        transition-duration: 1s;
+        color: black;
+    }
 
-  <style>
-        .fa{
-            font-size: 2vw;
-            padding: 2%;
-            transition-duration: 1s;
-            color: black;
-        }
+    .fa:hover{
+        margin-top: -1%;
+    }
 
-        .fa:hover{
-            margin-top: -1%;
-        }
+    .contact a{
+        color: black;
+    }
 
-        .contact a{
-            color: black;
-        }
-
-
-
-  </style>
-
-{% endblock %}
+</style>
