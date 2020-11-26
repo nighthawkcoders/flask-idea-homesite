@@ -1,6 +1,3 @@
-{% load static %}
-
-
 <html>
 
 <head>
@@ -9,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-    <link rel='stylesheet' href="{% static 'styles/base.css' %}">
+    <link rel='stylesheet' href="/static/assets/styles/base.css">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="shortcut icon" href="{% static 'assets/finalncslogo.png'%}" 
+    <link rel="shortcut icon" href="/static/assets/finalncslogo.png"
     type="image/x-icon">
-    <link rel="icon" href="{% static 'assets/finalncslogo.png'%}"
+    <link rel="icon" href="/static/assets/finalncslogo.png"
     type="image/x-icon"> 
     
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -31,13 +28,7 @@
     gtag('config', 'UA-176812433-1');
     </script>
 
-
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
     <title>Nighthawk Coding Society</title>
-    {% endif %}
-
 
 </head>
 
@@ -60,8 +51,8 @@
     </button>
 
 
-    <a class="navbar-brand" href="{% url 'home_page' %}" style="font-family: gilroyXB; font-size: xx-large; color: var(--gray);">
-        <img src="{% static 'assets/finalncslogo.png'%}" width="50" height="50" class="d-inline-block align-center" alt="">
+    <a class="navbar-brand" href="/" style="font-family: gilroyXB; font-size: xx-large; color: var(--gray);">
+        <img src="/static/assets/finalncslogo.png" width="50" height="50" class="d-inline-block align-center" alt="">
         Nighthawk Coding Society
       </a>
 
@@ -76,14 +67,11 @@
   
       <!-- Links -->
       <div class="navbar-nav" style="font-size: large;">
-        <a class="nav-link courses" href="{% url 'courses_page' %}">Courses</a>
-        <a class="nav-link products " href="{% url 'product_page' %}">Products</a>
-        <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
-        <a class="nav-link about" href="{% url 'about_page' %}">About</a>
-        <a class="nav-link donate" href="{% url 'donate_page' %}">Donate</a>
+        <a class="nav-link courses" href="/courses">Courses</a>
+        <a class="nav-link about" href=/about>About</a>
         <a class="nav-link disabled" href="#">Login</a>
         <a class="nav-link disabled" href="#">Sign Up</a>
-    </div>
+      </div>
       <!-- Links -->
   
 
