@@ -10,6 +10,18 @@ def index():
 def java():
     return render_template("java.html")
 
+@app.route('/java/hello')
+def javahello():
+    return render_template("javahello.html")
+
+@app.route('/java/mvc')
+def javamvc():
+    return render_template("javamvc.html")
+
+@app.route('/java/ap')
+def javaap():
+    return render_template("javaap.html")
+
 @app.route('/python')
 def python():
     return render_template("python.html")
