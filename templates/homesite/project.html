@@ -21,6 +21,12 @@
         {% include "padlet.html" %}
     {% endif %}
 
+    <!-- Project Padlet -->
+    {% if 'padlet' in data %}
+        {% set padlet = data['padlet'] %}
+        {% include "padlet.html" %}
+    {% endif %}
+
     <!-- Standard Footer -->
     {% include "contact.html" %}
 {% endblock %}
