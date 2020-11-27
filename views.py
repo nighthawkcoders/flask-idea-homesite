@@ -15,7 +15,7 @@ def index():
 
 @app.route('/java')
 def java():
-    return render_template("homesite/landing.html", menus=menus, projects=java_projects())
+    return render_template("homesite/landing.html", heading="Java", menus=menus, projects=java_projects())
 
 
 @app.route('/java/hello')
@@ -35,7 +35,7 @@ def javaap():
 
 @app.route('/python')
 def python():
-    return render_template("homesite/landing.html", menus=menus, projects=python_projects())
+    return render_template("homesite/landing.html", heading="Python", menus=menus, projects=python_projects())
 
 
 @app.route('/python/hello')
