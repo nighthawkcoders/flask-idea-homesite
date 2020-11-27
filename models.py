@@ -30,6 +30,9 @@ def java_mvc():
     data = {"group": group, "tag": tag, "title": title, "timeline": timeline, "repo": repo, "repo_description": repo_description}
     return data
 
+def java_projects():
+    return [java_hello(), java_mvc(), java_ap()]
+
 def python_ap():
     group = "python"
     tag = "ap"
@@ -52,10 +55,13 @@ def python_hello():
 def python_flask():
     group = "python"
     tag = "flask"
-    title = "MVC ideas"
+    title = "Flask ideas"
     timeline = "https://padlet.com/embed/onshvns8f7vrrn2l"
     repo = "https://gh-card.dev/repos/nighthawkcoders/flask-idea-portfolio.svg?link_target=_blank"
     repo_description = "Ideas for building a Flask Web Server."
     repl = "https://repl.it/@jmort1021/Python-Web-Portfolio-Series?lite=true"
     data = {"group": group, "tag": tag, "title": title, "timeline": timeline, "repo": repo, "repo_description": repo_description, "repl": repl}
     return data
+
+def python_projects():
+    return [python_hello(), python_flask(), python_ap()]

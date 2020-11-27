@@ -1,7 +1,7 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
 from flask import render_template
 from __init__ import app
-from models import java_ap, java_hello, java_mvc, python_ap, python_flask, python_hello
+from models import java_ap, java_hello, java_mvc, java_projects, python_hello, python_ap, python_flask, python_projects
 
 # This table is used to inform HTML of primary menu items and routes
 menus = [{"title": 'Java', "route": '.java'},
@@ -15,7 +15,7 @@ def index():
 
 @app.route('/java')
 def java():
-    return render_template("homesite/java.html", menus=menus)
+    return render_template("homesite/landing.html", menus=menus, projects=java_projects())
 
 
 @app.route('/java/hello')
@@ -35,7 +35,7 @@ def javaap():
 
 @app.route('/python')
 def python():
-    return render_template("homesite/python.html", menus=menus)
+    return render_template("homesite/landing.html", menus=menus, projects=python_projects())
 
 
 @app.route('/python/hello')
@@ -45,7 +45,7 @@ def pythonhello():
 
 @app.route('/python/flask')
 def pythonflask():
-    return render_template("homesite/project.html", data=python_flask())
+    return render_template("homesite/project.html", menus=menus, data=python_flask())
 
 
 @app.route('/python/ap')
