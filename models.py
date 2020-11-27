@@ -54,7 +54,8 @@ def python_flask():
     tag = "flask"
     title = "MVC ideas"
     timeline = "https://padlet.com/embed/onshvns8f7vrrn2l"
-    repo = "https://gh-card.dev/repos/nighthawkcoders/mvc-idea.svg?link_target=_blank"
-    repo_description = "Ideas for coding in the Model View Control (MVC) style."
-    data = {"group": group, "tag": tag, "title": title, "timeline": timeline, "repo": repo, "repo_description": repo_description}
+    repo = "https://gh-card.dev/repos/nighthawkcoders/flask-idea-portfolio.svg?link_target=_blank"
+    repo_description = "Ideas for building a Flask Web Server."
+    repl = "https://repl.it/@jmort1021/Python-Web-Portfolio-Series?lite=true"
+    data = {"group": group, "tag": tag, "title": title, "timeline": timeline, "repo": repo, "repo_description": repo_description, "repl": repl}
     return data
