@@ -1,7 +1,7 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
 from flask import render_template
 from __init__ import app
-from models import java_ap, java_hello, java_mvc
+from models import java_ap, java_hello, java_mvc, python_ap, python_flask, python_hello
 
 @app.route('/')
 def index():
@@ -26,6 +26,18 @@ def javaap():
 @app.route('/python')
 def python():
     return render_template("python.html")
+
+@app.route('/python/hello')
+def pythonhello():
+    return render_template("project.html", data=python_hello())
+
+@app.route('/python/flask')
+def pythonflask():
+    return render_template("project.html", data=python_flask())
+
+@app.route('/python/ap')
+def pythonap():
+    return render_template("project.html", data=python_ap())
 
 @app.route('/about')
 def about():
