@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% block content %}
+    <!-- Project Repo -->
+    {% if 'repo' in data and 'repo_description' in data %}
+        {% set repo = data['repo'] %}
+        {% set repo_description = data['repo_description'] %}
+        {% include "repo.html" %}
+    {% endif %}
+
+    <!-- Project Repl -->
+    {% if 'repl' in data %}
+        {% set repl = data['repl'] %}
+        {% include "repl.html" %}
+    {% endif %}
+
+    <!-- Project Timeline -->
+    {% if 'timeline' in data %}
+        {% set padlet = data['timeline'] %}
+        {% include "padlet.html" %}
+    {% endif %}
+
+    <!-- Standard Footer -->
+    {% include "contact.html" %}
+{% endblock %}
