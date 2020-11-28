@@ -3,10 +3,17 @@ from flask import render_template
 from __init__ import app
 from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
 from models.python import python_hello, python_ap, python_flask, python_study, python_projects
+from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_projects
+from models.git import git_concepts, git_replto, git_projects
+from models.pbl import pbl_overview, pbl_scrum, pbl_projects
 
+"""Dropdown Section"""
 # This table is used to inform HTML of primary menu items and routes
-menus = [{"title": 'Java', "route": '.java'},
-         {"title": 'Python', "route": '.python'},
+menus = [{"title": 'CSA: Java', "route": '.java'},
+         {"title": 'CSP: Python', "route": '.python'},
+         {"title": 'GitHub + Git', "route": '.git'},
+         {"title": 'Raspberry Pi', "route": '.pi'},
+         {"title": 'Project Based Learning', "route": '.pbl'},
          {"title": 'About', "route": '.about'}]
 
 
@@ -18,6 +25,34 @@ def index():
 @app.route('/java')
 def java():
     return render_template("homesite/landing.html", heading="Java", menus=menus, projects=java_projects())
+
+
+@app.route('/python')
+def python():
+    return render_template("homesite/landing.html", heading="Python", menus=menus, projects=python_projects())
+
+
+@app.route('/git')
+def git():
+    return render_template("homesite/landing.html", heading="Git", menus=menus, projects=git_projects())
+
+
+@app.route('/pi')
+def pi():
+    return render_template("homesite/landing.html", heading="Pi", menus=menus, projects=pi_projects())
+
+
+@app.route('/pbl')
+def pbl():
+    return render_template("homesite/landing.html", heading="PBL", menus=menus, projects=pbl_projects())
+
+
+@app.route('/about')
+def about():
+    return render_template("homesite/landing.html", heading="About", menus=menus)
+
+
+"""Java Section"""
 
 
 @app.route('/java/hello')
@@ -39,14 +74,13 @@ def javaap():
 def javaevent():
     return render_template("homesite/project.html", menus=menus, data=java_event())
 
+
 @app.route('/java/study')
 def javastudy():
     return render_template("homesite/project.html", menus=menus, data=java_study())
 
 
-@app.route('/python')
-def python():
-    return render_template("homesite/landing.html", heading="Python", menus=menus, projects=python_projects())
+"""Python Section"""
 
 
 @app.route('/python/hello')
@@ -63,10 +97,61 @@ def pythonflask():
 def pythonap():
     return render_template("homesite/project.html", menus=menus, data=python_ap())
 
+
 @app.route('/python/study')
 def pythonstudy():
     return render_template("homesite/project.html", menus=menus, data=python_study())
 
-@app.route('/about')
-def about():
-    return render_template("homesite/about.html", menus=menus)
+
+"""Git Section"""
+
+
+@app.route('/git/concepts')
+def gitconcepts():
+    return render_template("homesite/project.html", menus=menus, data=git_concepts())
+
+
+@app.route('/git/replto')
+def gitreplto():
+    return render_template("homesite/project.html", menus=menus, data=git_replto())
+
+
+"""Pi Section"""
+
+
+@app.route('/pi/webserver')
+def piwebserver():
+    return render_template("homesite/project.html", menus=menus, data=pi_webserver())
+
+
+@app.route('/pi/portforward')
+def piportforward():
+    return render_template("homesite/project.html", menus=menus, data=pi_portforward())
+
+
+@app.route('/pi/vncsetup')
+def pivncsetup():
+    return render_template("homesite/project.html", menus=menus, data=pi_vncsetup())
+
+
+@app.route('/pi/realvnc')
+def pirealvnc():
+    return render_template("homesite/project.html", menus=menus, data=pi_realvnc())
+
+
+@app.route('/pi/ssh')
+def pissh():
+    return render_template("homesite/project.html", menus=menus, data=pi_ssh())
+
+
+"""PBL Section"""
+
+
+@app.route('/pbl/overview')
+def pbloverview():
+    return render_template("homesite/project.html", menus=menus, data=pbl_overview())
+
+
+@app.route('/pbl/scrum')
+def pblscrum():
+    return render_template("homesite/project.html", menus=menus, data=pbl_scrum())

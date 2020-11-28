@@ -54,11 +54,10 @@ def java_event():
 def java_study():
     group = "java"
     tag = "study"
-    title = "Java Study"
+    title = "Java study"
     padlet = "https://padlet.com/embed/b24kstdegziddjqr"
     data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
     return data
-
 
 def java_projects():
     return [java_hello(), java_mvc(), java_event(), java_ap(), java_study()]
