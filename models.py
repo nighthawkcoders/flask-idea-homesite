@@ -135,9 +135,17 @@ def pi_portforward():
     data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
     return data
 
+def pi_vncsetup():
+    group = "pi"
+    tag = "vncsetup"
+    title = "VNC setup"
+    html = "vncsetup.html"
+    data = {"group": group, "tag": tag, "title": title, "html": html}
+    return data
+
 
 def pi_projects():
-    return [pi_webserver(), pi_portforward()]
+    return [pi_webserver(), pi_portforward(), pi_vncsetup()]
 
 
 """ Git Section """

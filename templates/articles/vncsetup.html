@@ -1,0 +1,50 @@
+<div class="row justify-content-center article" style="margin-top: 7.5%;">
+
+    <div class="col-10">
+
+        <div class="row justify-content-center title">
+            <h1 style="font-family: gilroy;">How to set up VNC with your raspberry Pi</h1>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 3%;">
+            <h2>By Nathaniel Cherian</h2>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 3%;">
+
+            <div class="col-10 post_content">
+                <h1>What is VNC?</h1>
+                <p>VNC, (<a href="https://en.wikipedia.org/wiki/Virtual_Network_Computing">Virtual Network Computing</a>) allows you to virtually control a desktop computer from anywhere in the world. You have the exact same functionality as if you were sitting right in front of the computer. This is especially useful for <a href="https://www.raspberrypi.org/">raspberry pi's</a> as you don't have to allocate seperate peripherals for it; just use vnc to hop in from your own computer. </p>
+                <h1>Installing VNC on a raspberry Pi</h1>
+                <p>Raspberrry pi's natively support vnc connections so all you have to do is enable it. To do this connect a keyboard, mouse, and monitor to your pi and boot it up. You should get a screen like this.</p>
+                <p><img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/be0ca6c6-554a-40ce-90a4-7502de9e3f22.png" /></p>
+                <p>If your terminal (the black screen ^) isn't open, open it by clicking the gray and blue icon in the top bar.</p>
+                <p>Next, in terminal, enter the command
+                    <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="53233a1321322023313621212a233a3e3220273621">[email&#160;protected]</a>:~ $ sudo raspi-config</code>
+                    You should be taken to a screen like this
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/7f0961a3-56d4-4e10-a06c-f375d10e931f.png" /></p>
+                <p>Use the arrow keys to navigate to option #5 Interfacing Options. Press enter to select it.
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/0797e9ca-800c-4faa-8da4-abc1b7f825e0.png" />
+                    Once you are on this submenu use the arrow keys again to select P3 VNC and enter to select.
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/d1e3ac37-012d-4506-bdb4-5b355dfb0733.png" />
+                    On the screen asking "would you like the VNC Server to be enabled?" move and select the "yes" option. You should now get a screen notifying you that the VNC Server is enabled. Select ok and use the side arrow keys to select finish.</p>
+                <p>And that's it for the setup on the pi side, although lets take note of the pi's local ip adress before we leave. In terminal type
+                    <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="adddc4eddfccdeddcfc8dfdfd4ddc4c0ccded9c8df">[email&#160;protected]</a>:~ $ ifconfig</code></p>
+                <p><img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/07aa55db-1684-4a1c-a4bd-696229db3c57.png" /></p>
+                <p>Take note of your own ip, for me it is 192.168.1.32 but it may be different for you. Tip: look under the wlan0 section to find the ip. It's 9 digits separated by 3 dots.</p>
+                <h1>Installing a VNC Viewer on a desktop</h1>
+                <p>RealVNC will allow us to controll our pi from our desktop. Download the software <a href="https://www.realvnc.com/en/connect/download/viewer/">here</a>. Open the RealVNC software, your screen should look something like this.</p>
+                <p><img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/de3b289e-61b1-4f65-b6d8-e105be890552.png" /></p>
+                <p>Enter the ip that you found before into the bar at the top and hit enter to begin the connection. You may get a warning saying you are connecting into a new device but click continue. </p>
+                <p><img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/232bacd4-31d5-401a-a2c4-8ce293f4b245.png" /></p>
+                <p>You will be prompted to enter a username and password. Log in with username "pi", and for the password enter whatever you set your password when you set up your pi. If you aren't sure if you changed the password, use the default password, "raspberry".</p>
+                <p><img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/2a6d57eb-66c1-4067-8a98-1af7aed3cd67.png" /></p>
+                <p>Congratulations! you have succesfully VNC'd into your raspberry pi. From here you can do anything you would do normally. Try opening a game from the menu in the top left. Now you may be wondering what you need to do with the actual pi. As long as it has power and is connected to wifi or ethernet you can use your pi anytime you wish. You can ditch the peripherals and keep your pi in a place where it does not take up much space.</p>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
