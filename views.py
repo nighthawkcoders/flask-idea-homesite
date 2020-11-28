@@ -1,11 +1,11 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
 from flask import render_template
 from __init__ import app
-from models import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
-from models import python_hello, python_ap, python_flask, python_study, python_projects
-from models import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_projects
-from models import git_concepts, git_replto, git_projects
-from models import pbl_overview, pbl_scrum, pbl_projects
+from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
+from models.python import python_hello, python_ap, python_flask, python_study, python_projects
+from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_projects
+from models.git import git_concepts, git_replto, git_projects
+from models.pbl import pbl_overview, pbl_scrum, pbl_projects
 
 """Dropdown Section"""
 # This table is used to inform HTML of primary menu items and routes
