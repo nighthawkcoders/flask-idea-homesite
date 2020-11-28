@@ -177,5 +177,14 @@ def pbl_overview():
     return data
 
 
+def pbl_scrum():
+    group = "pbl"
+    tag = "scrum"
+    title = "Scrum"
+    html = "scrum.html"
+    data = {"group": group, "tag": tag, "title": title, "html": html}
+    return data
+
+
 def pbl_projects():
-    return [pbl_overview()]
+    return [pbl_overview(), pbl_scrum()]
