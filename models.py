@@ -151,6 +151,7 @@ def git_concepts():
     data = {"group": group, "tag": tag, "title": title, "video": video}
     return data
 
+
 def git_replto():
     group = "git"
     tag = "replto"
@@ -159,5 +160,22 @@ def git_replto():
     data = {"group": group, "tag": tag, "title": title, "video": video}
     return data
 
+
 def git_projects():
     return [git_concepts(), git_replto()]
+
+
+""" PBL Section """
+
+
+def pbl_overview():
+    group = "pbl"
+    tag = "overview"
+    title = "Overview"
+    html = "pbl.html"
+    data = {"group": group, "tag": tag, "title": title, "html": html}
+    return data
+
+
+def pbl_projects():
+    return [pbl_overview()]

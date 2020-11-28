@@ -2,6 +2,12 @@
 
 {% extends "homesite/base.html" %}
 {% block content %}
+
+    {% if 'html' in data %}
+        {% set article = "articles/"+data['html'] %}
+        {% include article %}
+    {% endif %}
+
     <!-- Project Repo -->
     {% if 'repo' in data and 'repo_description' in data %}
         {% set repo = data['repo'] %}

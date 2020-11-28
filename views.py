@@ -5,6 +5,7 @@ from models import java_ap, java_hello, java_mvc, java_event, java_study, java_p
 from models import python_hello, python_ap, python_flask, python_study, python_projects
 from models import pi_webserver, pi_portforward, pi_projects
 from models import git_concepts, git_replto, git_projects
+from models import pbl_overview, pbl_projects
 
 
 """Dropdown Section"""
@@ -13,7 +14,7 @@ menus = [{"title": 'Java', "route": '.java'},
          {"title": 'Python', "route": '.python'},
          {"title": 'Git', "route": '.git'},
          {"title": 'Pi', "route": '.pi'},
-         {"title": 'Scrum', "route": '.scrum'},
+         {"title": 'PBL', "route": '.pbl'},
          {"title": 'About', "route": '.about'}]
 
 
@@ -42,9 +43,9 @@ def pi():
     return render_template("homesite/landing.html", heading="Pi", menus=menus, projects=pi_projects())
 
 
-@app.route('/scrum')
-def scrum():
-    return render_template("homesite/landing.html", heading="Scrum", menus=menus)
+@app.route('/pbl')
+def pbl():
+    return render_template("homesite/landing.html", heading="PBL", menus=menus, projects=pbl_projects())
 
 
 @app.route('/about')
@@ -126,3 +127,11 @@ def piwebserver():
 @app.route('/pi/portforward')
 def piportforward():
     return render_template("homesite/project.html", menus=menus, data=pi_portforward())
+
+
+"""PBL Section"""
+
+
+@app.route('/pi/pbl')
+def pbloverview():
+    return render_template("homesite/project.html", menus=menus, data=pbl_overview())
