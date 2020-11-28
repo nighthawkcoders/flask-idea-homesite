@@ -3,10 +3,9 @@ from flask import render_template
 from __init__ import app
 from models import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
 from models import python_hello, python_ap, python_flask, python_study, python_projects
-from models import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_projects
+from models import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_projects
 from models import git_concepts, git_replto, git_projects
 from models import pbl_overview, pbl_scrum, pbl_projects
-
 
 """Dropdown Section"""
 # This table is used to inform HTML of primary menu items and routes
@@ -111,6 +110,7 @@ def pythonstudy():
 def gitconcepts():
     return render_template("homesite/project.html", menus=menus, data=git_concepts())
 
+
 @app.route('/git/replto')
 def gitreplto():
     return render_template("homesite/project.html", menus=menus, data=git_replto())
@@ -128,13 +128,20 @@ def piwebserver():
 def piportforward():
     return render_template("homesite/project.html", menus=menus, data=pi_portforward())
 
+
 @app.route('/pi/vncsetup')
 def pivncsetup():
     return render_template("homesite/project.html", menus=menus, data=pi_vncsetup())
 
+
 @app.route('/pi/realvnc')
 def pirealvnc():
     return render_template("homesite/project.html", menus=menus, data=pi_realvnc())
+
+
+@app.route('/pi/ssh')
+def pissh():
+    return render_template("homesite/project.html", menus=menus, data=pi_ssh())
 
 
 """PBL Section"""

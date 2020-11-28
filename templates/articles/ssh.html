@@ -1,0 +1,61 @@
+<div class="row justify-content-center article" style="margin-top: 7.5%;">
+
+    <div class="col-10">
+
+        <div class="row justify-content-center title">
+            <h1 style="font-family: gilroy;">SSH vs VNC. Whats the difference?</h1>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 3%;">
+            <h2>By Nathaniel Cherian</h2>
+        </div>
+
+        <div class="row justify-content-center" style="margin-top: 3%;">
+
+            <div class="col-10 post_content">
+                <h1>What is SSH?</h1>
+                <p>The SSH (secure shell) protocol allows you to remotely connect to a computer and use it's interface. Connections can happen from either a local network or across the internet. In the latter it is advised to set up a <a href="https://devops.ionos.com/tutorials/use-ssh-keys-with-putty-on-windows/#create-new-public-and-private-keys">private/public key pair</a> to prevent unauthorized users from entering your server. The main difference between a VNC and SSH is that VNC provides a graphical desktop that you can use with your mouse and keyboard while SSH will only allow you to use the console/terminal.</p>
+                <div>
+                    <p><figure>
+                        <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/72341280-1933-4d36-91c4-390d398322d2.png" />
+                        <figcaption style="text-align: center;">This is an example of a pi-terminal using SSH </figcaption>
+                    </figure></p>
+                </div>
+                <div>
+                    <p><figure>
+                        <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/9ba78c78-15ac-4b52-b2ed-b52529239546.png" />
+                        <figcaption style="text-align: center">The same commands except executed using VNC (notice how we have the whole desktop rather than just the terminal)</figcaption>
+                    </figure></p>
+                </div>
+                <p>If you are ssh-ing into a raspberry pi or vps remember that all the commands will be in linux. Click <a href="https://www.hostinger.com/tutorials/linux-commands">here</a> for a quick introduction.</p>
+                <h2>How to use SSH</h2>
+                <p>The first step is to allow SSH on the device you are trying to connect to. Raspberry pi's natively support SSH so we will use it on there.
+                    In terminal enter the command
+                    <code><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="186871586a796b687a7d6a6a61687175796b6c7d6a">[email&#160;protected]</a>:~ $ sudo raspi-config</code>
+                    You should be taken to a screen like this
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/7f0961a3-56d4-4e10-a06c-f375d10e931f.png" /></p>
+                <p>Use the arrow keys to navigate to option #5 Interfacing Options, then select SSH and click "yes". If you aren't sure how to do this click <a href="http://nighthawks.societyofcoders.org/courses/articles/how-to-set-up-vnc-with-your-raspberry-pi/">here</a>
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/2d45ae5a-6001-4e34-9b81-c6d5fe991361.png" /></p>
+                <h2>SSH on mac/linux</h2>
+                <p>If you're using macOS/linux SSH is natively built into your machine simply open your terminal and type
+                    <code>ssh <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="42322b020607140b01076c0b126c0a071007">[email&#160;protected]</a></code> with your raspberry pi's ip substituted for DEVICE.IP.HERE you can also replace pi with another account you have on your pi as long as you know the password. If you aren't sure how to do this please refer back to <a href="http://nighthawks.societyofcoders.org/courses/articles/how-to-set-up-vnc-with-your-raspberry-pi/">this tutorial</a>.</p>
+                <h2>SSH on Windows</h2>
+                <p>Unlike mac or linux windows doesn't nativly support SSH so to use it you will have to download <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">puTTY</a>, a program to allow you to SSH from windows.</p>
+                <p>After you have successfully installed puTTY open it by typing putty in your search bar just make sure you are opening puTTY, not puTTYgen.
+                    (FYI: you can use puTTYgen to create key pairs to secure your device later)
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/68a5f63d-59e2-4b76-8256-4236b182af86.png" /></p>
+                <p>Once puTTY is opened simply enter your raspberry pi's ip into the Host Name bar (mine is 192.168.1.32 ). Then click "Open".
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/eafcd3fa-814e-4577-9cbf-52c35087a6cc.png" /></p>
+                <p>Click yes/accept if you recieve any prompts. You will reach a screen asking you for credentials so log in with an account on your raspberry pi, again if you haven't done this please click <a href="http://nighthawks.societyofcoders.org/courses/articles/how-to-set-up-vnc-with-your-raspberry-pi/">here</a>.
+                    <img alt="" src="http://167.99.167.145/media/uploads/2020/08/07/20140b3f-1cc0-4e8e-b3c4-a1288ac2c144.png" /></p>
+                <h1>Similarities and Differences (TL;DR)</h1>
+                <p>SSH and VNC both allow users to <strong>connect remotely</strong> to their devices allowing you to work from anywhere. Both use the <strong>local ip</strong> of the device you are trying to connect to in order to establish a connection (on a local network). Also <strong>multiple people can connect at the same time</strong> from anywhere.</p>
+                <p>They are different mainly because SSH is more restrictive, not allowing you to use the <strong>graphical desktop and only the terminal</strong>. Although for experienced programmers and those trying to make small changes this can be more convenient. Additionally with VNC, multiple users connecting at the same time will have to "battle" for control over the cursor and keyboard as it only takes <strong>one input at any given time</strong>. On the other hand, SSH allows multiple people to connect and do their own things with little if any interference from others on the system.</p>
+
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

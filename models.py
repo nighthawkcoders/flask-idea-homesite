@@ -135,6 +135,7 @@ def pi_portforward():
     data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
     return data
 
+
 def pi_vncsetup():
     group = "pi"
     tag = "vncsetup"
@@ -142,6 +143,7 @@ def pi_vncsetup():
     html = "vncsetup.html"
     data = {"group": group, "tag": tag, "title": title, "html": html}
     return data
+
 
 def pi_realvnc():
     group = "pi"
@@ -152,8 +154,17 @@ def pi_realvnc():
     return data
 
 
+def pi_ssh():
+    group = "pi"
+    tag = "ssh"
+    title = "SSH"
+    html = "ssh.html"
+    data = {"group": group, "tag": tag, "title": title, "html": html}
+    return data
+
+
 def pi_projects():
-    return [pi_webserver(), pi_portforward(), pi_vncsetup(), pi_realvnc()]
+    return [pi_webserver(), pi_portforward(), pi_vncsetup(), pi_realvnc(), pi_ssh()]
 
 
 """ Git Section """
