@@ -143,9 +143,17 @@ def pi_vncsetup():
     data = {"group": group, "tag": tag, "title": title, "html": html}
     return data
 
+def pi_realvnc():
+    group = "pi"
+    tag = "realvnc"
+    title = "RealVNC"
+    html = "realvnc.html"
+    data = {"group": group, "tag": tag, "title": title, "html": html}
+    return data
+
 
 def pi_projects():
-    return [pi_webserver(), pi_portforward(), pi_vncsetup()]
+    return [pi_webserver(), pi_portforward(), pi_vncsetup(), pi_realvnc()]
 
 
 """ Git Section """
