@@ -22,7 +22,7 @@
                             {% set group = project['group'] %}
                             {% set tag = project['tag'] %}
                             {% set route = "."+ group + tag %}
-                            <div class="col-3">
+                            <div class="col-4" style="margin-top: 5%;">
                                 <a href={{url_for(route)}}><button class="btn">{{title}}</button></a>
                             </div>
                         {% endfor %}
