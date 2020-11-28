@@ -4,7 +4,7 @@ from __init__ import app
 from models import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
 from models import python_hello, python_ap, python_flask, python_study, python_projects
 from models import pi_webserver, pi_portforward, pi_projects
-from models import git_concepts, git_projects
+from models import git_concepts, git_replto, git_projects
 
 
 """Dropdown Section"""
@@ -109,6 +109,10 @@ def pythonstudy():
 @app.route('/git/concepts')
 def gitconcepts():
     return render_template("homesite/project.html", menus=menus, data=git_concepts())
+
+@app.route('/git/replto')
+def gitreplto():
+    return render_template("homesite/project.html", menus=menus, data=git_replto())
 
 
 """Pi Section"""

@@ -148,10 +148,16 @@ def git_concepts():
     tag = "concepts"
     title = "Concepts"
     video = "https://www.youtube.com/embed/phGdqJB6ep0"
-    video_description = "The concepts of Git and collaboration"
-    data = {"group": group, "tag": tag, "title": title, "video": video, "video_description": video_description}
+    data = {"group": group, "tag": tag, "title": title, "video": video}
     return data
 
+def git_replto():
+    group = "git"
+    tag = "replto"
+    title = "Repl-2-Git"
+    video = "https://www.youtube.com/embed/8TG99JmNUaM"
+    data = {"group": group, "tag": tag, "title": title, "video": video}
+    return data
 
 def git_projects():
-    return [git_concepts()]
+    return [git_concepts(), git_replto()]

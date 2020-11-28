@@ -9,9 +9,8 @@
         {% include "repo.html" %}
     {% endif %}
 
-    {% if 'video' in data and 'video_description' in data %}
+    {% if 'video' in data %}
         {% set video = data['video'] %}
-        {% set video_description = data['video_description'] %}
         {% include "video.html" %}
     {% endif %}
 
