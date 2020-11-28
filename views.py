@@ -1,8 +1,8 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
 from flask import render_template
 from __init__ import app
-from models import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
-from models import python_hello, python_ap, python_flask, python_study, python_projects
+from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
+from models.python import python_hello, python_ap, python_flask, python_study, python_projects
 
 # This table is used to inform HTML of primary menu items and routes
 menus = [{"title": 'Java', "route": '.java'},
