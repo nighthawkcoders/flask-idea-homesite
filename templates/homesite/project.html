@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-{% extends "base.html" %}
+{% extends "homesite/base.html" %}
 {% block content %}
     <!-- Project Repo -->
     {% if 'repo' in data and 'repo_description' in data %}
@@ -28,5 +28,5 @@
     {% endif %}
 
     <!-- Standard Footer -->
-    {% include "contact.html" %}
+    {% include "homesite/contact.html" %}
 {% endblock %}
