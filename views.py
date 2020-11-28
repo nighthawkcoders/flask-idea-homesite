@@ -10,11 +10,11 @@ from models import pbl_overview, pbl_scrum, pbl_projects
 
 """Dropdown Section"""
 # This table is used to inform HTML of primary menu items and routes
-menus = [{"title": 'Java', "route": '.java'},
-         {"title": 'Python', "route": '.python'},
-         {"title": 'Git', "route": '.git'},
-         {"title": 'Pi', "route": '.pi'},
-         {"title": 'PBL', "route": '.pbl'},
+menus = [{"title": 'CSA: Java', "route": '.java'},
+         {"title": 'CSP: Python', "route": '.python'},
+         {"title": 'GitHub + Git', "route": '.git'},
+         {"title": 'Raspberry Pi', "route": '.pi'},
+         {"title": 'Project Based Learning', "route": '.pbl'},
          {"title": 'About', "route": '.about'}]
 
 
