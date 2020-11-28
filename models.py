@@ -2,6 +2,8 @@
 
 """A series of dictionaries to support data rendering"""
 
+""" Java Section """
+
 
 def java_ap():
     group = "java"
@@ -62,6 +64,9 @@ def java_projects():
     return [java_hello(), java_mvc(), java_event(), java_ap(), java_study()]
 
 
+""" Python Section """
+
+
 def python_ap():
     group = "python"
     tag = "ap"
@@ -108,3 +113,28 @@ def python_study():
 
 def python_projects():
     return [python_hello(), python_flask(), python_ap(), python_study()]
+
+
+""" Pi Section """
+
+
+def pi_webserver():
+    group = "pi"
+    tag = "webserver"
+    title = "Web server"
+    padlet = "https://padlet.com/jmortensen7/pideploy"
+    data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
+    return data
+
+
+def pi_portforward():
+    group = "pi"
+    tag = "portforward"
+    title = "Port forward"
+    padlet = "https://padlet.com/jmortensen7/piportforward"
+    data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
+    return data
+
+
+def pi_projects():
+    return [pi_webserver(), pi_portforward()]

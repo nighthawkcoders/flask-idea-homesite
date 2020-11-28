@@ -3,6 +3,8 @@ from flask import render_template
 from __init__ import app
 from models import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
 from models import python_hello, python_ap, python_flask, python_study, python_projects
+from models import pi_webserver, pi_portforward, pi_projects
+
 
 """Dropdown Section"""
 # This table is used to inform HTML of primary menu items and routes
@@ -32,22 +34,22 @@ def python():
 
 @app.route('/git')
 def git():
-    return render_template("homesite/git.html", menus=menus)
+    return render_template("homesite/landing.html", heading="Git", menus=menus)
 
 
 @app.route('/pi')
 def pi():
-    return render_template("homesite/pi.html", menus=menus)
+    return render_template("homesite/landing.html", heading="Pi", menus=menus, projects=pi_projects())
 
 
 @app.route('/scrum')
 def scrum():
-    return render_template("homesite/scrum.html", menus=menus)
+    return render_template("homesite/landing.html", heading="Scrum", menus=menus)
 
 
 @app.route('/about')
 def about():
-    return render_template("homesite/about.html", menus=menus)
+    return render_template("homesite/landing.html", heading="About", menus=menus)
 
 
 """Java Section"""
@@ -99,3 +101,16 @@ def pythonap():
 @app.route('/python/study')
 def pythonstudy():
     return render_template("homesite/project.html", menus=menus, data=python_study())
+
+
+"""Pi Section"""
+
+
+@app.route('/pi/webserver')
+def piwebserver():
+    return render_template("homesite/project.html", menus=menus, data=pi_webserver())
+
+
+@app.route('/pi/portforward')
+def piportforward():
+    return render_template("homesite/project.html", menus=menus, data=pi_portforward())
