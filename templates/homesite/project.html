@@ -9,6 +9,12 @@
         {% include "repo.html" %}
     {% endif %}
 
+    {% if 'video' in data and 'video_description' in data %}
+        {% set video = data['video'] %}
+        {% set video_description = data['video_description'] %}
+        {% include "video.html" %}
+    {% endif %}
+
     <!-- Project Repl -->
     {% if 'repl' in data %}
         {% set repl = data['repl'] %}

@@ -138,3 +138,20 @@ def pi_portforward():
 
 def pi_projects():
     return [pi_webserver(), pi_portforward()]
+
+
+""" Git Section """
+
+
+def git_concepts():
+    group = "git"
+    tag = "concepts"
+    title = "Concepts"
+    video = "https://www.youtube.com/embed/phGdqJB6ep0"
+    video_description = "The concepts of Git and collaboration"
+    data = {"group": group, "tag": tag, "title": title, "video": video, "video_description": video_description}
+    return data
+
+
+def git_projects():
+    return [git_concepts()]
