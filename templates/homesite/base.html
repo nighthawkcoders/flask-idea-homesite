@@ -59,9 +59,10 @@
           <div class="navbar-nav" style="font-size: large;">
             <!-- menus defined in view and activated here -->
             {% for menu in menus %}
-              {% set title = menu['title'] %}
-              {% set route = menu['route'] %}
-              <a class="nav-link java" href={{url_for(route)}}>{{title}}</a>
+                {% set title = menu['title'] %}
+                {% set tag = menu['key'] %}
+                {% set url = url_for(".landing", selection = tag) %}
+                <a class="nav-link java" href={{url}}>{{title}}</a>
             {% endfor %}
           </div>
         </div>

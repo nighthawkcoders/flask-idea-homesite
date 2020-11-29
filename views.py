@@ -1,20 +1,40 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from __init__ import app
-from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
-from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study, python_projects
-from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_projects
-from models.git import git_concepts, git_replto, git_projects
-from models.pbl import pbl_overview, pbl_scrum, pbl_projects
+from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_details, java_projects
+from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study, python_details, \
+    python_projects
+from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_details, pi_projects
+from models.git import git_concepts, git_replto, git_details, git_projects
+from models.pbl import pbl_overview, pbl_scrum, pbl_details, pbl_projects
 
-"""Dropdown Section"""
-# This table is used to inform HTML of primary menu items and routes
-menus = [{"title": 'CSA: Java', "route": '.java'},
-         {"title": 'CSP: Python', "route": '.python'},
-         {"title": 'GitHub + Git', "route": '.git'},
-         {"title": 'Raspberry Pi', "route": '.pi'},
-         {"title": 'Project Based Learning', "route": '.pbl'},
-         {"title": 'About', "route": '.about'}]
+"""Main navigation Section"""
+# This section of code is driven by data, review data descriptions for understanding
+
+"""Dropdown data for menu selection"""
+# This table is used to inform HTML of items to be placed in main menu
+# -- data provider requirements are "title" and "key"
+# ---- "title" is displayed in dropdown
+# ---- "key" is used in building dynamic URL (https://www.tutorialspoint.com/flask/flask_variable_rules.htm)
+menus = [java_details(),
+         python_details(),
+         pi_details(),
+         git_details(),
+         pbl_details()
+         ]
+
+"""Coordinated lookup for dictionary that goes with selection"""
+# This dictionary is used to obtain data associated with dynamic URL
+# -- The key returns a list that has two elements
+# ---- [0] the title
+# ---- [1] the data to drive project selection dialog
+TITLE=0
+PROJECTS=1
+data = {java_details()['key']: [java_details()['title'], java_projects()],
+        python_details()['key']: [python_details()['title'], python_projects()],
+        pi_details()['key']: [pi_details()['title'], pi_projects()],
+        git_details()['key']: [git_details()['title'], git_projects()],
+        pbl_details()['key']: [pbl_details()['title'], pbl_projects()]}
 
 
 @app.route('/')
@@ -22,34 +42,17 @@ def index():
     return render_template("homesite/home.html", menus=menus)
 
 
-@app.route('/java')
-def java():
-    return render_template("homesite/landing.html", heading="Java", menus=menus, projects=java_projects())
-
-
-@app.route('/python')
-def python():
-    return render_template("homesite/landing.html", heading="Python", menus=menus, projects=python_projects())
-
-
-@app.route('/git')
-def git():
-    return render_template("homesite/landing.html", heading="Git", menus=menus, projects=git_projects())
-
-
-@app.route('/pi')
-def pi():
-    return render_template("homesite/landing.html", heading="Pi", menus=menus, projects=pi_projects())
-
-
-@app.route('/pbl')
-def pbl():
-    return render_template("homesite/landing.html", heading="PBL", menus=menus, projects=pbl_projects())
-
-
-@app.route('/about')
-def about():
-    return render_template("homesite/landing.html", heading="About", menus=menus)
+@app.route('/landing/<selection>', methods=['GET', 'POST'])
+def landing(selection):
+    if request.method == 'POST':  # redirection to content page
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
+    # based off of menu selection, content is selected for landing page
+    select_list = data[selection]
+    heading = select_list[TITLE]
+    projects = select_list[PROJECTS]
+    return render_template("homesite/landing.html", heading=heading, menus=menus, projects=projects)
 
 
 """Java Section"""
@@ -96,6 +99,7 @@ def pythonflask():
 @app.route('/python/cbproj')
 def pythoncbproj():
     return render_template("homesite/project.html", menus=menus, data=python_cbproj())
+
 
 @app.route('/python/ap')
 def pythonap():
