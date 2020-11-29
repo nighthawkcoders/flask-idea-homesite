@@ -11,22 +11,22 @@
                 <h1 style="font-family: gilroy;">{{heading}}</h1>
             </div>
 
-
             <div class="row justify-content-center" style="text-align: center; margin-top: 10%;">
                 <div class="col-8" style="font-size: 1.5vw;">
 
                     <div class="row courses-buttons justify-content-center">
-
-                        {% for project in projects %}
-                            {% set title = project['title'] %}
-                            {% set group = project['group'] %}
-                            {% set tag = project['tag'] %}
-                            {% set route = "."+ group + tag %}
-                            <div class="col-4" style="margin-top: 5%;">
-                                <a href={{url_for(route)}}><button class="btn">{{title}}</button></a>
-                            </div>
-                        {% endfor %}
-
+                        <form name ="form" method ="post" target="_blank">
+                            <select class="form-control" id="rating" name="page">
+                                {% for project in projects %}
+                                    {% set title = project['title'] %}
+                                    {% set group = project['group'] %}
+                                    {% set tag = project['tag'] %}
+                                    {% set route = "."+ group + tag %}
+                                    <option value={{route}}>{{title}}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Go" class="button">
+                        </form>
                     </div>
 
                 </div>

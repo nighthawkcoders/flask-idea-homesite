@@ -1,5 +1,5 @@
 """Views in MVC has responsibility for establishing routes and redering HTML"""
-from flask import render_template
+from flask import render_template, request, redirect, url_for
 from __init__ import app
 from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_projects
 from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study, python_projects
@@ -22,28 +22,48 @@ def index():
     return render_template("homesite/home.html", menus=menus)
 
 
-@app.route('/java')
+@app.route('/java', methods=['GET','POST'])
 def java():
+    if request.method == 'POST':
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
     return render_template("homesite/landing.html", heading="Java", menus=menus, projects=java_projects())
 
 
-@app.route('/python')
+@app.route('/python', methods=['GET','POST'])
 def python():
+    if request.method == 'POST':
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
     return render_template("homesite/landing.html", heading="Python", menus=menus, projects=python_projects())
 
 
-@app.route('/git')
+@app.route('/git', methods=['GET','POST'])
 def git():
+    if request.method == 'POST':
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
     return render_template("homesite/landing.html", heading="Git", menus=menus, projects=git_projects())
 
 
-@app.route('/pi')
+@app.route('/pi', methods=['GET','POST'])
 def pi():
+    if request.method == 'POST':
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
     return render_template("homesite/landing.html", heading="Pi", menus=menus, projects=pi_projects())
 
 
-@app.route('/pbl')
+@app.route('/pbl', methods=['GET','POST'])
 def pbl():
+    if request.method == 'POST':
+        form = request.form
+        page = form['page']
+        return redirect(url_for(page))
     return render_template("homesite/landing.html", heading="PBL", menus=menus, projects=pbl_projects())
 
 
