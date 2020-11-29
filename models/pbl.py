@@ -25,3 +25,6 @@ def pbl_scrum():
 
 def pbl_projects():
     return [pbl_overview(), pbl_scrum()]
+
+def pbl_details():
+    return {"title": 'Project-based Learning', 'key': 'pbl'}

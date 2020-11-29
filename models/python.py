@@ -64,3 +64,7 @@ def python_study():
 
 def python_projects():
     return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study()]
+
+
+def python_details():
+    return {"title": 'CSP: Python', 'key': 'python'}

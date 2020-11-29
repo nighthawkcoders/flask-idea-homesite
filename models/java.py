@@ -61,3 +61,6 @@ def java_study():
 
 def java_projects():
     return [java_hello(), java_mvc(), java_event(), java_ap(), java_study()]
+
+def java_details():
+    return {"title": 'CSA: Java', 'key': 'java'}
