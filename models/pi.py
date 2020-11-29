@@ -7,46 +7,46 @@
 
 def pi_webserver():
     group = "pi"
-    tag = "webserver"
-    title = "Web server"
+    route = ".piwebserver"
+    title = "Web server setup"
     padlet = "https://padlet.com/jmortensen7/pideploy"
-    data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
+    data = {"group": group, "route": route, "title": title, "padlet": padlet}
     return data
 
 
 def pi_portforward():
     group = "pi"
-    tag = "portforward"
-    title = "Port forward"
+    route = ".piportforward"
+    title = "Port forward overview"
     padlet = "https://padlet.com/jmortensen7/piportforward"
-    data = {"group": group, "tag": tag, "title": title, "padlet": padlet}
+    data = {"group": group, "route": route, "title": title, "padlet": padlet}
     return data
 
 
 def pi_vncsetup():
     group = "pi"
-    tag = "vncsetup"
-    title = "VNC setup"
+    route = ".pivncsetup"
+    title = "Virtual-Network-Computing setup"
     html = "vncsetup.html"
-    data = {"group": group, "tag": tag, "title": title, "html": html}
+    data = {"group": group, "route": route, "title": title, "html": html}
     return data
 
 
 def pi_realvnc():
     group = "pi"
-    tag = "realvnc"
-    title = "RealVNC"
+    route = ".pirealvnc"
+    title = "RealVNC sharing access overview"
     html = "realvnc.html"
-    data = {"group": group, "tag": tag, "title": title, "html": html}
+    data = {"group": group, "route": route, "title": title, "html": html}
     return data
 
 
 def pi_ssh():
     group = "pi"
-    tag = "ssh"
-    title = "SSH"
+    route = ".pissh"
+    title = "SSH (secure shell) introduction"
     html = "ssh.html"
-    data = {"group": group, "tag": tag, "title": title, "html": html}
+    data = {"group": group, "route": route, "title": title, "html": html}
     return data
 
 

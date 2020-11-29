@@ -19,13 +19,11 @@
                             <select class="form-control" id="page" name="page">
                                 {% for project in projects %}
                                     {% set title = project['title'] %}
-                                    {% set group = project['group'] %}
-                                    {% set tag = project['tag'] %}
-                                    {% set route = "."+ group + tag %}
+                                    {% set route = project['route'] %}
                                     <option value={{route}}>{{title}}</option>
                                 {% endfor %}
                             </select>
-                            <div class="row justify-content-center" style="text-align: center; margin-top: 40%;">
+                            <div class="row justify-content-center" style="text-align: center; margin-top: 15%;">
                                 <input type="submit" value="Go" class="button">
                             </div>
                         </form>
