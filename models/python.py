@@ -5,7 +5,6 @@
 """ PYTHON ONLY """
 
 
-
 def python_ap():
     group = "python"
     tag = "ap"
@@ -41,6 +40,19 @@ def python_flask():
     return data
 
 
+def python_cbproj():
+    group = "python"
+    tag = "cbproj"
+    title = "CB project"
+    timeline = "https://padlet.com/jmortensen7/cspcbproject"
+    repo = "https://gh-card.dev/repos/nighthawkcoders/flask-idea-homesite.svg?link_target=_blank"
+    repo_description = "Start process of building a project for College Board. Use my website or previous projects as " \
+                       "idea starters. "
+    data = {"group": group, "tag": tag, "title": title, "timeline": timeline, "repo": repo,
+            "repo_description": repo_description}
+    return data
+
+
 def python_study():
     group = "python"
     tag = "study"
@@ -51,5 +63,4 @@ def python_study():
 
 
 def python_projects():
-    return [python_hello(), python_flask(), python_ap(), python_study()]
-
+    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study()]
