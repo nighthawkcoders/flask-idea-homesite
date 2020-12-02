@@ -1,8 +1,37 @@
+from flask_sqlalchemy import SQLAlchemy
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import sessionmaker
+from views import app
+
+
 """Model in MVC has responsibility of managing data or database"""
 
 """A series of dictionaries to support data rendering"""
 
 """ PYTHON ONLY """
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db'
+db = SQLAlchemy(app)
+
+
+# declare the users database model
+class Users(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), unique=True, nullable=False)
+
+
+# Declare emails database model
+class Emails(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    email_address = db.Column(db.String(255), unique=True, nullable=False)
+
+
+# declare phone numbers database model
+class PhoneNumbers(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    phone_number = db.Column(db.String(255), unique=True, nullable=False)
 
 
 def python_ap():
