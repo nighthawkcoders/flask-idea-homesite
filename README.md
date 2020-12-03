@@ -8,6 +8,6 @@ Channel Name: p4-dons
 
 Basic Project Idea:
 Coronavirus Webscraper
-- Has all the need to know COVID details in the United States
-- Has info from all 50 states
+- Has information about COVID
+- Has info about cases from all 50 states
 - Can tell you your risk based on what state you are in
