@@ -1,8 +1,37 @@
+from flask_sqlalchemy import SQLAlchemy
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import sessionmaker
+from views import app
+
+
 """Model in MVC has responsibility of managing data or database"""
 
 """A series of dictionaries to support data rendering"""
 
 """ PYTHON ONLY """
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db'
+db = SQLAlchemy(app)
+
+
+# declare the users database model
+class Users(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(255), unique=True, nullable=False)
+    password = db.Column(db.String(255), unique=True, nullable=False)
+
+
+# Declare emails database model
+class Emails(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    email_address = db.Column(db.String(255), unique=True, nullable=False)
+
+
+# declare phone numbers database model
+class PhoneNumbers(db.Model):
+    UserID = db.Column(db.Integer, primary_key=True)
+    phone_number = db.Column(db.String(255), unique=True, nullable=False)
 
 
 def python_ap():
@@ -11,6 +40,19 @@ def python_ap():
     title = "AP study big ideas outline"
     timeline = "https://padlet.com/embed/k3bwade11ekevmum"
     data = {"group": group, "route": route, "title": title, "timeline": timeline}
+    return data
+
+
+def python_databases():
+    group = "python"
+    route = ".databases"
+    title = "Hello to Databases and Python"
+    timeline = "https://padlet.com/embed/2p9700yyoz3flccs"
+    repo = "https://gh-card.dev/repos/nighthawkcoders/pythonhello.svg"
+    repo_description = "Hello, DB! and a variety of classroom and technical introductions"
+    repl = "https://repl.it/@jmort1021/Python-Hello-Series?lite=true"
+    data = {"group": group, "route": route, "title": title, "timeline": timeline, "repo": repo,
+            "repo_description": repo_description, "repl": repl}
     return data
 
 
@@ -63,7 +105,7 @@ def python_study():
 
 
 def python_projects():
-    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study()]
+    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), python_databases()]
 
 
 def python_details():

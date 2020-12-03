@@ -10,7 +10,7 @@ in virtual environment...
 
 ``` pip install -r requirements.txt ``` (install dependencies)
 
-``` python3 wsgi.py
+``` python3 wsgi.py ``` (runs from entry point)
 
 in your browser...
 http://localhost:8080/ 
