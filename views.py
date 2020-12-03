@@ -138,14 +138,13 @@ def pythonstudy():
 
 @app.route('/python/databases')
 def databases():
-    return render_template("homesite/PaulN.html") # , menus=menus, data=python_study())
-
+    return render_template("homesite/PaulN.html", menus=menus)
 
 # if input url used, use the input html
 @app.route('/python/input/', methods=["GET", "POST"])
 def input_route():
     if request.form:
-        engine = create_engine('sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db', echo=True)
+        engine = create_engine('sqlite:///myDB.db', echo=True)  # relative path within project
         Session = sessionmaker(bind=engine)
         session = Session()
         print("UserID: " + str(request.form.get("ID")))
@@ -156,7 +155,7 @@ def input_route():
         phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
         session.add(phone_number)
         # session.commit()
-    return render_template("homesite/PaulN.html")
+    return render_template("homesite/PaulN.html", menus=menus)
 
 
 # Users Route
@@ -168,7 +167,7 @@ def users_route():
     table = UserTable(users)
     for user in users:
         print(str(user.UserID) + ' ' + user.username + ' ' + user.password)
-    return render_template("homesite/PaulN.html" , table=table)
+    return render_template("homesite/PaulN.html" , table=table, menus=menus)
 
 
 # if email url, show the email table
@@ -179,7 +178,7 @@ def emails_route():
     # fill the emails table object
     emails = Emails.query.all()
     emailTable = EmailTable(emails)
-    return render_template("homesite/PaulN.html", table=emailTable)
+    return render_template("homesite/PaulN.html", table=emailTable, menu=menus)
 
 
 # if phones url, shjow phones table
@@ -190,7 +189,7 @@ def phones_route():
     # fill the phone numbers table object
     phone_numbers = PhoneNumbers.query.all()
     pntable = PNTable(phone_numbers)
-    return render_template("homesite/PaulN.html", table=pntable)
+    return render_template("homesite/PaulN.html", table=pntable, menu=menus)
 
 
 

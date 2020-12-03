@@ -11,7 +11,7 @@ from views import app
 """ PYTHON ONLY """
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myDB.db'
 db = SQLAlchemy(app)
 
 
