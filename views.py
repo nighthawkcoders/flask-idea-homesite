@@ -66,58 +66,6 @@ def index():
     return render_template("homesite/home.html", menus=menus)
 
 
-# if input url used, use the input html
-@app.route('/input/', methods=["GET", "POST"])
-def input_route():
-    if request.form:
-        engine = create_engine('sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db', echo=True)
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        print("UserID: " + str(request.form.get("ID")))
-        email = Emails(email_address=request.form.get("email"), UserID=request.form.get("ID"))
-        session.add(email)
-        print(session)
-        # session.commit()
-        phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
-        session.add(phone_number)
-        # session.commit()
-    return render_template("PaulN.html")
-
-
-# Users Route
-@app.route('/users/')
-def users_route():
-    # if the form has been sent back, add the data to the database
-    # fill the Users table
-    users = Users.query.all()
-    table = UserTable(users)
-    for user in users:
-        print(str(user.UserID) + ' ' + user.username + ' ' + user.password)
-    return render_template("PaulN.html" , table=table)
-
-
-# if email url, show the email table
-@app.route('/emails/')
-def emails_route():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Emails")
-    # fill the emails table object
-    emails = Emails.query.all()
-    emailTable = EmailTable(emails)
-    return render_template("PaulN.html", table=emailTable)
-
-
-# if phones url, shjow phones table
-@app.route('/phones/')
-def phones_route():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Phone Numbers")
-    # fill the phone numbers table object
-    phone_numbers = PhoneNumbers.query.all()
-    pntable = PNTable(phone_numbers)
-    return render_template("PaulN.html", table=pntable)
-
-
 @app.route('/landing/<selection>', methods=['GET', 'POST'])
 def landing(selection):
     if request.method == 'POST':  # redirection to content page
@@ -185,6 +133,64 @@ def pythonap():
 @app.route('/python/study')
 def pythonstudy():
     return render_template("homesite/project.html", menus=menus, data=python_study())
+
+
+@app.route('/python/databases')
+def databases():
+    return render_template("homesite/PaulN.html") # , menus=menus, data=python_study())
+
+
+# if input url used, use the input html
+@app.route('/python/input/', methods=["GET", "POST"])
+def input_route():
+    if request.form:
+        engine = create_engine('sqlite:///C:\\Program Files (x86)\\SQLITE\\myDB.db', echo=True)
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        print("UserID: " + str(request.form.get("ID")))
+        email = Emails(email_address=request.form.get("email"), UserID=request.form.get("ID"))
+        session.add(email)
+        print(session)
+        # session.commit()
+        phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
+        session.add(phone_number)
+        # session.commit()
+    return render_template("homesite/PaulN.html")
+
+
+# Users Route
+@app.route('/python/users/')
+def users_route():
+    # if the form has been sent back, add the data to the database
+    # fill the Users table
+    users = Users.query.all()
+    table = UserTable(users)
+    for user in users:
+        print(str(user.UserID) + ' ' + user.username + ' ' + user.password)
+    return render_template("homesite/PaulN.html" , table=table)
+
+
+# if email url, show the email table
+@app.route('/python/emails/')
+def emails_route():
+    # user = Users.query.filter_by(UserID=1).first()
+    print("Emails")
+    # fill the emails table object
+    emails = Emails.query.all()
+    emailTable = EmailTable(emails)
+    return render_template("homesite/PaulN.html", table=emailTable)
+
+
+# if phones url, shjow phones table
+@app.route('/python/phones/')
+def phones_route():
+    # user = Users.query.filter_by(UserID=1).first()
+    print("Phone Numbers")
+    # fill the phone numbers table object
+    phone_numbers = PhoneNumbers.query.all()
+    pntable = PNTable(phone_numbers)
+    return render_template("homesite/PaulN.html", table=pntable)
+
 
 
 """Git Section"""

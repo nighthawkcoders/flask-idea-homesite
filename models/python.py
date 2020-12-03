@@ -43,6 +43,19 @@ def python_ap():
     return data
 
 
+def python_databases():
+    group = "python"
+    route = ".databases"
+    title = "Hello to Databases and Python"
+    timeline = "https://padlet.com/embed/2p9700yyoz3flccs"
+    repo = "https://gh-card.dev/repos/nighthawkcoders/pythonhello.svg"
+    repo_description = "Hello, DB! and a variety of classroom and technical introductions"
+    repl = "https://repl.it/@jmort1021/Python-Hello-Series?lite=true"
+    data = {"group": group, "route": route, "title": title, "timeline": timeline, "repo": repo,
+            "repo_description": repo_description, "repl": repl}
+    return data
+
+
 def python_hello():
     group = "python"
     route = ".pythonhello"
@@ -92,7 +105,7 @@ def python_study():
 
 
 def python_projects():
-    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study()]
+    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), python_databases()]
 
 
 def python_details():
