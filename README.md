@@ -1,16 +1,13 @@
-# homesite
+# KILD
+our group's repo
 
-## How to Run
+Team Members: Ketki, Iniyaa, Lucas, Dayita
+Scrum Master: Ketki
 
-in console/terminal...
+Channel Name: p4-dons
 
-``` git clone https://github.com/nighthawkcoders/flask-idea-homesite```
-
-in virtual environment...
-
-``` pip install -r requirements.txt ``` (install dependencies)
-
-``` python3 wsgi.py ``` (runs from entry point)
-
-in your browser...
-http://localhost:8080/ 
+Basic Project Idea:
+Coronavirus Webscraper
+  Has all the need to know COVID details in the United States
+  Has info from all 50 states
+  Can tell you your risk based on what state you are in
