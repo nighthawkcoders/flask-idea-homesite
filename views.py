@@ -29,17 +29,17 @@ menus = [java_details(),
          ]
 
 """Coordinated lookup for dictionary that goes with selection"""
-# This dictionary is used to obtain data associated with dynamic URL
-# -- The key returns a list that has two elements
-# ---- [0] the title
-# ---- [1] the data to drive project selection dialog
-TITLE=0
-PROJECTS=1
-data = {java_details()['key']: [java_details()['title'], java_projects()],
-        python_details()['key']: [python_details()['title'], python_projects()],
-        pi_details()['key']: [pi_details()['title'], pi_projects()],
-        git_details()['key']: [git_details()['title'], git_projects()],
-        pbl_details()['key']: [pbl_details()['title'], pbl_projects()]}
+# This dictionary is used to obtain data associated with a dynamic URL
+# -- The key looked up in the dictionary returns a list that has two elements
+# ---- [0] the title associated to key, used for display on landing page
+# ---- [1] the projects/choices associated to key, used to populate choices on landing page selector widget
+TITLE = 0
+PROJECTS = 1
+key_2_proj = {java_details()['key']: [java_details()['title'], java_projects()],
+              python_details()['key']: [python_details()['title'], python_projects()],
+              pi_details()['key']: [pi_details()['title'], pi_projects()],
+              git_details()['key']: [git_details()['title'], git_projects()],
+              pbl_details()['key']: [pbl_details()['title'], pbl_projects()]}
 
 
 # Declare your Users table
@@ -68,14 +68,15 @@ def index():
 
 @app.route('/landing/<selection>', methods=['GET', 'POST'])
 def landing(selection):
-    if request.method == 'POST':  # redirection to content page
+    # POST redirection to content page
+    if request.method == 'POST':
         form = request.form
         page = form['page']
         return redirect(url_for(page))
-    # based off of menu selection, content is selected for landing page
-    select_list = data[selection]
-    heading = select_list[TITLE]
-    projects = select_list[PROJECTS]
+    # GET landing page render based off of "selection"
+    selected_list = key_2_proj[selection] # selection is "key" used to pull project details from dictionary
+    heading = selected_list[TITLE]
+    projects = selected_list[PROJECTS]
     return render_template("homesite/landing.html", heading=heading, menus=menus, projects=projects)
 
 
