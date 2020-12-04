@@ -151,10 +151,10 @@ def input_route():
         email = Emails(email_address=request.form.get("email"), UserID=request.form.get("ID"))
         session.add(email)
         print(session)
-        # session.commit()
+        session.commit()
         phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
         session.add(phone_number)
-        # session.commit()
+        session.commit()
     return render_template("homesite/PaulN.html", menus=menus)
 
 
@@ -178,6 +178,8 @@ def emails_route():
     # fill the emails table object
     emails = Emails.query.all()
     emailTable = EmailTable(emails)
+    for email in emails:
+        print(str(email.UserID) + ' ' + email.email_address)
     return render_template("homesite/PaulN.html", table=emailTable, menu=menus)
 
 
