@@ -8,7 +8,8 @@ from flask import render_template, request, redirect, url_for
 from __init__ import app
 from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_details, java_projects
 from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study, python_details, \
-    python_projects, Users, Emails, PhoneNumbers
+    python_projects
+from models.pythondb import Users, Emails, PhoneNumbers
 from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_details, pi_projects
 from models.git import git_concepts, git_replto, git_details, git_projects
 from models.pbl import pbl_overview, pbl_scrum, pbl_details, pbl_projects
