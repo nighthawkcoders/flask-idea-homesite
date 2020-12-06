@@ -1,11 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
-# from sqlalchemy import create_engine
-# from sqlalchemy.orm import sessionmaker
-from views import app
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/myDB.db'
-db = SQLAlchemy(app)
-
+from __init__ import db
 
 # declare the users database model
 class Users(db.Model):

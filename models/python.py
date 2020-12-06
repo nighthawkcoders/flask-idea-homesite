@@ -1,9 +1,9 @@
-
 """Model in MVC has responsibility of managing data or database"""
 
 """A series of dictionaries to support data rendering"""
 
 """ PYTHON ONLY """
+
 
 def python_ap():
     group = "python"
@@ -12,8 +12,6 @@ def python_ap():
     timeline = "https://padlet.com/embed/k3bwade11ekevmum"
     data = {"group": group, "route": route, "title": title, "timeline": timeline}
     return data
-
-
 
 
 def python_hello():
@@ -63,12 +61,14 @@ def python_study():
     data = {"group": group, "route": route, "title": title, "padlet": padlet}
     return data
 
+
 def pythondb_setup():
     group = "python"
-    route = ".databases"
+    route = "pythondb_bp.databases"
     title = "Hello to Databases and Python"
     data = {"group": group, "route": route, "title": title}
     return data
+
 
 def python_projects():
     return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), pythondb_setup()]

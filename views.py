@@ -1,63 +1,15 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from flask_table import Table, Col
-
-
 """Views in MVC has responsibility for establishing routes and redering HTML"""
 from flask import render_template, request, redirect, url_for
 from __init__ import app
-from models.java import java_ap, java_hello, java_mvc, java_event, java_study, java_details, java_projects
-from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study, python_details, \
-    python_projects
-from models.pythondb import Users, Emails, PhoneNumbers
-from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh, pi_details, pi_projects
-from models.git import git_concepts, git_replto, git_details, git_projects
-from models.pbl import pbl_overview, pbl_scrum, pbl_details, pbl_projects
+from models import menus, TITLE, PROJECTS, key_2_proj
+from models.java import java_ap, java_hello, java_mvc, java_event, java_study
+from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study
+from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh
+from models.git import git_concepts, git_replto
+from models.pbl import pbl_overview, pbl_scrum
 
 """Main navigation Section"""
 # This section of code is driven by data, review data descriptions for understanding
-
-"""Dropdown data for menu selection"""
-# This table is used to inform HTML of items to be placed in main menu
-# -- data provider requirements are "title" and "key"
-# ---- "title" is displayed in dropdown
-# ---- "key" is used in building dynamic URL (https://www.tutorialspoint.com/flask/flask_variable_rules.htm)
-menus = [java_details(),
-         python_details(),
-         pi_details(),
-         git_details(),
-         pbl_details()
-         ]
-
-"""Coordinated lookup for dictionary that goes with selection"""
-# This dictionary is used to obtain data associated with a dynamic URL
-# -- The key looked up in the dictionary returns a list that has two elements
-# ---- [0] the title associated to key, used for display on landing page
-# ---- [1] the projects/choices associated to key, used to populate choices on landing page selector widget
-TITLE = 0
-PROJECTS = 1
-key_2_proj = {java_details()['key']: [java_details()['title'], java_projects()],
-              python_details()['key']: [python_details()['title'], python_projects()],
-              pi_details()['key']: [pi_details()['title'], pi_projects()],
-              git_details()['key']: [git_details()['title'], git_projects()],
-              pbl_details()['key']: [pbl_details()['title'], pbl_projects()]}
-
-
-# Declare your Users table
-class UserTable(Table):
-    UserID = Col('UserID')
-    username = Col('username')
-    password = Col('Password')
-
-# Declare your  emailtable
-class EmailTable(Table):
-    UserID = Col('UserID')
-    email_address = Col('email_address')
-
-# Declare your  phone numbers table
-class PNTable(Table):
-    UserID = Col('UserID')
-    phone_number = Col('phone_number')
 
 
 @app.route('/')
@@ -133,72 +85,6 @@ def pythonap():
 @app.route('/python/study')
 def pythonstudy():
     return render_template("homesite/project.html", menus=menus, data=python_study())
-
-
-# if input url used, use the input html
-@app.route('/python/input/', methods=["GET", "POST"])
-def input_route():
-    if request.form:
-        engine = create_engine('sqlite:///models/myDB.db', echo=True)  # relative path within project
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        print("UserID: " + str(request.form.get("ID")))
-        email = Emails(email_address=request.form.get("email"), UserID=request.form.get("ID"))
-        session.add(email)
-        print(session)
-        session.commit()
-        phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
-        session.add(phone_number)
-        session.commit()
-    return render_template("homesite/PaulN.html", menus=menus)
-
-
-# Users Route
-@app.route('/python/databases/')
-def databases():
-    # fill the Users table
-    users = Users.query.all()
-    records = []
-    for user in users:
-        user_dict = {'id': user.UserID, 'name': user.username, 'password': user.password}
-        # associate emails with user
-        emails = Emails.query.all()
-        for email in emails:
-            if user_dict['id'] == email.UserID:
-                user_dict['emails'] = email.email_address
-        # associate phone numbers with user
-        phone_numbers = PhoneNumbers.query.all()
-        for pn in phone_numbers:
-            if user_dict['id'] == pn.UserID:
-                user_dict['phone_numbers'] = pn.phone_number
-        # add record to list
-        records.append(user_dict)
-    return render_template("homesite/PaulN.html" , table=records, menus=menus)
-
-
-# if email url, show the email table
-@app.route('/python/emails/')
-def emails_route():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Emails")
-    # fill the emails table object
-    emails = Emails.query.all()
-    emailTable = EmailTable(emails)
-    for email in emails:
-        print(str(email.UserID) + ' ' + email.email_address)
-    return render_template("homesite/PaulN.html", table=emailTable, menu=menus)
-
-
-# if phones url, shjow phones table
-@app.route('/python/phones/')
-def phones_route():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Phone Numbers")
-    # fill the phone numbers table object
-    phone_numbers = PhoneNumbers.query.all()
-    pntable = PNTable(phone_numbers)
-    return render_template("homesite/PaulN.html", table=pntable, menu=menus)
-
 
 
 """Git Section"""

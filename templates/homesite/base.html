@@ -61,7 +61,7 @@
             {% for menu in menus %}
                 {% set title = menu['title'] %}
                 {% set tag = menu['key'] %}
-                {% set url = url_for(".landing", selection = tag) %}
+                {% set url = url_for("landing", selection = tag) %}
                 <a class="nav-link java" href={{url}}>{{title}}</a>
             {% endfor %}
           </div>
