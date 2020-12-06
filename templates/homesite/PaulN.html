@@ -2,32 +2,169 @@
 
 {% extends "homesite/base.html" %}
 {% block content %}
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+        <div class="row justify-content-center">
+            <div class="col-10" style="text-align: center;">
+                <h1>Hello to Database and Python</h1>
+            </div>
+        </div>
+        <div class="row courses-buttons justify-content-center">
+            <a href=/python/table_load>Refresh Table</a>
+        </div>
+
+        <!-- Table block is dependent on table variable and dictionary setup -->
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Emails</th>
+                <th>Phone Numbers</th>
+            </tr>
+            <!-- Loop through rows in table -->
+            {% for row in table %}
+                <!-- build elements in table -->
+                <tr>
+                    <th>{{ row['id'] }}</th>
+                    <th>{{ row['name'] }}</th>
+                    <th>{{ row['password'] }}</th>
+                    <th>{{ row['emails'] }}</th>
+                    <th>{{ row['phone_numbers'] }}</th>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
-    <div class="row courses-buttons justify-content-center">
+        <div class="row justify-content-center">
+            <div class="col-10" style="text-align: center;">
+                <h1>CRUD: Create</h1>
+            </div>
+        </div>
 
-        <form method="POST" ID="myForm" action="/python/input/" >
-        <table id="links">
-            <tr><td><a href="/python/users/">Users</a></td><td><a href="/python/emails/">E-Mails</a></td><td><a href="/python/phones/">Phone Numbers</a></td>
-                <td><a href="/python/input/">Input</a></td></tr>
-            <tr><td><select name="ID">
-                <optgroup label="userid">
-                    <option label="1">1</option>
-                    <option label="2">2</option>
-                    <option label="3">3</option>
-                    <option label="4">4</option>
-                </optgroup>
-            </select></td>
-                <td><input type="text" name="email"></td>
-                <td><input type="text" name="phone_number"></td>
-                <td><input type="submit" value="Add"></td>
-            </tr>
-        </table>
-        </form>
+        <div class="row courses-buttons justify-content-center">
 
-    </div>
+            <form method="POST" ID="myForm" action="/python/input/" >
+                <table id="links">
+                    </select></td>
+                        <td><input type="text" name="email"></td>
+                        <td><input type="text" name="phone_number"></td>
+                        <td><input type="submit" value="Add"></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
     </div>
 
-{{ table }}
+    <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+
+        <div class="row justify-content-center">
+            <div class="col-10" style="text-align: center;">
+                <h1>CRUD: Read</h1>
+            </div>
+        </div>
+
+        <div class="row courses-buttons justify-content-center">
+
+            <form method="POST" ID="myForm" action="/python/input/" >
+                <table id="links">
+                    <tr>
+                        <td><a href="/python/emails/">E-Mails</a></td>
+                        <td><a href="/python/phones/">Phone Numbers</a></td>
+                    </tr>
+                    <tr><td><select name="ID">
+                        <optgroup label="userid">
+                            <option label="1">1</option>
+                            <option label="2">2</option>
+                            <option label="3">3</option>
+                            <option label="4">4</option>
+                        </optgroup>
+                    </select></td>
+                        <td><input type="text" name="email"></td>
+                        <td><input type="text" name="phone_number"></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+
+        <div class="row justify-content-center">
+            <div class="col-10" style="text-align: center;">
+                <h1>CRUD: Update</h1>
+            </div>
+        </div>
+
+        <div class="row courses-buttons justify-content-center">
+
+            <form method="POST" ID="myForm" action="/python/input/" >
+                <table id="links">
+                    <tr><td><select name="ID">
+                        <optgroup label="userid">
+                            <option label="1">1</option>
+                            <option label="2">2</option>
+                            <option label="3">3</option>
+                            <option label="4">4</option>
+                        </optgroup>
+                    </select></td>
+                        <td><input type="text" name="email"></td>
+                        <td><input type="text" name="phone_number"></td>
+                        <td><input type="submit" value="Add"></td>
+                    </tr>
+                </table>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
+
+        <div class="row justify-content-center">
+            <div class="col-10" style="text-align: center;">
+                <h1>CRUD: Delete</h1>
+            </div>
+        </div>
+
+        <div class="row courses-buttons justify-content-center">
+
+            <form method="POST" ID="myForm" action="/python/delete/" >
+                <table id="links">
+                    <tr><td><select name="ID">
+                        <optgroup label="userid">
+                            <option label="1">1</option>
+                            <option label="2">2</option>
+                            <option label="3">3</option>
+                            <option label="4">4</option>
+                        </optgroup>
+                </table>
+            </form>
+
+        </div>
+    </div>
+
 
 {% endblock %}

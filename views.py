@@ -48,12 +48,10 @@ class UserTable(Table):
     username = Col('username')
     password = Col('Password')
 
-
 # Declare your  emailtable
 class EmailTable(Table):
     UserID = Col('UserID')
     email_address = Col('email_address')
-
 
 # Declare your  phone numbers table
 class PNTable(Table):
@@ -136,15 +134,11 @@ def pythonstudy():
     return render_template("homesite/project.html", menus=menus, data=python_study())
 
 
-@app.route('/python/databases')
-def databases():
-    return render_template("homesite/PaulN.html", menus=menus)
-
 # if input url used, use the input html
 @app.route('/python/input/', methods=["GET", "POST"])
 def input_route():
     if request.form:
-        engine = create_engine('sqlite:///myDB.db', echo=True)  # relative path within project
+        engine = create_engine('sqlite:///models/myDB.db', echo=True)  # relative path within project
         Session = sessionmaker(bind=engine)
         session = Session()
         print("UserID: " + str(request.form.get("ID")))
@@ -159,15 +153,26 @@ def input_route():
 
 
 # Users Route
-@app.route('/python/users/')
-def users_route():
-    # if the form has been sent back, add the data to the database
+@app.route('/python/databases/')
+def databases():
     # fill the Users table
     users = Users.query.all()
-    table = UserTable(users)
+    records = []
     for user in users:
-        print(str(user.UserID) + ' ' + user.username + ' ' + user.password)
-    return render_template("homesite/PaulN.html" , table=table, menus=menus)
+        user_dict = {'id': user.UserID, 'name': user.username, 'password': user.password}
+        # associate emails with user
+        emails = Emails.query.all()
+        for email in emails:
+            if user_dict['id'] == email.UserID:
+                user_dict['emails'] = email.email_address
+        # associate phone numbers with user
+        phone_numbers = PhoneNumbers.query.all()
+        for pn in phone_numbers:
+            if user_dict['id'] == pn.UserID:
+                user_dict['phone_numbers'] = pn.phone_number
+        # add record to list
+        records.append(user_dict)
+    return render_template("homesite/PaulN.html" , table=records, menus=menus)
 
 
 # if email url, show the email table

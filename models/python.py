@@ -11,7 +11,7 @@ from views import app
 """ PYTHON ONLY """
 
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/myDB.db'
 db = SQLAlchemy(app)
 
 
@@ -47,12 +47,7 @@ def python_databases():
     group = "python"
     route = ".databases"
     title = "Hello to Databases and Python"
-    timeline = "https://padlet.com/embed/2p9700yyoz3flccs"
-    repo = "https://gh-card.dev/repos/nighthawkcoders/pythonhello.svg"
-    repo_description = "Hello, DB! and a variety of classroom and technical introductions"
-    repl = "https://repl.it/@jmort1021/Python-Hello-Series?lite=true"
-    data = {"group": group, "route": route, "title": title, "timeline": timeline, "repo": repo,
-            "repo_description": repo_description, "repl": repl}
+    data = {"group": group, "route": route, "title": title}
     return data
 
 
