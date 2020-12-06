@@ -2,9 +2,12 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
 app = Flask(__name__)
+
+""" database setup to support db examples """
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///models/myDB.db'
 db = SQLAlchemy(app)
 
-
+""" blue print to move db to its own folder """
 from pythondb import pythondb_bp
 app.register_blueprint(pythondb_bp, url_prefix='/pythondb')

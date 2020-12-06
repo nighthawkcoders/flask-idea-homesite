@@ -46,12 +46,12 @@ def databases():
                 user_dict['phone_numbers'] = pn.phone_number
         # add record to list
         records.append(user_dict)
-    return render_template("pythondb/PaulN.html", table=records, menus=menus)
+    return render_template("pythondb/index.html", table=records, menus=menus)
 
 
 # if input url used, use the input html
-@pythondb_bp.route('/python/input/', methods=["GET", "POST"])
-def input_route():
+@pythondb_bp.route('/input/', methods=["GET", "POST"])
+def input():
     if request.form:
         engine = create_engine('sqlite:///models/myDB.db', echo=True)  # relative path within project
         Session = sessionmaker(bind=engine)
@@ -64,12 +64,12 @@ def input_route():
         phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=request.form.get("ID"))
         session.add(phone_number)
         session.commit()
-    return render_template("pythondb/PaulN.html", menus=menus)
+    return render_template("pythondb/index.html", menus=menus)
 
 
 # if email url, show the email table
-@pythondb_bp.route('/python/emails/')
-def emails_route():
+@pythondb_bp.route('/emails/')
+def emails():
     # user = Users.query.filter_by(UserID=1).first()
     print("Emails")
     # fill the emails table object
@@ -77,15 +77,22 @@ def emails_route():
     emailTable = EmailTable(emails)
     for email in emails:
         print(str(email.UserID) + ' ' + email.email_address)
-    return render_template("pythondb/PaulN.html", table=emailTable, menu=menus)
+    return render_template("pythondb/index.html", table=emailTable, menu=menus)
 
 
 # if phones url, shjow phones table
-@pythondb_bp.route('/python/phones/')
-def phones_route():
+@pythondb_bp.route('/phones/')
+def phones():
     # user = Users.query.filter_by(UserID=1).first()
     print("Phone Numbers")
     # fill the phone numbers table object
     phone_numbers = PhoneNumbers.query.all()
     pntable = PNTable(phone_numbers)
-    return render_template("pythondb/PaulN.html", table=pntable, menu=menus)
+    return render_template("pythondb/index.html", table=pntable, menu=menus)
+
+
+# CRUD delete
+@pythondb_bp.route('/delete/')
+def delete():
+    return render_template("pythondb/index.html", table=pntable, menu=menus)
+
