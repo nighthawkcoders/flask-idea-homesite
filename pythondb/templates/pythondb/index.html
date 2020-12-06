@@ -27,7 +27,13 @@
             </div>
         </div>
         <div class="row courses-buttons justify-content-center">
-            <a href={{url_for('.databases')}}>Refresh Table</a>
+            <table id="links">
+            <tr>
+                <td><a href={{url_for('.databases')}}>Full Table </a></td>
+                <td><a href={{url_for('.emails')}}>E-Mails only</a></td>
+                <td><a href={{url_for('.phones')}}>Phones only</a></td>
+            </tr>
+            </table>
         </div>
 
         <!-- Table block is dependent on table variable and dictionary setup -->
@@ -65,13 +71,11 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action="/python/input/" >
+            <form method="POST" ID="myForm" action={{url_for('.input')}} >
                 <table id="links">
-                    </select></td>
-                        <td><input type="text" name="email"></td>
-                        <td><input type="text" name="phone_number"></td>
-                        <td><input type="submit" value="Add"></td>
-                    </tr>
+                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="phone_number"></td>
+                    <td><input type="submit" value="Add"></td>
                 </table>
             </form>
 
@@ -88,12 +92,8 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action="/python/input/" >
+            <form method="POST" ID="myForm" action={{url_for('.input')}} >
                 <table id="links">
-                    <tr>
-                        <td><a href="/python/emails/">E-Mails</a></td>
-                        <td><a href="/python/phones/">Phone Numbers</a></td>
-                    </tr>
                     <tr><td><select name="ID">
                         <optgroup label="userid">
                             <option label="1">1</option>
@@ -121,7 +121,7 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action="/python/input/" >
+            <form method="POST" ID="myForm" action={{url_for('.input')}} >
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
@@ -151,7 +151,7 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action="/python/delete/" >
+            <form method="POST" ID="myForm" action={{url_for('.delete')}} >
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
@@ -160,6 +160,8 @@
                             <option label="3">3</option>
                             <option label="4">4</option>
                         </optgroup>
+                    </select>
+                    </td></tr>
                 </table>
             </form>
 

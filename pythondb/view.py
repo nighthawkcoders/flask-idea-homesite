@@ -1,4 +1,4 @@
-from flask import render_template
+from flask import render_template, request
 from flask_table import Table, Col
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -70,25 +70,29 @@ def input():
 # if email url, show the email table
 @pythondb_bp.route('/emails/')
 def emails():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Emails")
-    # fill the emails table object
+    # fill the table with emails only
+    records = []
     emails = Emails.query.all()
-    emailTable = EmailTable(emails)
     for email in emails:
-        print(str(email.UserID) + ' ' + email.email_address)
-    return render_template("pythondb/index.html", table=emailTable, menu=menus)
+        user_dict = {}
+        user_dict['id'] = email.UserID
+        user_dict['emails'] = email.email_address
+        records.append(user_dict)
+    return render_template("pythondb/index.html", table=records, menu=menus)
 
 
 # if phones url, shjow phones table
 @pythondb_bp.route('/phones/')
 def phones():
-    # user = Users.query.filter_by(UserID=1).first()
-    print("Phone Numbers")
-    # fill the phone numbers table object
+    # fill the table with phone numbers only
+    records = []
     phone_numbers = PhoneNumbers.query.all()
-    pntable = PNTable(phone_numbers)
-    return render_template("pythondb/index.html", table=pntable, menu=menus)
+    for phone in phone_numbers:
+        user_dict = {}
+        user_dict['id'] = phone.UserID
+        user_dict['phone_numbers'] = phone.phone_number
+        records.append(user_dict)
+    return render_template("pythondb/index.html", table=records, menu=menus)
 
 
 # CRUD delete
