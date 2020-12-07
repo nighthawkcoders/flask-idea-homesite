@@ -1,11 +1,10 @@
 from flask import render_template, request, redirect, url_for
 from flask_table import Table, Col
-from sqlalchemy import create_engine, func
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy import func
 from pythondb import pythondb_bp
 from pythondb.model import Users, Emails, PhoneNumbers
 from models import menus
-from __init__ import dbURI, db
+from __init__ import db
 
 
 # Declare your Users table
@@ -30,9 +29,9 @@ class PNTable(Table):
 # connects default URL to a function
 @pythondb_bp.route('/')
 def databases():
-    # fill the Users table
-    users = Users.query.all()
+    """convert Users table into a list of dictionary rows"""
     records = []
+    users = Users.query.all()
     for user in users:
         user_dict = {'id': user.UserID, 'name': user.username, 'password': user.password}
         # filter email
@@ -74,19 +73,20 @@ def create():
 @pythondb_bp.route('/read/', methods=["POST"])
 def read():
     if request.form:
+        """fetch userid"""
         userid = request.form.get("ID")
-        # filter user
+        """filter users by userid"""
         user = Users.query.filter_by(UserID=userid).first()
         user_dict = {'id': user.UserID, 'name': user.username, 'password': user.password}
-        # filter email
+        """filter email by userid"""
         email = Emails.query.filter_by(UserID=userid).first()
         if email:
             user_dict['emails'] = email.email_address
-        # filter phone number
+        """filter phone number by userid"""
         pn = PhoneNumbers.query.filter_by(UserID=userid).first()
         if pn:
             user_dict['phone_numbers'] = pn.phone_number
-        # put record in list form
+        """put filtered data into list form"""
         record = [user_dict]
     return render_template("pythondb/index.html", table=record, menus=menus)
 
@@ -95,15 +95,15 @@ def read():
 @pythondb_bp.route('/update/', methods=["POST"])
 def update():
     if request.form:
+        """fetch userid"""
         userid = request.form.get("ID")
-        engine = create_engine(dbURI, echo=True)  # relative path within project
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        session.query(Emails).filter_by(UserID=userid).update({Emails.email_address: request.form.get("email")})
-        session.commit()
-        session.query(PhoneNumbers).filter_by(UserID=userid).update(
+        """update email in table from data in form"""
+        db.session.query(Emails).filter_by(UserID=userid).update({Emails.email_address: request.form.get("email")})
+        """update phone number in table from data in form"""
+        db.session.query(PhoneNumbers).filter_by(UserID=userid).update(
             {PhoneNumbers.phone_number: request.form.get("phone_number")})
-        session.commit()
+        """commit changes to database"""
+        db.session.commit()
     return redirect(url_for('pythondb_bp.databases'))
 
 
@@ -111,16 +111,16 @@ def update():
 @pythondb_bp.route('/delete/', methods=["POST"])
 def delete():
     if request.form:
-        engine = create_engine(dbURI, echo=True)  # relative path within project
-        Session = sessionmaker(bind=engine)
-        session = Session()
-        # userid = request.form.get("ID")
-        session.query(Emails).filter(Emails.UserID == request.form.get("ID")).delete()
-        session.commit()
-        session.query(PhoneNumbers).filter(PhoneNumbers.UserID == request.form.get("ID")).delete()
-        # phone = PhoneNumbers.query.filter_by(UserID=userid)
-        # phone.phone_number = request.form.get("phone_number")
-        session.commit()
+        """fetch userid"""
+        userid = request.form.get("ID")
+        """delete userid rows from emails table"""
+        db.session.query(Emails).filter(Emails.UserID == userid).delete()
+        """delete userid rows from phone numbers table"""
+        db.session.query(PhoneNumbers).filter(PhoneNumbers.UserID == userid).delete()
+        """delete userid rows from users table"""
+        db.session.query(Users).filter(Users.UserID == userid).delete()
+        """commit changes to database"""
+        db.session.commit()
     return redirect(url_for('pythondb_bp.databases'))
 
 
