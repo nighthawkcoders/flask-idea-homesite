@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from pythondb import pythondb_bp
 from pythondb.model import Users, Emails, PhoneNumbers
 from models import menus
-from __init__ import dbURI
+from __init__ import dbURI, db
 
 
 # Declare your Users table
@@ -52,21 +52,21 @@ def databases():
 @pythondb_bp.route('/create/', methods=["POST"])
 def create():
     if request.form:
-        engine = create_engine(dbURI, echo=True)  # relative path within project
-        Session = sessionmaker(bind=engine)
-        session = Session()
+        """prepare data for primary table extracting from form"""
         user = Users(username=request.form.get("username"), password=request.form.get("password"))
-        session.add(user)
-        session.commit()
-        userid = session.query(func.max(Users.UserID))
-        print("UserID: " + str(request.form.get("ID")))
+        """add and commit data to user table"""
+        db.session.add(user)
+        db.session.commit()
+        """prepare data for related tables extracting from form and using new UserID """
+        userid = db.session.query(func.max(Users.UserID))
         email = Emails(email_address=request.form.get("email"), UserID=userid)
-        session.add(email)
-        print(session)
-        session.commit()
         phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=userid)
-        session.add(phone_number)
-        session.commit()
+        """email table add and commit"""
+        db.session.add(email)
+        db.session.commit()
+        """phone number table add and commit"""
+        db.session.add(phone_number)
+        db.session.commit()
     return redirect(url_for('pythondb_bp.databases'))
 
 
