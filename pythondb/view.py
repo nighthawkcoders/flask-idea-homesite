@@ -97,16 +97,12 @@ def update():
     if request.form:
         """fetch userid"""
         userid = request.form.get("ID")
-        print("User: " + userid)
-        email = Emails.query.filter_by(UserID=userid).first()
-        print(email)
         """update email in table from data in form if it exists, insert if not"""
         if Emails.query.filter_by(UserID=userid).first() is not None:
             db.session.query(Emails).filter_by(UserID=userid).update({Emails.email_address: request.form.get("email")})
         else:
             email = Emails(email_address=request.form.get("email"), UserID=userid)
             db.session.add(email)
-            # db.session.add(email)
         """update phone number in table from data in form"""
         if PhoneNumbers.query.filter_by(UserID=userid).first() is not None:
             db.session.query(PhoneNumbers).filter_by(UserID=userid).update(
