@@ -71,16 +71,20 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action={{url_for('.input')}} >
-                <table id="links"><tr>
-                    <th>Username</th><th>Password</th><th>email</th><th>Phone</th><th></th>
-                </tr>
+            <form method="POST" ID="myForm" action={{url_for('.create')}} >
+                <table>
                     <tr>
-                        <tb><input type="text" name="username" width="8"></tb>
-                        <tb><input type="text" name="password" width="8"></tb>
-                        <td><input type="text" name="email" width="8"></td>
-                        <td><input type="text" name="phone_number" width="8"></td>
-                        <td><input type="submit" value="Add"></td>
+                        <th>Name</th>
+                        <th>Password</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" name="username"></th>
+                        <th><input type="text" name="password"></th>
+                        <th><input type="text" name="email"></th>
+                        <th><input type="text" name="phone_number"></th>
+                        <th><input type="submit" value="Add"></th>
                     </tr>
                 </table>
             </form>
@@ -108,7 +112,7 @@
                             <option label="4">4</option>
                         </optgroup>
                     </select></td>
-                        <td><input type="submit" value="Read"></td>
+                        <td><input type="submit" value="Filter"></td>
                     </tr>
                 </table>
             </form>
