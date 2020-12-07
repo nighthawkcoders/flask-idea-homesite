@@ -106,10 +106,9 @@
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
-                            <option label="1">1</option>
-                            <option label="2">2</option>
-                            <option label="3">3</option>
-                            <option label="4">4</option>
+                            {%  for row in table: %}
+                                <option label="{{ row['id'] }}">{{ row['id'] }}</option>
+                            {% endfor %}
                         </optgroup>
                     </select></td>
                         <td><input type="submit" value="Filter"></td>
@@ -132,17 +131,24 @@
 
             <form method="POST" ID="myForm" action={{url_for('.update')}} >
                 <table id="links">
-                    <tr><td><select name="ID">
-                        <optgroup label="userid">
-                            <option label="1">1</option>
-                            <option label="2">2</option>
-                            <option label="3">3</option>
-                            <option label="4">4</option>
-                        </optgroup>
-                    </select></td>
-                        <td><input type="text" name="email"></td>
-                        <td><input type="text" name="phone_number"></td>
-                        <td><input type="submit" value="Update"></td>
+                    <tr>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                    </tr>
+                    <tr>
+                        <td>
+                        <select name="ID">
+                            <optgroup label="userid">
+                                {%  for row in table: %}
+                                    <option label="{{ row['id'] }}">{{ row['id'] }}</option>
+                                {% endfor %}
+                            </optgroup>
+                        </select>
+                        </td>
+                        <th><input type="text" name="email"></th>
+                        <th><input type="text" name="phone_number"></th>
+                        <th><input type="submit" value="Update"></th>
                     </tr>
                 </table>
             </form>
@@ -164,10 +170,9 @@
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
-                            <option label="1">1</option>
-                            <option label="2">2</option>
-                            <option label="3">3</option>
-                            <option label="4">4</option>
+                            {%  for row in table: %}
+                                <option label="{{ row['id'] }}">{{ row['id'] }}</option>
+                            {% endfor %}
                         </optgroup>
                     </select>
                     </td><td><input type="submit" value="Delete"></td></tr>
