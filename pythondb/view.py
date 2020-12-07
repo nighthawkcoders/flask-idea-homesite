@@ -96,7 +96,6 @@ def read():
 def update():
     if request.form:
         userid = request.form.get("ID")
-        print(userid)
         engine = create_engine(dbURI, echo=True)  # relative path within project
         Session = sessionmaker(bind=engine)
         session = Session()
