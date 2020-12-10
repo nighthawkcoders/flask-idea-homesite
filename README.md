@@ -1,6 +1,8 @@
 # KILD
 our group's repo
 
+our group's project scope https://docs.google.com/document/d/18GCVaFLCyA8rWGv3z6p4j8exh1vUl6T_uoybNqYSqQ0/edit 
+
 Team Members: Ketki, Iniyaa, Lucas, Dayita
 Scrum Master: Ketki
 
