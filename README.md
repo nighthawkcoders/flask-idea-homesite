@@ -1,6 +1,6 @@
 # How to start HomeSite on Raspberry Pi
 
-## Setup Virtual environment and pull code from GitHub
+## Setup Virtual environment and clone code from GitHub
 #### In console/terminal (first time: setup environment)...
 
 pi@raspberrypi:~ $  ``` sudo pip install virtualenv```
@@ -12,7 +12,7 @@ pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
 pi@raspberrypi:~ $  ``` virtualenv flaskenv```
 
 
-
+## Pull code from Github and update packages
 #### In console/terminal (every time: pull and check package dependencies)...
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
