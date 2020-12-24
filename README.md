@@ -25,7 +25,7 @@ pi@raspberrypi:~/flask-idea-homesite $ ```  source flaskenv/bin/activiate```
 
 
 
-## Verify Server runs successfully
+## Start Web Server and verify
 #### Start test server
 
 (flaskenv) pi@raspberrypi:~/flask-idea-homesite $ ``` python3 wsgi.py ``` 
