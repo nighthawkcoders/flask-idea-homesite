@@ -1,7 +1,7 @@
 # How to start HomeSite on Raspberry Pi
 
 ## Setup Virtual environment and clone code from GitHub
-#### In console/terminal (first time: setup environment)...
+#### In console/terminal (first time only: setup environment)...
 
 pi@raspberrypi:~ $  ``` sudo pip install virtualenv```
 
