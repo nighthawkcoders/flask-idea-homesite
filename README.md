@@ -3,6 +3,9 @@
 ## Pull code from GitHub
 #### In console/terminal (first time: clone)...
 
+pi@raspberrypi:~ $  ``` sudo pip install virtualenv
+
+
 pi@raspberrypi:~ $  ``` git clone https://github.com/nighthawkcoders/flask-idea-homesite```
 
 pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
@@ -13,7 +16,7 @@ pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
 
 pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
 
-pi@raspberrypi:~/flask-idea-homesite $ ```  git pull'''
+pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
 
 
 
