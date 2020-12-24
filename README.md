@@ -13,7 +13,7 @@ pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
 
 pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
 
-pi@raspberrypi:~/flask-idea-homesite $ ```  git pull
+pi@raspberrypi:~/flask-idea-homesite $ ```  git pull'''
 
 
 
