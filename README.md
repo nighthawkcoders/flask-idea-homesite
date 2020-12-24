@@ -3,8 +3,7 @@
 ## Pull code from GitHub
 #### In console/terminal (first time: clone)...
 
-pi@raspberrypi:~ $  ``` sudo pip install virtualenv
-
+pi@raspberrypi:~ $  ``` sudo pip install virtualenv```
 
 pi@raspberrypi:~ $  ``` git clone https://github.com/nighthawkcoders/flask-idea-homesite```
 
