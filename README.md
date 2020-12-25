@@ -3,17 +3,26 @@
 ## Setup Virtual environment and clone code from GitHub
 #### In console/terminal (first time only: setup environment)...
 
+pi@raspberrypi:~ $  ``` sudo apt install python3-pip nginx```
+
 pi@raspberrypi:~ $  ``` sudo pip install virtualenv```
 
-pi@raspberrypi:~ $  ``` git clone https://github.com/nighthawkcoders/flask-idea-homesite```
+pi@raspberrypi:~ $  ``` cd ~; git clone https://github.com/nighthawkcoders/flask-idea-homesite```
 
-pi@raspberrypi:~ $  ``` cd flask-idea-homesite```
+pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` homenv; source homenv/bin/activate```
 
-pi@raspberrypi:~ $  ``` virtualenv flaskenv```
+pi@raspberrypi:~ $  ``` python -V```
+
+pi@raspberrypi:~ $  ``` deactivate```
+
 
 
 ## Pull code from Github and update packages
 #### In console/terminal (every time: pull and check package dependencies)...
+
+pi@raspberrypi:~ $  ``` sudo apt update``
+
+pi@raspberrypi:~ $  ``` sudo apt upgrade``
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
