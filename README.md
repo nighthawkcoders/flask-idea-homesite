@@ -28,7 +28,7 @@ pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
 pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
 
-pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activiate```
+pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip install -r requirements.txt```
 
