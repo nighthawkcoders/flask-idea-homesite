@@ -11,11 +11,13 @@ pi@raspberrypi:~ $  ``` cd ~; git clone https://github.com/nighthawkcoders/flask
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` homesite; source homesite/bin/activate```
 
-#### In console/terminal (first time only: test for python3 version in virtual env)...
+#### In console/terminal with virtualenv activitate (first time only: test for python3)...
 
 (homesite) pi@raspberrypi:~ $  ``` python -V```
 
 (homesite) pi@raspberrypi:~ $  ``` deactivate```
+
+(homesite) pi@raspberrypi:~ $  ``` cd```
 
 
 
@@ -30,14 +32,26 @@ pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
 
 pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
 
+#### In console/terminal with virtualenv activitate (every time: check and update packages)...
+
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip install -r requirements.txt```
 
 
 
-## Start Flask development Server and verify
+## Start Flask test Server and verify
 #### Start test server
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` python wsgi.py ``` 
 
 in your browser ...
 http://localhost:8080/ 
+
+#### Stop test server by type control-c in terminal where you started test Server
+
+(homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` ^c ``` 
+
+
+
+## Prepare Gunicorn for production Sever and verify
+#### In console/terminal (first time only: setup Gunicorn configuration file)...
+
