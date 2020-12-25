@@ -53,5 +53,23 @@ http://localhost:8080/
 
 
 ## Prepare Gunicorn for production Sever and verify
-#### In console/terminal (first time only: setup Gunicorn configuration file)...
+#### In console/terminal with nano, vi, or other editor (first time only: setup Gunicorn configuration file)...
+
+pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/flask-idea-homesite.service```
+
+[Unit]
+Description=Gunicorn instance to serve homesite web project
+After=network.target
+
+[Service]
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/flask-idea-homesite
+Environment="PATH=/home/pi/flask-idea-homesite/homesite/bin"
+ExecStart=/home/pi/flask-idea-homesite/homesite/bin/gunicorn --workers 3 --bind unix:flask-idea-homesite.soc
+k -m 007 wsgi:app
+
+[Install]
+WantedBy=multi-user.target
+
 
