@@ -5,15 +5,17 @@
 
 pi@raspberrypi:~ $  ``` sudo apt install python3-pip nginx```
 
-pi@raspberrypi:~ $  ``` sudo pip install virtualenv```
+pi@raspberrypi:~ $  ``` sudo pip3 install virtualenv```
 
 pi@raspberrypi:~ $  ``` cd ~; git clone https://github.com/nighthawkcoders/flask-idea-homesite```
 
-pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` homenv; source homenv/bin/activate```
+pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` homesite; source homesite/bin/activate```
 
-pi@raspberrypi:~ $  ``` python -V```
+#### In console/terminal (first time only: test for python3 version)...
 
-pi@raspberrypi:~ $  ``` deactivate```
+(homesite) pi@raspberrypi:~ $  ``` python -V```
+
+(homesite) pi@raspberrypi:~ $  ``` deactivate```
 
 
 
@@ -28,16 +30,16 @@ pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
 pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
 
-pi@raspberrypi:~/flask-idea-homesite $ ```  source flaskenv/bin/activiate```
+pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activiate```
 
-(flaskenv) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip3 install -r requirements.txt```
+(homesite) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip install -r requirements.txt```
 
 
 
-## Start Web Server and verify
+## Start Flask development Server and verify
 #### Start test server
 
-(flaskenv) pi@raspberrypi:~/flask-idea-homesite $ ``` python3 wsgi.py ``` 
+(homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` python wsgi.py ``` 
 
 in your browser ...
 http://localhost:8080/ 
