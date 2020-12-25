@@ -11,7 +11,7 @@ pi@raspberrypi:~ $  ``` cd ~; git clone https://github.com/nighthawkcoders/flask
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` homesite; source homesite/bin/activate```
 
-#### In console/terminal (first time only: test for python3 version)...
+#### In console/terminal (first time only: test for python3 version in virtual env)...
 
 (homesite) pi@raspberrypi:~ $  ``` python -V```
 
@@ -22,9 +22,7 @@ pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` 
 ## Pull code from Github and update packages
 #### In console/terminal (every time: pull and check package dependencies)...
 
-pi@raspberrypi:~ $  ``` sudo apt update``
-
-pi@raspberrypi:~ $  ``` sudo apt upgrade``
+pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
