@@ -56,7 +56,7 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
     [Install]
     WantedBy=multi-user.target
 
-### Build Nginx configuration file.  Requirements [Internet Domain](https://docs.google.com/document/d/1nODveWp0jBzj4ZpFLgWCWTOXzLAHAPUhAQYmZJ4LhyU/edit), Host IP address[Internet IP address](http://127.0.0.1:8080/pi/portforward).
+### Build Nginx configuration file.  Requirements [Internet Domain](https://docs.google.com/document/d/1nODveWp0jBzj4ZpFLgWCWTOXzLAHAPUhAQYmZJ4LhyU/edit), Host IP address, [Internet IP address](http://127.0.0.1:8080/pi/portforward).
 <ol>
   <li> Obtain your own 'server_name' values. These values will NOT work in you environment</li>
   <li> 'listen' is the port for nginx, this port will be used when you port forward </li>
