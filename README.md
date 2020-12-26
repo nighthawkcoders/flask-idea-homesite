@@ -68,7 +68,7 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
 
 ## Pull code from Github and update packages
-#### In console/terminal (every time: pull and check package dependencies)...
+#### In console/terminal (every update: pull code and check package dependencies)...
 
 pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
 
@@ -85,20 +85,18 @@ pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
 
 
 ## Start Flask test Server and verify
-#### Start test server
+#### Start an application test server, same as we do on development machine
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` python wsgi.py ``` 
 
 in your browser ...
 http://localhost:8080/ 
 
-#### Stop test server by type control-c in terminal where you started test Server
+stop test server by typing control-c in terminal
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` ^c ``` 
 
-
-
-## Prepare for a production Sever and verify
+## Prepare for Gunicorn usage and verify
 #### In console/terminal test Gunicorn test Server and virify (first time only: gunicor exectuion)...
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ```homesite/bin/gunicorn --bind 0.0.0.0:8080 wsgi:app```
@@ -108,8 +106,27 @@ http://localhost:8080/
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` ^c ``` 
 
+## Validate Gunicorn configuration file and enable service permanently
+#### In console/terminal start Gunicorn
 
+pi@raspberrypi:~ $ ```sudo systemctl start homesite.service```
+pi@raspberrypi:~ $ ```sudo systemctl enable homesite.service```
+ 
+check the status...
 
+pi@raspberrypi:~ $ ```sudo systemctl status homesite.service```
+
+stop test server by typing q in terminal
+
+## Validate Nginx configuration file and enable service permanently
+#### In console/terminal start Nginx
+
+link file...
+pi@raspberrypi:~ $ ```sudo ln -s /etc/nginx/sites-available/homesite /etc/nginx/sites-enabled```
+test for errors...
+pi@raspberrypi:~ $ ```sudo nginx -t```
+start the web server
+pi@raspberrypi:~ $ ``sudo systemctl restart nginx```
 
 
 
