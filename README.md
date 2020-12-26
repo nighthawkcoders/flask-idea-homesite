@@ -11,7 +11,7 @@
   <li>Keepiung multiple processes of the web application running</li>
 </ol>
 
-## Nginx takes is the web server:  it accepts requests, takes care of general domain logic and takes care of handling https connections. Only requests which are meant to arrive at the application are passed on toward the application server (Gunicorn) and the application itself (Flask). 
+## Nginx is the web server:  it accepts requests, takes care of general domain logic and takes care of handling https connections. Only requests which are meant to arrive at the application are passed on toward the application server (Gunicorn) and the application itself (Flask). 
 
 ## Setup Virtual environment and clone code from GitHub
 #### In console/terminal (first time only: setup environment)...
