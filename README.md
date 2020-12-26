@@ -1,4 +1,4 @@
-# How to start HomeSite on Raspberry Pi
+# How to deploy this web site on Raspberry Pi
 ## An application is typically written using a developer-friendly framework, this project is using Flask. The application code does not care about anything except being able to process single requests.  Thus, when we scale up to the Web we add small services to handle problems that are the same acroos most web applications.  A Python Web Server Gateway Interface (WSGI) is a way to make sure that web servers and python web applications can talk to each other. So somewhere inside your application (usually a wsgi.py file) an object is defined which can be invoked by Gunicorn (app).
 
 ## Gunicorn takes care of everything which happens in-between the web server and a the Flask web application. This way, when coding up a Flask application we don’t need to find your own solutions for:
@@ -28,6 +28,42 @@ pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` 
 (homesite) pi@raspberrypi:~ $  ``` deactivate```
 
 (homesite) pi@raspberrypi:~ $  ``` cd```
+
+
+### [Digital Ocean reference article](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
+
+#### In console/terminal with nano, vi, or other text editor (first time only: setup Gunicorn configuration file)...
+
+pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
+
+    [Unit]
+    Description=Gunicorn instance to serve homesite web project
+    After=network.target
+
+    [Service]
+    User=pi
+    Group=www-data
+    WorkingDirectory=/home/pi/flask-idea-homesite
+    Environment="PATH=/home/pi/flask-idea-homesite/homesite/bin"
+    ExecStart=/home/pi/flask-idea-homesite/homesite/bin/gunicorn --workers 3 --bind unix:homesite.sock -m 007 wsgi:app
+
+    [Install]
+    WantedBy=multi-user.target
+
+#### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
+
+pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
+
+    server {
+        listen 80;
+        server_name nighthawkcoders.cf 192.168.1.245 70.95.179.231;
+
+        location / {
+            include proxy_params;
+            proxy_pass http://unix:/home/pi/flask-idea-homesite/homesite.sock;
+        }
+    }
+
 
 
 
@@ -63,7 +99,6 @@ http://localhost:8080/
 
 
 ## Prepare for a production Sever and verify
-### [Digital Ocean reference article](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
 #### In console/terminal test Gunicorn test Server and virify (first time only: gunicor exectuion)...
 
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ```homesite/bin/gunicorn --bind 0.0.0.0:8080 wsgi:app```
@@ -74,23 +109,8 @@ http://localhost:8080/
 (homesite) pi@raspberrypi:~/flask-idea-homesite $ ``` ^c ``` 
 
 
-#### In console/terminal with nano, vi, or other editor (first time only: setup Gunicorn configuration file)...
 
-pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
 
-[Unit]
-Description=Gunicorn instance to serve homesite web project
-After=network.target
 
-[Service]
-User=pi
-Group=www-data
-WorkingDirectory=/home/pi/flask-idea-homesite
-Environment="PATH=/home/pi/flask-idea-homesite/homesite/bin"
-ExecStart=/home/pi/flask-idea-homesite/homesite/bin/gunicorn --workers 3 --bind unix:homesite.soc
-k -m 007 wsgi:app
-
-[Install]
-WantedBy=multi-user.target
 
 
