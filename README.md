@@ -1,11 +1,13 @@
 # How to start HomeSite on Raspberry Pi
 ## An application is typically written using a developer-friendly framework, this project is using Flask. The application code does not care about anything except being able to process single requests.  Thus, when we scale up to the Web we add small services to handle problems that are the same acroos most web applications.  A Python Web Server Gateway Interface (WSGI) is a way to make sure that web servers and python web applications can talk to each other. So somewhere inside your application (usually a wsgi.py file) an object is defined which can be invoked by Gunicorn (app).
+
 ## Gunicorn takes care of everything which happens in-between the web server and a the Flask web application. This way, when coding up a Flask application we don’t need to find your own solutions for:
 <ol>
   <li>Communicating with multiple web servers</li>
   <li>Reacting to lots of web requests at once and distributing the load</li>
   <li>Keepiung multiple processes of the web application running</li>
 </ol>
+
 ## Nginx takes is the web server:  it accepts requests, takes care of general domain logic and takes care of handling https connections. Only requests which are meant to arrive at the application are passed on toward the application server (Gunicorn) and the application itself (Flask). 
 
 ## Setup Virtual environment and clone code from GitHub
