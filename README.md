@@ -137,8 +137,8 @@ start the web server...
 
 pi@raspberrypi:~ $ ``sudo systemctl restart nginx```
 
+in your Lan type ip address of this Nginx server ...
 
+http://192.168.1.245/
 
-
-
-
+nex step is port forward Nginx server on internet ...
