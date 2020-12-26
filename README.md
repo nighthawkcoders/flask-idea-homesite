@@ -162,3 +162,24 @@ http://192.168.1.245/
 reboot to verify Nginx server config is permanent ...
 
 next task is port forward Nginx server via public IP address on the internet ...
+
+# How to update Production Web Site on Raspberry Pi after initial setup
+
+## Pull code from Github and update packages
+#### In console/terminal (every update: pull code and check package dependencies)...
+
+pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
+
+pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
+
+pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
+
+pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
+
+#### In console/terminal with virtualenv activitate (every time: check and update packages)...
+
+(homesite) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip install -r requirements.txt```
+
+#### In console/terminal (every time AFTER initial setup: restart gunicorn)...
+
+pi@raspberrypi:~ $ ```sudo systemctl restart  homesite.service```
