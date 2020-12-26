@@ -33,6 +33,11 @@ pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite; virtualenv -p `which python3` 
 (homesite) pi@raspberrypi:~ $  ``` cd```
 
 
+### Build Gunicorn configuration file.  Interesting bits...
+<ol>
+<li> 'ExecStart' start statement looks into wsgi:app (wsgi.py) and starts localhost:8080 as defined in file. </li>
+<li> 'ExecStart' -workers 3 starts thread processes that are listening for connections, this ties into load balancing. </li>
+</ol>
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Gunicorn configuration file)...
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
@@ -51,7 +56,12 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
     [Install]
     WantedBy=multi-user.target
 
-### Obtain your Internet IP address, Host IP address, and Internet Domain
+### Build Nginx configuration file.  Requirements and interesting bits...
+<ol>
+  <li> Obtain your own 'server_name' Internet Domain, Host IP address, Internet IP address.  These values will not work in you environment </li>
+  <li> 'listen' is the port for nginx, this port will be used when you port forward </li>
+  <li> 'proxy_pass' is passing connect along to gunicorn server </li>
+</ol>
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
@@ -120,7 +130,7 @@ check the status...
 
 pi@raspberrypi:~ $ ```sudo systemctl status homesite.service```
 
-stop test server by typing q in terminal
+stop status by typing q in terminal
 
 
 ## Validate Nginx configuration file and enable service permanently
@@ -138,10 +148,16 @@ start the web server...
 
 pi@raspberrypi:~ $ ``sudo systemctl restart nginx```
 
-in your Lan type ip address of this Nginx server ...
+check nginx status...
+
+pi@raspberrypi:~ $ ``sudo systemctl status nginx```
+
+stop status by typing q in terminal
+
+in address bar of browser on another device in LAN type ip address of this Nginx server ...
 
 http://192.168.1.245/
 
 reboot to verify Nginx server config is permanent ...
 
-next task is port forward Nginx server on internet ...
+next task is port forward Nginx server via public IP address on the internet ...
