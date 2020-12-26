@@ -8,11 +8,18 @@
 def pi_webserver():
     key = "pi"
     route = ".piwebserver"
-    title = "Web server setup"
+    title = "Development Web server setup"
     padlet = "https://padlet.com/jmortensen7/pideploy"
     data = {"key": key, "route": route, "title": title, "padlet": padlet}
     return data
 
+def pi_deploy():
+    key = "pi"
+    route = ".pideploy"
+    title = "Production Web server setup"
+    padlet = "https://padlet.com/jmortensen7/flaskdeploy"
+    data = {"key": key, "route": route, "title": title, "padlet": padlet}
+    return data
 
 def pi_portforward():
     key = "pi"
@@ -51,7 +58,7 @@ def pi_ssh():
 
 
 def pi_projects():
-    return [pi_webserver(), pi_portforward(), pi_vncsetup(), pi_realvnc(), pi_ssh()]
+    return [pi_webserver(), pi_deploy(), pi_portforward(), pi_vncsetup(), pi_realvnc(), pi_ssh()]
 
 
 def pi_details():

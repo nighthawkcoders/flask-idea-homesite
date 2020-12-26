@@ -4,7 +4,7 @@ from __init__ import app
 from models import menus, TITLE, PROJECTS, key_2_proj
 from models.java import java_ap, java_hello, java_mvc, java_event, java_study
 from models.python import python_hello, python_ap, python_flask, python_cbproj, python_study
-from models.pi import pi_webserver, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh
+from models.pi import pi_webserver, pi_deploy, pi_portforward, pi_vncsetup, pi_realvnc, pi_ssh
 from models.git import git_concepts, git_replto
 from models.pbl import pbl_overview, pbl_scrum
 
@@ -106,6 +106,11 @@ def gitreplto():
 @app.route('/pi/webserver')
 def piwebserver():
     return render_template("homesite/project.html", menus=menus, data=pi_webserver())
+
+
+@app.route('/pi/deploy')
+def pideploy():
+    return render_template("homesite/project.html", menus=menus, data=pi_deploy())
 
 
 @app.route('/pi/portforward')
