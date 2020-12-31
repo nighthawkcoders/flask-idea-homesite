@@ -64,13 +64,10 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
   <li> 'proxy_pass' is passing connect along to gunicorn server </li>
 </ol>
 
-
-#### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
-
 ```diff
-- THESE must change:  nighthawkcoders.cf 192.168.1.245 70.95.179.23
-+ Change to values for your solution
+- THESE server_name values MUST CHANGE to match your solution:  nighthawkcoders.cf 192.168.1.245 70.95.179.23
 ```
+#### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
