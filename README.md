@@ -67,7 +67,7 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
 ```diff
 - THESE server_name values MUST CHANGE to match your solution:  
 - nighthawkcoders.cf 192.168.1.245 70.95.179.231
-+ mydomain.com mypi mypublicip
++ REPLACE with yourdomain.com yourpi-ip yourpublic-ip
 ```
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
 
