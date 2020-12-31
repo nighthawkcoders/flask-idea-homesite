@@ -17,6 +17,8 @@
 ## Setup Virtual environment and clone code from GitHub
 #### In console/terminal (first time only: setup environment)...
 
+pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
+
 pi@raspberrypi:~ $  ``` sudo apt install python3-pip nginx```
 
 pi@raspberrypi:~ $  ``` sudo pip3 install virtualenv```
@@ -86,8 +88,6 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
 ## Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...
-
-pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
