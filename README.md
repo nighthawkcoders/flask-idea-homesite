@@ -66,7 +66,11 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
 
 
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
-<span style="color:red">nighthawkcoders.cf 192.168.1.245 70.95.179.231</span>;
+
+```diff
+- THESE must change:  nighthawkcoders.cf 192.168.1.245 70.95.179.23
++ Change to values for your solution
+```
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
