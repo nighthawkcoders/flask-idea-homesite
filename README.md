@@ -59,17 +59,20 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
 
 ### Build Nginx configuration file.  Requirements [Internet Domain](https://docs.google.com/document/d/1nODveWp0jBzj4ZpFLgWCWTOXzLAHAPUhAQYmZJ4LhyU/edit), Host IP address, [Internet IP address](http://127.0.0.1:8080/pi/portforward).
 <ol>
-  <li> <span style="color:red">Obtain your own 'server_name' values</span>. Values in <span style="color:red">Red will NOT work</span> in you environment</li>
+  <li> Obtain your own 'server_name' values; these VALUES WILL NOT WORK for your environment</li>
   <li> 'listen' is the port for nginx, this port will be used when you port forward </li>
   <li> 'proxy_pass' is passing connect along to gunicorn server </li>
 </ol>
+
+
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
+<span style="color:red">nighthawkcoders.cf 192.168.1.245 70.95.179.231</span>;
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
     server {
         listen 80;
-        server_name <span style="color:red">nighthawkcoders.cf 192.168.1.245 70.95.179.231</span>;
+        server_name nighthawkcoders.cf 192.168.1.245 70.95.179.231;
 
         location / {
             include proxy_params;
