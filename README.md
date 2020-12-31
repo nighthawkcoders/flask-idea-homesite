@@ -147,11 +147,11 @@ pi@raspberrypi:~ $ ```sudo nginx -t```
 
 start the web server...
 
-pi@raspberrypi:~ $ ``sudo systemctl restart nginx```
+pi@raspberrypi:~ $ ```sudo systemctl restart nginx```
 
 check nginx status...
 
-pi@raspberrypi:~ $ ``sudo systemctl status nginx```
+pi@raspberrypi:~ $ ```sudo systemctl status nginx```
 
 stop status by typing q in terminal
 
