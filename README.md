@@ -1,5 +1,7 @@
-# How to deploy Production Web Site on Raspberry Pi
-
+# How to initially deploy a Production Web Site on Raspberry Pi
+```diff
++ As a biginner this should take approximately 1 hour, just 15 minutes as you acquire experience  
+```
 ## Visual overview: [Visuals of Deployment](https://padlet.com/jmortensen7/flaskdeploy)
 ## References used: [Digital Ocean article](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
 
@@ -170,7 +172,9 @@ reboot to verify Nginx server config is permanent ...
 next task is port forward Nginx server via public IP address on the internet ...
 
 # How to update Production Web Site on Raspberry Pi after initial setup
-
+```diff
++ 5 minutes to do an update; if you have good branch managment this could be auto sceduled with crontab  
+```
 ## Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...
 
