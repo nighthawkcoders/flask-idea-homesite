@@ -177,6 +177,11 @@ stop status by typing q in terminal
 
 in address bar of browser on another device in LAN type ip address of this Nginx server ...
 
+```diff
+- This IP address MUST CHANGE to match your Raspberry Pi 
++ REPLACE with yourpi-ip
+```
+
 http://192.168.1.245/
 
 reboot to verify Nginx server config is permanent ...
