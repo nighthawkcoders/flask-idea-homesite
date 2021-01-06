@@ -1,13 +1,15 @@
 # How to develop code for this Project
 ## This project was developed using IntelliJ IDEA with Python Plugin.  Following are tool requirements.
 
-  Install IntelliJ IDEA  [Download](https://www.jetbrains.com/idea/)
-  Install Python [Download](https://www.python.org/downloads/release/python-390/)
-  Install Git [Download](https://git-scm.com/downloads) </li>
-  Run IntelliJ, on main screen "Configure" search for and install Python Plugin
-  Returning to main screen "Get from Version Control" the URL of this Github project
-  Dependencies are in requirements.txt, typically IntelliJ provides alerts and hovers if they are not satisfied
-  
+    Install IntelliJ IDEA  [Download](https://www.jetbrains.com/idea/)
+    Install Python [Download](https://www.python.org/downloads/release/python-390/)
+    Install Git [Download](https://git-scm.com/downloads) </li>
+    Run IntelliJ, on main screen "Configure" search for and install Python Plugin
+    Returning to main screen "Get from Version Control" the URL of this Github project
+    To start web service look for run symbol in wsgi.py
+    Dependencies are in requirements.txt
+    Imports are in views.py and typically a hover of any red underlined object will enable import
+    
 # How to initially deploy a Production Web Site on Raspberry Pi
 ```diff
 + As a biginner this should take approximately 1 hour, just 15 minutes as you acquire experience  
