@@ -1,13 +1,12 @@
 # How to develop code for this Project
 ## This project was developed using IntelliJ IDEA with Python Plugin.  Following are tool requirements.
-<ol>
-  <li> Install IntelliJ IDEA  [Download](https://www.jetbrains.com/idea/) </li>
-  <li> Install Python [Download](https://www.python.org/downloads/release/python-390/) </li>
-  <li> Install Git [Download](https://git-scm.com/downloads) </li>
-  <li> Run IntelliJ, on main screen "Configure" search for and install Python Plugin </li>
-  <li> Returning to main screen "Get from Version Control" the URL of this Github project </li> 
-  <li> Dependencies are in requirements.txt, typically IntelliJ provides alerts and hovers if they are not satisfied </li>
-</ol>
+
+  Install IntelliJ IDEA  [Download](https://www.jetbrains.com/idea/)
+  Install Python [Download](https://www.python.org/downloads/release/python-390/)
+  Install Git [Download](https://git-scm.com/downloads) </li>
+  Run IntelliJ, on main screen "Configure" search for and install Python Plugin
+  Returning to main screen "Get from Version Control" the URL of this Github project
+  Dependencies are in requirements.txt, typically IntelliJ provides alerts and hovers if they are not satisfied
   
 # How to initially deploy a Production Web Site on Raspberry Pi
 ```diff
