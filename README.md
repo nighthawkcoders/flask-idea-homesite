@@ -7,7 +7,7 @@
   <li> Run IntelliJ, on main screen "Configure" search for and install Python Plugin </li>
   <li> Returning to main screen "Get from Version Control" the URL of this Github project </li> 
   <li> Dependencies are in requirements.txt, typically IntelliJ provides alerts and hovers if they are not satisfied </li>
-<ol>
+</ol>
   
 # How to initially deploy a Production Web Site on Raspberry Pi
 ```diff
