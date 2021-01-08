@@ -1,0 +1,72 @@
+<!doctype html> {% set source = projects.get_source() %}
+<!-- source of project dict -->
+{% set projects = projects.get_projects() %}
+<!-- projects data -->
+{% set name = source["name"] %} {% set github = source["github"] %} {% set linkedin = source["linkedin"] %} {% set twitter
+= source["twitter"] %} {% set youtube = source["youtube"] %}
+<html>
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Corona Virus Stats</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="main.css" type="text/css" rel="stylesheet"/>
+
+    <script type="text/javascript" src="klassenlijst.js"></script>
+    <script type="text/javascript" src="hamburger.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <title>{% block title %}{% endblock %} </title>
+</head>
+
+<body style="background-color:#8a8686">
+<!-- Navigation Bar from bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">COVID STATS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div>
+            <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/USStats">US Stats</a> </div>
+
+        <!--code from bootstrap: drop down menu-->
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Big States
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/MA">MA</a>
+                <a class="dropdown-item" href="/OR">OR</a>
+                <a class="dropdown-item" href="/CA">CA</a>
+                <a class="dropdown-item" href="/TX">TX</a>
+                <a class="dropdown-item" href="/FL">FL</a>
+                <a class="dropdown-item" href="/NY">NY</a>
+                <a class="dropdown-item" href="/NJ">NJ</a>
+
+            </div>
+        </li>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row justify-content-end" style="padding-top: 2%; padding-bottom: 2%; padding: 2%;">
+        <div class="col-2" style="text-align: right;">
+            <!--social media icons-->
+            {% block info %}
+            <!-- jinja -->
+            <a><h5>Corona Virus</h5></a>
+            <a href={{github}} target="_blank"><i class="fa fa-github"></i></a>
+            <a href={{youtube}} target="_blank"><i class="fa fa-youtube-play"></i></a>
+            <a href={{twitter}} target="_blank"><i class="fa fa-twitter"></i></a>
+            {% endblock %}
+
+            <div class="row">
+                {% block pagecontent %}
+                {% endblock %}
+            </div>
+        </div>
+</body>
+</html>

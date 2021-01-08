@@ -24,7 +24,7 @@ def historyofcomedy_route():
 @app.route('/FL')
 def knock_route():
   return render_template("FL.html", projects=projects.setup())
-  
+
 #connects /iniyaa path of server to render MA.html
 @app.route('/MA')
 def iniyaa_route():
