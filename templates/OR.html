@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block pagecontent %}
+<h1><u>Ketki Chakradeo - click the links to see embedded content</u></h1>
+<br>
+
+
+
+
+<p></p>
+<hr>
+<ul class="nav nav-pills" id="myTab" role="tablist">
+ <li class="nav-item">
+  <a class="nav-link" data-toggle="tab"  href="#projectscope">Project Scope</a>
+ </li>
+ <li class="nav-item">
+  <a class="nav-link" data-toggle="tab" href="#studyjournal">Study Journal</a>
+ </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+ <div role="tabpanel" class="tab-pane fade" id="projectscope">
+  <h4>Google Doc Embedding</h4>
+  <iframe width="800" height="600" src="https://docs.google.com/document/d/e/2PACX-1vRDiPJeLCtVVyugBmEBU_F9kzbvLMr9_7A3yFefrn_L5R61JEa30WSKVPrXKHHoDjNApIS3WhUCM79F/pub?embedded=true"></iframe>
+ </div>
+ <div role="tabpanel" class="tab-pane fade" id="studyjournal">
+  <h4> Study Journal </h4>
+  <iframe width="800" height="600" src="https://docs.google.com/document/d/e/2PACX-1vRTdhEgiY7VWvufTwHq2v-zbaJsd_yWhaIRLfWXbQD8cDA2DdvK9hv-iia3gSJj035sraWYehsgZHfX/pub?embedded=true"></iframe>  </div>
+
+ {% endblock %}
+
