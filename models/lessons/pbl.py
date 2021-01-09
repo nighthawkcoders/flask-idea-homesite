@@ -5,26 +5,25 @@
 """ Project-base Learning Only """
 
 
+def pbl_details():
+    return {"title": 'Project-based Learning', 'key': 'pbl'}
+
+
 def pbl_overview():
-    group = "pbl"
-    route = ".pbloverview"
+    route = "pbl-overview"
     title = "Project-base learning overview"
     html = "pbl.html"
-    data = {"group": group, "route": route, "title": title, "html": html}
+    data = {"route": route, "title": title, "html": html}
     return data
 
 
 def pbl_scrum():
-    group = "pbl"
-    route = ".pblscrum"
+    route = "pbl-scrum"
     title = "Classroom Roles and Scrum intro"
     html = "scrum.html"
-    data = {"group": group, "route": route, "title": title, "html": html}
+    data = {"route": route, "title": title, "html": html}
     return data
 
 
 def pbl_projects():
     return [pbl_overview(), pbl_scrum()]
-
-def pbl_details():
-    return {"title": 'Project-based Learning', 'key': 'pbl'}

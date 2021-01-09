@@ -5,61 +5,57 @@
 """ Raspberry Pi Only """
 
 
+def pi_details():
+    return {"title": 'Raspberry Pi', 'key': 'pi'}
+
+
 def pi_webserver():
-    key = "pi"
-    route = ".piwebserver"
+    route = "pi-webserver"
     title = "Development Web server setup"
     padlet = "https://padlet.com/jmortensen7/pideploy"
-    data = {"key": key, "route": route, "title": title, "padlet": padlet}
+    data = {"route": route, "title": title, "padlet": padlet}
     return data
+
 
 def pi_deploy():
-    key = "pi"
-    route = ".pideploy"
+    route = "pi-deploy"
     title = "Production Web server setup"
     padlet = "https://padlet.com/jmortensen7/flaskdeploy"
-    data = {"key": key, "route": route, "title": title, "padlet": padlet}
+    data = {"route": route, "title": title, "padlet": padlet}
     return data
 
+
 def pi_portforward():
-    key = "pi"
-    route = ".piportforward"
+    route = "pi-portforward"
     title = "Port forward overview"
     padlet = "https://padlet.com/jmortensen7/piportforward"
-    data = {"key": key, "route": route, "title": title, "padlet": padlet}
+    data = {"route": route, "title": title, "padlet": padlet}
     return data
 
 
 def pi_vncsetup():
-    key = "pi"
-    route = ".pivncsetup"
+    route = "pi-vncsetup"
     title = "Virtual-Network-Computing setup"
     html = "vncsetup.html"
-    data = {"key": key, "route": route, "title": title, "html": html}
+    data = {"route": route, "title": title, "html": html}
     return data
 
 
 def pi_realvnc():
-    key = "pi"
-    route = ".pirealvnc"
+    route = "pi-realvnc"
     title = "RealVNC sharing access overview"
     html = "realvnc.html"
-    data = {"key": key, "route": route, "title": title, "html": html}
+    data = {"route": route, "title": title, "html": html}
     return data
 
 
 def pi_ssh():
-    key = "pi"
-    route = ".pissh"
+    route = "pi-ssh"
     title = "SSH (secure shell) introduction"
     html = "ssh.html"
-    data = {"key": key, "route": route, "title": title, "html": html}
+    data = {"route": route, "title": title, "html": html}
     return data
 
 
 def pi_projects():
     return [pi_webserver(), pi_deploy(), pi_portforward(), pi_vncsetup(), pi_realvnc(), pi_ssh()]
-
-
-def pi_details():
-    return {"title": 'Raspberry Pi', 'key': 'pi'}

@@ -3,7 +3,6 @@ from flask_table import Table, Col
 from sqlalchemy import func
 from pythondb import pythondb_bp
 from pythondb.model import Users, Emails, PhoneNumbers
-from models import menus
 from __init__ import db
 
 
