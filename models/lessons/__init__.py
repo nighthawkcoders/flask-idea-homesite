@@ -44,7 +44,7 @@ lessons_dict = { \
     python_flask()['route']: python_flask(),
     python_cbproj()['route']: python_cbproj(),
     python_study()['route']: python_study(),
-    pythondb_setup()['route']: pythondb_setup(),
+    python_database()['route']: python_database(),
     pi_webserver()['route']: pi_webserver(),
     pi_deploy()['route']: pi_deploy(),
     pi_portforward()['route']: pi_portforward(),

@@ -61,7 +61,7 @@ def python_study():
     return data
 
 
-def pythondb_setup():
+def python_database():
     route = "pythondb_bp.databases"
     title = "Hello to Databases and Python"
     data = {"route": route, "title": title}
@@ -69,4 +69,4 @@ def pythondb_setup():
 
 
 def python_projects():
-    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), pythondb_setup()]
+    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), python_database()]

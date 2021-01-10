@@ -4,6 +4,7 @@ from sqlalchemy import func
 from pythondb import pythondb_bp
 from pythondb.model import Users, Emails, PhoneNumbers
 from __init__ import db
+from models.lessons import menus
 
 
 # Declare your Users table

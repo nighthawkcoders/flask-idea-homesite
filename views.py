@@ -20,7 +20,10 @@ def landing(selection):
     if request.method == 'POST':
         form = request.form
         selection = form['page']
-        return redirect(url_for("lesson", selection=selection))
+        try:    #allows for direct route
+            return redirect(url_for(selection))
+        except: #else the routes are handled by lesson select below
+            return redirect(url_for("lesson", selection=selection))
     # GET landing page render based off of "selection"
     selected_list = select_2_proj[selection]  # selection is "key" used to pull project details from dictionary
     heading = selected_list[TITLE]
