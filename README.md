@@ -1,5 +1,19 @@
-# How to deploy Production Web Site on Raspberry Pi
+# How to develop code for this Project
+## This project was developed using IntelliJ IDEA with Python Plugin.  Following are tool requirements.
 
+    Install IntelliJ IDEA  [Download](https://www.jetbrains.com/idea/)
+    Install Python [Download](https://www.python.org/downloads/release/python-390/)
+    Install Git [Download](https://git-scm.com/downloads) </li>
+    Run IntelliJ, on main screen "Configure" search for and install Python Plugin
+    Returning to main screen "Get from Version Control" the URL of this Github project
+    To start web service look for run symbol in wsgi.py
+    Dependencies are in requirements.txt
+    Imports are in views.py and typically a hover of any red underlined object will enable import
+    
+# How to initially deploy a Production Web Site on Raspberry Pi
+```diff
++ As a biginner this should take approximately 1 hour, just 15 minutes as you acquire experience  
+```
 ## Visual overview: [Visuals of Deployment](https://padlet.com/jmortensen7/flaskdeploy)
 ## References used: [Digital Ocean article](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04)
 
@@ -16,6 +30,8 @@
 
 ## Setup Virtual environment and clone code from GitHub
 #### In console/terminal (first time only: setup environment)...
+
+pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
 
 pi@raspberrypi:~ $  ``` sudo apt install python3-pip nginx```
 
@@ -59,10 +75,16 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/systemd/system/homesite.service```
 
 ### Build Nginx configuration file.  Requirements [Internet Domain](https://docs.google.com/document/d/1nODveWp0jBzj4ZpFLgWCWTOXzLAHAPUhAQYmZJ4LhyU/edit), Host IP address, [Internet IP address](http://127.0.0.1:8080/pi/portforward).
 <ol>
-  <li> Obtain your own 'server_name' values. These values will NOT work in you environment</li>
+  <li> Obtain your own 'server_name' values; these VALUES WILL NOT WORK for your environment</li>
   <li> 'listen' is the port for nginx, this port will be used when you port forward </li>
   <li> 'proxy_pass' is passing connect along to gunicorn server </li>
 </ol>
+
+```diff
+- THESE server_name values MUST CHANGE to match your solution:  
+- nighthawkcoders.cf 192.168.1.245 70.95.179.231
++ REPLACE with yourdomain.com yourpi-ip yourpublic-ip
+```
 #### In console/terminal with nano, vi, or other text editor (first time only: setup Nginx configuration file)...
 
 pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
@@ -80,8 +102,6 @@ pi@raspberrypi:~ $  ``` sudo nano /etc/nginx/sites-available/homesite```
 
 ## Pull code from Github and update packages
 #### In console/terminal (every update: pull code and check package dependencies)...
-
-pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
 
 pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
 
@@ -147,18 +167,45 @@ pi@raspberrypi:~ $ ```sudo nginx -t```
 
 start the web server...
 
-pi@raspberrypi:~ $ ``sudo systemctl restart nginx```
+pi@raspberrypi:~ $ ```sudo systemctl restart nginx```
 
 check nginx status...
 
-pi@raspberrypi:~ $ ``sudo systemctl status nginx```
+pi@raspberrypi:~ $ ```sudo systemctl status nginx```
 
 stop status by typing q in terminal
 
-in address bar of browser on another device in LAN type ip address of this Nginx server ...
+in address bar of browser on another device in LAN type IP address of this Nginx server ...
 
+```diff
+- This IP address MUST CHANGE to match your Raspberry Pi 
++ REPLACE with yourpi-ip
+```
 http://192.168.1.245/
 
 reboot to verify Nginx server config is permanent ...
 
 next task is port forward Nginx server via public IP address on the internet ...
+
+# How to update Production Web Site on Raspberry Pi after initial setup
+```diff
++ 5 minutes to do an update; if you have good branch managment this could be auto sceduled with crontab  
+```
+## Pull code from Github and update packages
+#### In console/terminal (every update: pull code and check package dependencies)...
+
+pi@raspberrypi:~ $  ``` sudo apt update; sudo apt upgrade```
+
+pi@raspberrypi:~ $  ``` cd ~/flask-idea-homesite```
+
+pi@raspberrypi:~/flask-idea-homesite $ ```  git pull```
+
+pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
+
+#### In console/terminal with virtualenv activitate (every time: check and update packages)...
+
+(homesite) pi@raspberrypi:~/flask-idea-homesite $ ```  sudo pip install -r requirements.txt```
+
+#### In console/terminal (every time AFTER initial setup: restart gunicorn)...
+
+pi@raspberrypi:~ $ ```sudo systemctl restart  homesite.service```
