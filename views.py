@@ -2,6 +2,7 @@
 from flask import render_template, request, redirect, url_for
 from __init__ import app
 from models.lessons import menus, TITLE, PROJECTS, select_2_proj, lessons_dict
+import requests
 
 """Main navigation Section"""
 
@@ -11,7 +12,7 @@ from models.lessons import menus, TITLE, PROJECTS, select_2_proj, lessons_dict
 
 @app.route('/')
 def index():
-    return render_template("homesite/home.html", menus=menus)
+    return render_template("homesite/index.html", menus=menus)
 
 
 @app.route('/landing/<selection>/', methods=['GET', 'POST'])
@@ -36,4 +37,6 @@ def landing(selection):
 
 @app.route('/lesson/<selection>/')
 def lesson(selection):
+    x = requests.get('https://w3schools.com/python/demopage.htm')
+    print(x.text)
     return render_template("homesite/lesson.html", menus=menus, data=lessons_dict[selection])

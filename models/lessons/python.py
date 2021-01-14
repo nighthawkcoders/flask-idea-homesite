@@ -68,5 +68,13 @@ def python_database():
     return data
 
 
+def python_restapi():
+    route = "restapi_bp.joke"
+    title = "REST API examples"
+    data = {"route": route, "title": title}
+    return data
+
+
 def python_projects():
-    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), python_database()]
+    return [python_hello(), python_flask(), python_cbproj(), python_ap(), python_study(), python_database(),
+            python_restapi()]

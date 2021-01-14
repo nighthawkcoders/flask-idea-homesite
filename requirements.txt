@@ -4,3 +4,4 @@ SQLAlchemy~=1.3.20
 flask_sqlalchemy
 flask_table
 gunicorn
+requests~=2.25.0
