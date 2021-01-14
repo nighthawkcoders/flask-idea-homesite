@@ -13,3 +13,18 @@ def joke():
     setup = resp.json()[0]['setup']
     punchline = resp.json()[0]['punchline']
     return render_template("restapi/index.html", menus=menus,  setup=setup, punchline=punchline)
+
+@restapi_bp.route('/covid19',  methods=['GET', 'POST'])
+def covid19():
+    url = "https://corona-virus-world-and-india-data.p.rapidapi.com/api"
+
+    headers = {
+        'x-rapidapi-key': "dec069b877msh0d9d0827664078cp1a18fajsn2afac35ae063",
+        'x-rapidapi-host': "corona-virus-world-and-india-data.p.rapidapi.com"
+    }
+
+    response = requests.request("GET", url, headers=headers)
+    world = response.json().get('world_total')
+    countries = response.json().get('countries_stat')
+
+    return {"world": world, "usa": countries[0]}
