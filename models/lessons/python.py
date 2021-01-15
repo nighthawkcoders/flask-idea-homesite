@@ -69,7 +69,7 @@ def python_database():
 
 
 def python_restapi():
-    route = "restapi_bp.joke"
+    route = "restapi_bp.index"
     title = "REST API examples"
     data = {"route": route, "title": title}
     return data

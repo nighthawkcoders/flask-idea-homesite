@@ -4,7 +4,11 @@ from models.lessons import menus
 import requests
 
 # connects default URL to a function
-@restapi_bp.route('/',  methods=['GET', 'POST'])
+@restapi_bp.route('/')
+def index():
+    return render_template("restapi/index.html", menus=menus)
+
+@restapi_bp.route('/joke',  methods=['GET', 'POST'])
 def joke():
     # call to random joke web api
     url = 'https://official-joke-api.appspot.com/jokes/programming/random'
@@ -12,8 +16,7 @@ def joke():
     # formatting variables from return
     setup = response.json()[0]['setup']
     punchline = response.json()[0]['punchline']
-    return setup
-    #return render_template("restapi/index.html", menus=menus,  setup=setup, punchline=punchline)
+    return render_template("restapi/joke.html", menus=menus,  setup=setup, punchline=punchline)
 
 @restapi_bp.route('/covid19',  methods=['GET', 'POST'])
 def covid19():

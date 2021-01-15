@@ -2,21 +2,19 @@
 
 {% extends "homesite/base.html" %}
 {% block content %}
-    <h1>Random Joke</h1>
-    <p class="setup">{{setup}}</p>
-    <p class="punchline">{{punchline}}</p>
-    <form method="POST" ID="myForm" action={{url_for('restapi_bp.joke')}} >
-        <input type="submit" value="New Joke">
-    </form>
 
-    <style>
+    <div class="row justify-content-left" style="margin: 2%;">
+        <h1><strong>Joke API</strong></h1>
+        <form action={{url_for('restapi_bp.joke')}}>
+            <button>Go!</button>
+        </form>
+    </div>
 
-        h1, p, form{
-            margin-top: 2.5%;
-            margin-left: 2.5%;
-        }
-
-
-    </style>
+    <div class="row justify-content-left" style="margin: 2%;">
+        <h1><strong>COVID-19 API</strong></h1>
+        <form action={{url_for('restapi_bp.covid19')}}>
+            <button>Go!</button>
+        </form>
+    </div>
 
 {% endblock %}
