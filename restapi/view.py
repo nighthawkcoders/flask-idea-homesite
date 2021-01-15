@@ -8,11 +8,12 @@ import requests
 def joke():
     # call to random joke web api
     url = 'https://official-joke-api.appspot.com/jokes/programming/random'
-    resp = requests.get(url)
+    response = requests.get(url)
     # formatting variables from return
-    setup = resp.json()[0]['setup']
-    punchline = resp.json()[0]['punchline']
-    return render_template("restapi/index.html", menus=menus,  setup=setup, punchline=punchline)
+    setup = response.json()[0]['setup']
+    punchline = response.json()[0]['punchline']
+    return setup
+    #return render_template("restapi/index.html", menus=menus,  setup=setup, punchline=punchline)
 
 @restapi_bp.route('/covid19',  methods=['GET', 'POST'])
 def covid19():
@@ -26,5 +27,10 @@ def covid19():
     response = requests.request("GET", url, headers=headers)
     world = response.json().get('world_total')
     countries = response.json().get('countries_stat')
-
-    return {"world": world, "usa": countries[0]}
+    """
+    print(world['total_cases'])
+    for country in countries:
+        print(country["country_name"])
+    #return countries
+    """
+    return render_template("restapi/covid19.html", menus=menus, world=world,  countries=countries)
