@@ -1,30 +1,8 @@
 from flask import render_template, request, redirect, url_for
-from flask_table import Table, Col
 from sqlalchemy import func
 from pythondb import pythondb_bp
-from pythondb.model import Users, Emails, PhoneNumbers
-from __init__ import db
+from models import db, Users, Emails, PhoneNumbers
 from models.lessons import menus
-
-
-# Declare your Users table
-class UserTable(Table):
-    UserID = Col('UserID')
-    username = Col('username')
-    password = Col('Password')
-
-
-# Declare your  emailtable
-class EmailTable(Table):
-    UserID = Col('UserID')
-    email_address = Col('email_address')
-
-
-# Declare your  phone numbers table
-class PNTable(Table):
-    UserID = Col('UserID')
-    phone_number = Col('phone_number')
-
 
 # connects default URL to a function
 @pythondb_bp.route('/')
