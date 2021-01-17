@@ -47,3 +47,23 @@ if __name__ == "__main__":
         print(row.name)
         print(row.nickname)
         print(row.email)
+
+"""
+Test on Terminal from IntelliJ
+MacBook-Pro-2:flask-idea-homesiteZ johnmortensen$ cd models
+MacBook-Pro-2:models johnmortensen$ sqlite3
+SQLite version 3.32.3 2020-06-18 14:16:19
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+
+sqlite> .open createDB
+sqlite> .tables
+users
+
+sqlite> select * from users;
+1|Thomas Edison|Toby|tedison@example.com
+2|Nicholas Tesla|Niko|ntesla@example.com
+3|Alexander Graham Bell|Lex|agbell@example.com
+4|Eli Whitney|Whit|eliw@example.com
+"""
