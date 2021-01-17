@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from sqlalchemy import func
 from pythondb import pythondb_bp
-from models import db, Users, Emails, PhoneNumbers
+from models import Users, Emails, PhoneNumbers
 from models.lessons import menus
 
 # connects default URL to a function
@@ -84,7 +84,7 @@ def update():
         """update phone number in table from data in form"""
         if PhoneNumbers.query.filter_by(UserID=userid).first() is not None:
             db.session.query(PhoneNumbers).filter_by(UserID=userid).update(
-            {PhoneNumbers.phone_number: request.form.get("phone_number")})
+                {PhoneNumbers.phone_number: request.form.get("phone_number")})
         else:
             phone_number = PhoneNumbers(phone_number=request.form.get("phone_number"), UserID=userid)
             db.session.add(phone_number)
@@ -137,3 +137,4 @@ def phones():
         user_dict['phone_numbers'] = phone.phone_number
         records.append(user_dict)
     return render_template("pythondb/index.html", table=records, menu=menus)
+
