@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from sqlalchemy import func
 from pythondb import pythondb_bp
-from models import db, Users, Emails, PhoneNumbers, AuthUser
+from models import db, Users, Emails, PhoneNumbers, AuthUser, login_manager
 from models.lessons import menus
 from flask_login import login_required, logout_user, current_user, login_user
 
@@ -140,8 +140,8 @@ def phones():
     return render_template("pythondb/index.html", table=records, menu=menus)
 
 
-# if auth user url, show phones table only
-@pythondb_bp.route('/auth_user/', methods=["POST"])
+# if auth user url,
+@pythondb_bp.route('/auth_user/', methods=["GET", "POST"])
 def auth_user():
     # check form inputs and create auth user
     print("In auth_user")
@@ -184,7 +184,22 @@ def login():
             return redirect(url_for('pythondb_bp.logged_in'))
 
     # if not logged in, show the login page
-    return render_template("pythondb_bp.auth_user")
+    return render_template("pythondb/login.html")
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    """Check if user is logged-in on every page load."""
+    if user_id is not None:
+        return AuthUser.query.get(user_id)
+    return None
+
+
+@login_manager.unauthorized_handler
+def unauthorized():
+    """Redirect unauthorized users to Login page."""
+    flash('You must be logged in to view that page.')
+    return redirect(url_for('auth_bp.login'))
 
 
 """
