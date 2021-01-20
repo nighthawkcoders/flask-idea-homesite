@@ -1,24 +1,6 @@
 from __init__ import db
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-# declare the users database model
-class Users(db.Model):
-    UserID = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(255), unique=True, nullable=False)
-    password = db.Column(db.String(255), unique=True, nullable=False)
-
-
-# Declare emails database model
-class Emails(db.Model):
-    UserID = db.Column(db.Integer, primary_key=True)
-    email_address = db.Column(db.String(255), unique=True, nullable=False)
-
-
-# declare phone numbers database model
-class PhoneNumbers(db.Model):
-    UserID = db.Column(db.Integer, primary_key=True)
-    phone_number = db.Column(db.String(255), unique=True, nullable=False)
-
 
 class AuthUser(UserMixin, db.Model):
     """User account model."""
@@ -76,3 +58,4 @@ class AuthUser(UserMixin, db.Model):
 
     def __repr__(self):
         return '<AuthUser {}>'.format(self.username)
+
