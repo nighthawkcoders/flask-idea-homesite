@@ -1,11 +1,9 @@
 from flask import render_template, request, redirect, url_for
 from sqlalchemy import func
 from pythondb import pythondb_bp
-from models import Users, Emails, PhoneNumbers
-from __init__ import db
+from models import db, Users, Emails, PhoneNumbers, AuthUser
 from models.lessons import menus
 from flask_login import login_required, logout_user, current_user, login_user
-from pythondb.model import AuthUser
 
 # connects default URL to a function
 @pythondb_bp.route('/')
