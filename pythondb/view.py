@@ -2,7 +2,10 @@ from flask import render_template, request, redirect, url_for
 from sqlalchemy import func
 from pythondb import pythondb_bp
 from models import Users, Emails, PhoneNumbers
+from __init__ import db
 from models.lessons import menus
+from flask_login import login_required, logout_user, current_user, login_user
+from pythondb.model import AuthUser
 
 # connects default URL to a function
 @pythondb_bp.route('/')
@@ -138,3 +141,66 @@ def phones():
         records.append(user_dict)
     return render_template("pythondb/index.html", table=records, menu=menus)
 
+
+# if auth user url, show phones table only
+@pythondb_bp.route('/auth_user/', methods=["POST"])
+def auth_user():
+    # check form inputs and create auth user
+    print("In auth_user")
+    if request.form.get("txtUsername") is not None:
+        print("UN: " + request.form.get("txtUsername"))
+    else:
+        print("UN: None")
+    if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \
+            and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
+            and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
+        existing_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
+        print("Username: " + request.form.get("txtUsername"))
+        if existing_user is None:
+            print("No exisiting user")
+            authuser = AuthUser(
+                name=request.form.get("txtUsername"),
+                email=request.form.get("txtEmail")
+            )
+            print("New username: " + authuser.name)
+        authuser.set_password(request.form.get("txtPwd1"))
+        db.session.add(authuser)
+        db.session.commit()  # Create new user
+    # show the auth user page
+    return render_template("pythondb/auth_user.html")
+
+
+# if login url, show phones table only
+@pythondb_bp.route('/login/', methods=["POST"])
+def login():
+    # Bypass if user is logged in
+    if current_user.is_authenticated:
+        return redirect(url_for('main_bp.dashboard'))
+
+    if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \
+            and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
+            and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
+        this_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
+        if this_user and AuthUser.check_password(password=request.form.get("txtPwd")):
+            login_user(this_user)
+            return redirect(url_for('pythondb_bp.logged_in'))
+
+    # if not logged in, show the login page
+    return render_template("pythondb_bp.auth_user")
+
+
+"""
+@pythondb_bp.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.form.validate_on_submit():
+        existing_user = auth_user.query.filter_by(email=form.email.data).first()
+        if existing_user is None:
+            authuser = auth_user(
+                name=request.form.txtUsername,
+                email=request.form.txtEmail
+            )
+        authuser.set_password(request.form.txtPwd)
+        db.session.add(authuser)
+        db.session.commit()  # Create new user
+    return render_template("pythondb/auth_user.html")
+"""
