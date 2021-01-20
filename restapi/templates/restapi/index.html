@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+{% extends "homesite/base.html" %}
+{% block content %}
+
+    <div class="row justify-content-left" style="margin: 2%;">
+        <h1><strong>Joke API</strong></h1>
+        <form action={{url_for('restapi_bp.joke')}}>
+            <button>Go!</button>
+        </form>
+    </div>
+
+    <div class="row justify-content-left" style="margin: 2%;">
+        <h1><strong>COVID-19 API</strong></h1>
+        <form action={{url_for('restapi_bp.covid19')}}>
+            <button>Go!</button>
+        </form>
+    </div>
+
+{% endblock %}

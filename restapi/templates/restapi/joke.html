@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+{% extends "homesite/base.html" %}
+{% block content %}
+    <h1>Random Joke</h1>
+    <p class="setup">{{setup}}</p>
+    <p class="punchline">{{punchline}}</p>
+    <form method="POST" ID="myForm" action={{url_for('restapi_bp.joke')}} >
+        <input type="submit" value="New Joke">
+    </form>
+
+    <style>
+
+        h1, p, form{
+            margin-top: 2.5%;
+            margin-left: 2.5%;
+        }
+
+
+    </style>
+
+{% endblock %}

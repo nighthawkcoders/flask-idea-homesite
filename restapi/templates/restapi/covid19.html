@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+{% extends "homesite/base.html" %}
+
+{% block content %}
+    {% set world = world %}
+    {% set countries = countries %}
+
+    <div class="row justify-content-left" style="margin: 2%;">
+        <h1><strong>COVID-19 REST api from rapidapi.com ...</strong></h1>
+        <form action={{url_for('restapi_bp.covid19')}}>
+            <button>Refresh!</button>
+        </form>
+    </div>
+    <div class="countries" style="height: 35vh;">
+        <table style="margin: 2%">
+            <tr>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <td> {{world["statistic_taken_at"]}} </td>
+            </tr>
+        </table>
+        <table style="margin: 2%">
+            <tr>
+                <th>Country</th>
+                <th>All-time Cases....</th>
+                <th>Total Deaths......</th>
+                <th>Active Cases......</th>
+            </tr>
+            <tr>
+                <td>World</td>
+                <td> {{world["total_cases"]}} </td>
+                <td> {{world["total_deaths"]}} </td>
+                <td> {{world["active_cases"]}} </td>
+            </tr>
+            {% for country in countries %}
+            <tr>
+                {% set name = country["country_name"] %}
+                <td>{{name}}</td>
+                {% set cases = country["cases"] %}
+                <td>{{cases}}</td>
+                {% set deaths = country["deaths"] %}
+                <td>{{deaths}}</td>
+                {% set active_cases = country["active_cases"] %}
+                <td>{{active_cases}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <table style="margin: 2%">
+            <tr>
+                <th>World</th>
+            </tr>
+            <tr>
+                <td>{{world}}</td>
+            </tr>
+        </table>
+        <table style="margin: 2%">
+            <tr>
+                <th>Countries</th>
+            </tr>
+            <tr>
+                <td>{{countries}}</td>
+            </tr>
+        </table>
+    </div>
+
+{% endblock %}
