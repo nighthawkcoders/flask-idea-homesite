@@ -169,7 +169,7 @@ def auth_user():
 
 
 # if login url, show phones table only
-@pythondb_bp.route('/login/', methods=["POST"])
+@pythondb_bp.route('/login/', methods=["GET", "POST"])
 def login():
     # Bypass if user is logged in
     if current_user.is_authenticated:
