@@ -1,9 +1,9 @@
+from views.pythondb import pythondb_bp
 from flask import render_template, request, redirect, url_for
+from flask_login import current_user, login_user
 from sqlalchemy import func
-from pythondb import pythondb_bp
 from models import db, Users, Emails, PhoneNumbers, AuthUser, login_manager
 from models.lessons import menus
-from flask_login import login_required, logout_user, current_user, login_user
 
 # connects default URL to a function
 @pythondb_bp.route('/')

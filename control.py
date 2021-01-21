@@ -1,6 +1,6 @@
 """
-1. app is object is defined as control for flask
-2. placement of Flask object definition establish directory root for server
+1. app is control object for flask
+2. placement of Flask object defines root for server
 """
 
 from flask import Flask
