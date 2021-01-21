@@ -147,6 +147,9 @@ def auth_user():
     print("In auth_user")
     if request.form.get("txtUsername") is not None:
         print("UN: " + request.form.get("txtUsername"))
+        print("UN: " + request.form.get("txtPwd1"))
+        print("UN: " + request.form.get("txtPwd2"))
+        print("UN: " + request.form.get("txtEmail"))
     else:
         print("UN: None")
     if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \

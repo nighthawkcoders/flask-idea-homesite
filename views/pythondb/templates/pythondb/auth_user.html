@@ -24,17 +24,17 @@
 
 <h1>Auth User</h1>
 <div class="row courses-buttons justify-content-center">
-    <form action={{url_for('.auth_user')}} method="post">
-        <table border="0">
+    <form method="POST" ID="authUser" action={{url_for('.auth_user')}} >
+        <table>
             <tr><th>Username</th></tr>
-            <tr><td><input id="txtUsername" type="text" size="20"></td></tr>
+            <tr><td><input type="text" name="txtUsername" size="20"></td></tr>
             <tr><th>Password</th></tr>
-            <tr><td><input id="txtPwd1" type="password" size="20"></td></tr>
+            <tr><td><input type="password" name="txtPwd1" size="20"></td></tr>
             <tr><th>Repeat Password</th></tr>
-            <tr><td><input id="txtPwd2" type="password" size="20"></td></tr>
+            <tr><td><input type="password" name="txtPwd2" size="20"></td></tr>
             <tr><th>Email</th></tr>
-            <tr><td><input id="txtEmail" type="text" size="20"></td></tr>
-            <tr><td><input type="submit" value="Submit"></td></tr>
+            <tr><td><input type="text" name="txtEmail" size="20"></td></tr>
+            <tr><th><input type="submit" value="Submit"></th></tr>
             <tr><td><a href={{url_for('.login')}}>Log In</a></td></tr>
         </table>
     </form>
