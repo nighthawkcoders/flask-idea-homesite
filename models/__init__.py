@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin
+from flask_login import UserMixin, LoginManager
 from werkzeug.security import generate_password_hash, check_password_hash
 from control import app
 
@@ -9,7 +9,8 @@ dbURI = 'sqlite:///models/myDB.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = dbURI
 db = SQLAlchemy(app)
-
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 # declare the users database model
 class Users(db.Model):
