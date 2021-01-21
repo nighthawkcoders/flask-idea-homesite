@@ -1,5 +1,5 @@
 from flask import render_template
-from restapi import restapi_bp
+from views.restapi import restapi_bp
 from models.lessons import menus
 import requests
 

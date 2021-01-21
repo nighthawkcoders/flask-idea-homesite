@@ -1,4 +1,7 @@
-"""Driver for Web server"""
+"""
+1. This file enable execution of WSGI server
+2. The routes for Web server comes from views additions to app
+"""
 
 from views import app
 
