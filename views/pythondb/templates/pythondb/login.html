@@ -27,13 +27,14 @@
     <form action={{url_for('.login')}} method="post">
         <table border="0">
             <tr><th>Username</th></tr>
-            <tr><td><input id="txtUsername" type="text" size="20"></td></tr>
+            <tr><td><input name="txtUsername" type="text" size="20"></td></tr>
             <tr><th>Password</th></tr>
-            <tr><td><input id="txtPwd1" type="password" size="20"></td></tr>
+            <tr><td><input name="txtPwd1" type="password" size="20"></td></tr>
             <tr><th>Email</th></tr>
-            <tr><td><input id="txtEmail" type="text" size="20"></td></tr>
+            <tr><td><input name="txtEmail" type="text" size="20"></td></tr>
             <tr><td><input type="submit" value="Submit"></td></tr>
             <tr><td><a href={{url_for('.auth_user')}}>Sign Up</a></td></tr>
+            <tr><td><a href={{url_for('.public')}}>Public Page</a></td></tr>
         </table>
     </form>
 </div>

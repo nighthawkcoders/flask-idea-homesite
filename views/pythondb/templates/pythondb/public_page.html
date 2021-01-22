@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+{% extends "homesite/base.html" %}
+
+{% block content %}
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+<h1>Auth User</h1>
+<div class="row courses-buttons justify-content-center">
+    <table border="0">
+        <tr><td><a href={{url_for('.dashboard')}}>Private Page</a></td>
+        <td><a href={{url_for('.logout')}}>Login</a></td></tr>
+    </table>
+    <img src="../../static/assets/FlskLogin.jpg">
+</div>
+
+{% endblock %}

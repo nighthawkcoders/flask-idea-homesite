@@ -1,6 +1,6 @@
 from views.pythondb import pythondb_bp
 from flask import render_template, request, redirect, url_for
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, login_required, logout_user
 from sqlalchemy import func
 from models import db, Users, Emails, PhoneNumbers, AuthUser, login_manager
 from models.lessons import menus
@@ -154,7 +154,7 @@ def auth_user():
         print("UN: None")
     if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \
             and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
-            and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
+            and request.form.get("txtPwd1") != "" and request.form.get("txtPwd1") is not None:
         existing_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
         print("Username: " + request.form.get("txtUsername"))
         if existing_user is None:
@@ -163,10 +163,11 @@ def auth_user():
                 name=request.form.get("txtUsername"),
                 email=request.form.get("txtEmail")
             )
+            authuser.set_password(request.form.get("txtPwd1"))
+            db.session.add(authuser)
+            db.session.commit()  # Create new user
             print("New username: " + authuser.name)
-        authuser.set_password(request.form.get("txtPwd1"))
-        db.session.add(authuser)
-        db.session.commit()  # Create new user
+
     # show the auth user page
     return render_template("pythondb/auth_user.html")
 
@@ -174,20 +175,52 @@ def auth_user():
 # if login url, show phones table only
 @pythondb_bp.route('/login/', methods=["GET", "POST"])
 def login():
+    print("in login")
     # Bypass if user is logged in
     if current_user.is_authenticated:
-        return redirect(url_for('main_bp.dashboard'))
+        print("Is Authenticated")
+        return redirect(url_for('pythondb_bp.dashboard'))
 
-    if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \
-            and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
-            and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
+    if request.form.get("txtUsername") is not None:
+        print("UN: " + request.form.get("txtUsername"))
+
+    if request.form.get("txtEmail") is not None:
+        print("EM: " + request.form.get("txtEmail"))
+
+    if request.form.get("txtPwd1") is not None:
+        print("PW: " + request.form.get("txtPwd1"))
+
+        # \
+        # and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
+        # and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
+
+    if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None:
+        print("getting params and logging in")
         this_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
-        if this_user and AuthUser.check_password(password=request.form.get("txtPwd")):
+        if this_user and AuthUser.check_password(this_user, password=request.form.get("txtPwd1")):
+            print("checking password")
             login_user(this_user)
-            return redirect(url_for('pythondb_bp.logged_in'))
+            return redirect(url_for('pythondb_bp.dashboard'))
 
     # if not logged in, show the login page
     return render_template("pythondb/login.html")
+
+# logged in users can see the dashboard
+@pythondb_bp.route('/dashboard/')
+@login_required
+def dashboard():
+    return render_template("pythondb/dashboard.html")
+
+@pythondb_bp.route('/public/')
+def public():
+    return render_template("pythondb/public_page.html")
+
+@pythondb_bp.route("/logout")
+@login_required
+def logout():
+    """User log-out logic."""
+    logout_user()
+    return redirect(url_for('pythondb_bp.auth_user'))
 
 
 @login_manager.user_loader
@@ -201,22 +234,5 @@ def load_user(user_id):
 @login_manager.unauthorized_handler
 def unauthorized():
     """Redirect unauthorized users to Login page."""
-    flash('You must be logged in to view that page.')
-    return redirect(url_for('auth_bp.login'))
+    return redirect(url_for('pythondb_bp.login'))
 
-
-"""
-@pythondb_bp.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if request.form.validate_on_submit():
-        existing_user = auth_user.query.filter_by(email=form.email.data).first()
-        if existing_user is None:
-            authuser = auth_user(
-                name=request.form.txtUsername,
-                email=request.form.txtEmail
-            )
-        authuser.set_password(request.form.txtPwd)
-        db.session.add(authuser)
-        db.session.commit()  # Create new user
-    return render_template("pythondb/auth_user.html")
-"""
