@@ -2,7 +2,7 @@ from views.pythondb import pythondb_bp
 from flask import render_template, request, redirect, url_for
 from flask_login import current_user, login_user, login_required, logout_user
 from sqlalchemy import func
-from models import db, Users, Emails, PhoneNumbers, AuthUser, login_manager
+from models import db, Users, Emails, PhoneNumbers, AuthUser, login_manager  # login_manager declared in models.init.py
 from models.lessons import menus
 
 # connects default URL to a function
@@ -140,81 +140,66 @@ def phones():
     return render_template("pythondb/index.html", table=records, menu=menus)
 
 
-# if auth user url,
+# Authorise User Section
+# if auth user is the signup section
 @pythondb_bp.route('/auth_user/', methods=["GET", "POST"])
 def auth_user():
     # check form inputs and create auth user
-    print("In auth_user")
-    if request.form.get("txtUsername") is not None:
-        print("UN: " + request.form.get("txtUsername"))
-        print("UN: " + request.form.get("txtPwd1"))
-        print("UN: " + request.form.get("txtPwd2"))
-        print("UN: " + request.form.get("txtEmail"))
-    else:
-        print("UN: None")
     if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None \
             and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
             and request.form.get("txtPwd1") != "" and request.form.get("txtPwd1") is not None:
+        # check to see if the user is already registered
         existing_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
-        print("Username: " + request.form.get("txtUsername"))
+        # if not, register them
         if existing_user is None:
-            print("No exisiting user")
             authuser = AuthUser(
                 name=request.form.get("txtUsername"),
                 email=request.form.get("txtEmail")
             )
+            # encrypt their password and add it to the authuser object
             authuser.set_password(request.form.get("txtPwd1"))
             db.session.add(authuser)
             db.session.commit()  # Create new user
-            print("New username: " + authuser.name)
-
-    # show the auth user page
+            # and have them log in
+            return redirect(url_for('pythondb_bp.login'))
+        else:
+            # if already registered, have them log in
+            return redirect(url_for('pythondb_bp.login'))
+    # show the auth user page if the above fails for some reason
     return render_template("pythondb/auth_user.html")
 
 
 # if login url, show phones table only
 @pythondb_bp.route('/login/', methods=["GET", "POST"])
 def login():
-    print("in login")
     # Bypass if user is logged in
     if current_user.is_authenticated:
-        print("Is Authenticated")
         return redirect(url_for('pythondb_bp.dashboard'))
-
-    if request.form.get("txtUsername") is not None:
-        print("UN: " + request.form.get("txtUsername"))
-
-    if request.form.get("txtEmail") is not None:
-        print("EM: " + request.form.get("txtEmail"))
-
-    if request.form.get("txtPwd1") is not None:
-        print("PW: " + request.form.get("txtPwd1"))
-
-        # \
-        # and request.form.get("txtEmail") != "" and request.form.get("txtEmail") is not None \
-        # and request.form.get("txtPwd1.") != "" and request.form.get("txtPwd1.") is not None:
-
+    # if not already logged in, show the login form
     if request.form.get("txtUsername") != "" and request.form.get("txtUsername") is not None:
-        print("getting params and logging in")
         this_user = AuthUser.query.filter_by(email=request.form.get("txtEmail")).first()
         if this_user and AuthUser.check_password(this_user, password=request.form.get("txtPwd1")):
-            print("checking password")
             login_user(this_user)
             return redirect(url_for('pythondb_bp.dashboard'))
 
     # if not logged in, show the login page
     return render_template("pythondb/login.html")
 
+
 # logged in users can see the dashboard
 @pythondb_bp.route('/dashboard/')
-@login_required
+@login_required # this is the code that Flask-Login uses to stop non logged in users
 def dashboard():
     return render_template("pythondb/dashboard.html")
 
+
+# the public page does not include @login_required
 @pythondb_bp.route('/public/')
 def public():
     return render_template("pythondb/public_page.html")
 
+
+# give users a way to log out
 @pythondb_bp.route("/logout")
 @login_required
 def logout():
@@ -223,6 +208,7 @@ def logout():
     return redirect(url_for('pythondb_bp.auth_user'))
 
 
+# this function is needed for Flask-Login to work.
 @login_manager.user_loader
 def load_user(user_id):
     """Check if user is logged-in on every page load."""
@@ -231,6 +217,7 @@ def load_user(user_id):
     return None
 
 
+# this code lets Flask-Login take unauthorised users back to the login page
 @login_manager.unauthorized_handler
 def unauthorized():
     """Redirect unauthorized users to Login page."""
