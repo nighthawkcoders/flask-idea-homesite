@@ -13,6 +13,7 @@ db = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 # declare the users database model
 class Users(db.Model):
     UserID = db.Column(db.Integer, primary_key=True)
@@ -42,14 +43,17 @@ class AuthUser(UserMixin, db.Model):
     website = db.Column(db.String(60), index=False, unique=False, nullable=True)
     created_on = db.Column(db.DateTime, index=False, unique=False, nullable=True)
     last_login = db.Column(db.DateTime, index=False, unique=False, nullable=True)
+
     # must have set password method to create encrypted password
     def set_password(self, password):
         """Create hashed password."""
         self.password = generate_password_hash(password, method='sha256')
+
     # must have check password to check encrypted password
     def check_password(self, password):
         """Check hashed password."""
-        return check_password_hash(self.password, password)
+        result = check_password_hash(self.password, password)
+        return result
 
     def __repr__(self):
-        return '<AuthUser {}>'.format(self.username)
+        return '<AuthUser {}>'.format(self.name)
