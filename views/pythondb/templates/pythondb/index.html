@@ -28,7 +28,8 @@
                     <tr>
                         <td><a href=#FE-HTML>HTML Code</a></td>
                         <td><a href=#BE-VIEW>View Code</a></td>
-                        <td><a href=#BE-MODEL>Model Code</a></td>
+                        <td><a href=#BE-MODELDEFINE>Model Define</a></td>
+                        <td><a href=#BE-MODELCRUD>Model CRUD</a></td>
                         <td><a href={{url_for('.login')}}>Authorise User</a></td>
                     </tr>
                 </table>
@@ -90,19 +91,19 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action={{url_for('.create')}} >
+            <form method="POST" ID="create" action={{url_for('.create')}} >
                 <table>
                     <tr>
-                        <th>Name</th>
-                        <th>Password</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        <th><label for="username">Name</label></th>
+                        <th><label for="password">Password</label></th>
+                        <th><label for="email">Email</label></th>
+                        <th><label for="phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
-                        <th><input type="text" name="username"></th>
-                        <th><input type="text" name="password"></th>
-                        <th><input type="text" name="email"></th>
-                        <th><input type="text" name="phone_number"></th>
+                        <th><input type="text" name="username" required></th>
+                        <th><input type="password" name="password" required></th>
+                        <th><input type="email" name="email" placeholder="abc@xyz.org"></th>
+                        <th><input type="tel" name="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
                         <th><input type="submit" value="Add"></th>
                     </tr>
                 </table>
@@ -121,11 +122,11 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action={{url_for('.read')}} >
+            <form method="POST" ID="read" action={{url_for('.read')}} >
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
-                            {%  for row in table: %}
+                            {% for row in table %}
                                 <option label="{{ row['id'] }}">{{ row['id'] }}</option>
                             {% endfor %}
                         </optgroup>
@@ -148,25 +149,25 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action={{url_for('.update')}} >
+            <form method="POST" ID="update" action={{url_for('.update')}} >
                 <table id="links">
                     <tr>
                         <th>ID</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
+                        <th><label for="email">Email</label></th>
+                        <th><label for="phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
                         <td>
                         <select name="ID">
                             <optgroup label="userid">
-                                {%  for row in table: %}
+                                {% for row in table %}
                                     <option label="{{ row['id'] }}">{{ row['id'] }}</option>
                                 {% endfor %}
                             </optgroup>
                         </select>
                         </td>
-                        <th><input type="text" name="email"></th>
-                        <th><input type="text" name="phone_number"></th>
+                        <th><input type="email" name="email" placeholder="abc@xyz.org"></th>
+                        <th><input type="tel" name="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
                         <th><input type="submit" value="Update"></th>
                     </tr>
                 </table>
@@ -185,11 +186,11 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="myForm" action={{url_for('.delete')}} >
+            <form method="POST" ID="delete" action={{url_for('.delete')}} >
                 <table id="links">
                     <tr><td><select name="ID">
                         <optgroup label="userid">
-                            {%  for row in table: %}
+                            {% for row in table %}
                                 <option label="{{ row['id'] }}">{{ row['id'] }}</option>
                             {% endfor %}
                         </optgroup>
@@ -212,12 +213,12 @@
     </div>
 
     <div align="center" >
-        <h1 id="BE-MODEL">Back End Model Definition Code</h1>
+        <h1 id="BE-MODELDEFINE">Back End Model Definition Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fmodels%2F__init__.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
     </div>
 
     <div align="center" >
-        <h1 id="BE-MODEL">Back End Model CRUD Code</h1>
+        <h1 id="BE-MODELCRUD">Back End Model CRUD Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fmodels%2Fcrud.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
     </div>
 

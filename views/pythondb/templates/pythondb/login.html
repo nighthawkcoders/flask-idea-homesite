@@ -24,15 +24,15 @@
 
 <h1>Login</h1>
 <div class="row courses-buttons justify-content-center">
-    <form action={{url_for('.login')}} method="post">
+    <form method="POST" ID="login" action={{url_for('.login')}}>
         <table border="0">
-            <tr><th>Username</th></tr>
-            <tr><td><input name="txtUsername" type="text" size="20"></td></tr>
-            <tr><th>Password</th></tr>
-            <tr><td><input name="txtPwd1" type="password" size="20"></td></tr>
-            <tr><th>Email</th></tr>
-            <tr><td><input name="txtEmail" type="text" size="20"></td></tr>
-            <tr><td><input type="submit" value="Submit"></td></tr>
+            <tr><th><label for="txtUsername">Username</label></th></tr>
+            <tr><td><input type="text" name="txtUsername" size="20" required></td></tr>
+            <tr><th><label for="txtPwd1">Password</label></th></tr>
+            <tr><td><input type="password" name="txtPwd1" size="20" required></td></tr>
+            <tr><th><label for="txtEmail">Email</label></th></tr>
+            <tr><td><input type="email" name="txtEmail" size="20" required></td></tr>
+            <tr><th><input type="submit" value="Submit"></th></tr>
             <tr><td><a href={{url_for('.auth_user')}}>Sign Up</a></td></tr>
             <tr><td><a href={{url_for('.public')}}>Public Page</a></td></tr>
         </table>
