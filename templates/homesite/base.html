@@ -31,48 +31,6 @@
 
     <title>Nighthawk Coding Society</title>
 
-</head>
-
-
-
-<body style="font-family: gilroyLIGHT; color: var(--gray);" >
-
-    <!--Navbar-->
-    <nav class="navbar navbar-light navbar-1 white">
-
-        <!-- Navbar brand -->
-        <!-- Collapse button -->
-        <div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
-              aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation" style="font-size: xx-large; border: 0em;"><span class="navbar-toggler-icon"></span>
-            </button>
-
-            <a class="navbar-brand" href="/" style="font-family: gilroyXB; font-size: xx-large; color: var(--gray);">
-                <img src="/static/assets/finalncslogo.png" width="50" height="50" class="d-inline-block align-center" alt="">
-                Nighthawk Coding Society
-            </a>
-        </div>
-
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent15">
-          <!-- Links -->
-          <div class="navbar-nav" style="font-size: large;">
-            <!-- menus defined in view and activated here -->
-            {% for menu in menus %}
-                {% set title = menu['title'] %}
-                {% set tag = menu['key'] %}
-                {% set url = url_for("landing", selection = tag) %}
-                <a class="nav-link java" href={{url}}>{{title}}</a>
-            {% endfor %}
-          </div>
-        </div>
-
-    </nav>
-
-    {% block content %}
-
-    {% endblock %}
-    
     <style>
 
         html {
@@ -133,6 +91,55 @@
         }
 
     </style>
+
+    {% block style %}
+
+    {% endblock %}
+
+    {% block script %}
+
+    {% endblock %}
+
+</head>
+
+
+<body style="font-family: gilroyLIGHT; color: var(--gray);" >
+
+    <!--Navbar-->
+    <nav class="navbar navbar-light navbar-1 white">
+
+        <!-- Navbar brand -->
+        <!-- Collapse button -->
+        <div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent15"
+              aria-controls="navbarSupportedContent15" aria-expanded="false" aria-label="Toggle navigation" style="font-size: xx-large; border: 0em;"><span class="navbar-toggler-icon"></span>
+            </button>
+
+            <a class="navbar-brand" href="/" style="font-family: gilroyXB; font-size: xx-large; color: var(--gray);">
+                <img src="/static/assets/finalncslogo.png" width="50" height="50" class="d-inline-block align-center" alt="">
+                Nighthawk Coding Society
+            </a>
+        </div>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent15">
+          <!-- Links -->
+          <div class="navbar-nav" style="font-size: large;">
+            <!-- menus defined in view and activated here -->
+            {% for menu in menus %}
+                {% set title = menu['title'] %}
+                {% set tag = menu['key'] %}
+                {% set url = url_for("landing", selection = tag) %}
+                <a class="nav-link java" href={{url}}>{{title}}</a>
+            {% endfor %}
+          </div>
+        </div>
+
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
