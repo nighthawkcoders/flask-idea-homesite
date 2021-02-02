@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 {% extends "homesite/base.html" %}
-{% block content %}
+
+{% block style %}
     <style>
         table {
             font-family: arial, sans-serif;
@@ -20,6 +21,24 @@
             background-color: #dddddd;
         }
     </style>
+{% endblock %}
+
+{% block script %}
+    <script>
+        function verifyPassword() {
+            const psw =  document.getElementById("password").value;
+
+            if (psw.length < 6 || psw.length > 20) {
+                alert("Password must be between 6 and 20 characters");
+                return false;
+            }
+        }
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
         <div class="row justify-content-center">
             <div class="col-10" style="text-align: center;">
@@ -91,7 +110,7 @@
 
         <div class="row courses-buttons justify-content-center">
 
-            <form method="POST" ID="create" action={{url_for('.create')}} >
+            <form method="POST" ID="create" onsubmit ="return verifyPassword()" action={{url_for('.create')}} >
                 <table>
                     <tr>
                         <th><label for="username">Name</label></th>
@@ -100,10 +119,10 @@
                         <th><label for="phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
-                        <th><input type="text" name="username" required></th>
-                        <th><input type="password" name="password" required></th>
-                        <th><input type="email" name="email" placeholder="abc@xyz.org"></th>
-                        <th><input type="tel" name="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
+                        <th><input type="text" name="username" id="username" required></th>
+                        <th><input type="password" name="password" id="password" required></th>
+                        <th><input type="email" name="email" id="email" placeholder="abc@xyz.org"></th>
+                        <th><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
                         <th><input type="submit" value="Add"></th>
                     </tr>
                 </table>
@@ -124,7 +143,8 @@
 
             <form method="POST" ID="read" action={{url_for('.read')}} >
                 <table id="links">
-                    <tr><td><select name="ID">
+                    <tr><th><label for="ID">ID</label></th></tr>
+                    <tr><td><select name="ID" id="ID">
                         <optgroup label="userid">
                             {% for row in table %}
                                 <option label="{{ row['id'] }}">{{ row['id'] }}</option>
@@ -152,13 +172,13 @@
             <form method="POST" ID="update" action={{url_for('.update')}} >
                 <table id="links">
                     <tr>
-                        <th>ID</th>
+                        <th><label for="ID">ID</label></th>
                         <th><label for="email">Email</label></th>
                         <th><label for="phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
                         <td>
-                        <select name="ID">
+                        <select name="ID" id="ID">
                             <optgroup label="userid">
                                 {% for row in table %}
                                     <option label="{{ row['id'] }}">{{ row['id'] }}</option>
@@ -166,8 +186,8 @@
                             </optgroup>
                         </select>
                         </td>
-                        <th><input type="email" name="email" placeholder="abc@xyz.org"></th>
-                        <th><input type="tel" name="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
+                        <th><input type="email" name="email" id="email" placeholder="abc@xyz.org"></th>
+                        <th><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
                         <th><input type="submit" value="Update"></th>
                     </tr>
                 </table>
@@ -188,7 +208,8 @@
 
             <form method="POST" ID="delete" action={{url_for('.delete')}} >
                 <table id="links">
-                    <tr><td><select name="ID">
+                    <tr><th><label for="ID">ID</label></th></tr>
+                    <tr><td><select name="ID" id="ID">
                         <optgroup label="userid">
                             {% for row in table %}
                                 <option label="{{ row['id'] }}">{{ row['id'] }}</option>
