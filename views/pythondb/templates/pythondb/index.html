@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 
+<!-- EXTEND (base.html), homesite/base.html is template for all rendered pages in the project -->
 {% extends "homesite/base.html" %}
 
+<!-- STYLE (in <head>), style enhancements for page -->
 {% block style %}
     <style>
         table {
@@ -23,8 +25,10 @@
     </style>
 {% endblock %}
 
+<!-- SCRIPT (in <head>), script enhancements for page -->
 {% block script %}
     <script>
+        <!-- Password verification and error message -->
         function verifyPassword() {
             const psw =  document.getElementById("password").value;
 
@@ -36,9 +40,10 @@
     </script>
 {% endblock %}
 
-
+<!-- CONTENT (in <body>), content for this page -->
 {% block content %}
 
+    <!-- Links to code for Front End and Backend for this lesson;  Also, link to Login example  -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
         <div class="row justify-content-center">
             <div class="col-10" style="text-align: center;">
@@ -56,15 +61,17 @@
         </div>
     </div>
 
-
+    <!-- Sample table rendering and filtering link -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
+        <!-- title -->
         <div class="row justify-content-center">
             <div class="col-10" style="text-align: center;">
                 <h1>Sample Table</h1>
             </div>
         </div>
 
+        <!-- backend filtering actions -->
         <div class="row courses-buttons justify-content-center">
             <table id="links">
             <tr>
@@ -75,7 +82,7 @@
             </table>
         </div>
 
-        <!-- Table block is dependent on table variable and dictionary setup -->
+        <!-- Table display,  "table" variable and rows with "dictionary elements" are expected -->
         <table>
             <tr>
                 <th>ID</th>
@@ -88,7 +95,7 @@
             {% for row in table %}
                 <!--
                 Prepare table for display
-                    caution: phone number needs ~ format  to force type to string
+                    caution: phone number needs "~" format step to force type to string
                 -->
                 {% set pn = "" ~ row['phone_numbers'] %}
                 {% set pnf = "(" ~ pn[0:3] ~ ")" ~ pn[3:6] ~ "-" ~ pn[6:10] %}
@@ -102,9 +109,9 @@
             {% endfor %}
         </table>
 
-
     </div>
 
+    <!-- Create action, input and "Add" a new row to table  -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
         <div class="row justify-content-center">
@@ -137,6 +144,7 @@
         </div>
     </div>
 
+    <!-- Read action, filter table on page to single row -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
         <div class="row justify-content-center">
@@ -165,6 +173,7 @@
         </div>
     </div>
 
+    <!-- Update action, change selected rows email and phone number -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
         <div class="row justify-content-center">
@@ -202,6 +211,7 @@
         </div>
     </div>
 
+    <!-- Delete action, delete selected row from table -->
     <div class="jumbotron jumbotron-fluid" style="height: 50%; ">
 
         <div class="row justify-content-center">
@@ -229,21 +239,27 @@
         </div>
     </div>
 
+    <!-- Display CRUD code to support Tech Talks -->
+
+    <!-- Front End HTML, shows this file -->
     <div align="center" >
         <h1 id="FE-HTML">Front End HTML Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fviews%2Fpythondb%2Ftemplates%2Fpythondb%2Findex.html&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
     </div>
 
+    <!-- Back end View and Control code -->
     <div align="center" >
         <h1 id="BE-VIEW">Back End View Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fviews%2Fpythondb%2Fview.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
     </div>
 
+    <!-- Back end SQL data definition code (SQLalchemy) -->
     <div align="center" >
         <h1 id="BE-MODELDEFINE">Back End Model Definition Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fmodels%2F__init__.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>
     </div>
 
+    <!-- Back end SQL CRUD supporting code -->
     <div align="center" >
         <h1 id="BE-MODELCRUD">Back End Model CRUD Code</h1>
         <script src="https://emgithub.com/embed.js?target=https%3A%2F%2Fgithub.com%2Fnighthawkcoders%2Fflask-idea-homesite%2Fblob%2Fmaster%2Fmodels%2Fcrud.py&style=github&showBorder=on&showLineNumbers=on&showFileMeta=on"></script>

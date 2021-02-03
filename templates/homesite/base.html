@@ -29,8 +29,7 @@
     gtag('config', 'UA-176812433-1');
     </script>
 
-    <title>Nighthawk Coding Society</title>
-
+    <!-- Common CSS used for this Project -->
     <style>
 
         html {
@@ -92,12 +91,17 @@
 
     </style>
 
-    {% block style %}
-
+    <!-- Default tab Name -->
+    {% block title %}
+    <title>Nighthawk Coding Society</title>
     {% endblock %}
 
-    {% block script %}
+    <!-- STYLE Block, override for page specific style  -->
+    {% block style %}
+    {% endblock %}
 
+    <!-- SCRIPT Block, override for page specific script  -->
+    {% block script %}
     {% endblock %}
 
 </head>
@@ -137,10 +141,11 @@
 
     </nav>
 
+    <!-- CONTENT Block, utilize this block for page specific content  -->
     {% block content %}
-
     {% endblock %}
 
+    <!-- bootstrap recommends thes lines at end of body -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
