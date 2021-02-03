@@ -29,7 +29,7 @@
             const psw =  document.getElementById("password").value;
 
             if (psw.length < 6 || psw.length > 20) {
-                alert("Password must be between 6 and 20 characters");
+                document.getElementById("pswError").innerHTML = "Password must be between 6 and 20 characters";
                 return false;
             }
         }
@@ -126,6 +126,7 @@
                         <th><input type="submit" value="Add"></th>
                     </tr>
                 </table>
+                <p id="pswError"></p>
             </form>
 
         </div>
