@@ -86,13 +86,18 @@
             </tr>
             <!-- Loop through rows in table -->
             {% for row in table %}
-                <!-- build elements in table -->
+                <!--
+                Prepare table for display
+                    caution: phone number needs ~ format  to force type to string
+                -->
+                {% set pn = "" ~ row['phone_numbers'] %}
+                {% set pnf = "(" ~ pn[0:3] ~ ")" ~ pn[3:6] ~ "-" ~ pn[6:10] %}
                 <tr>
                     <th>{{ row['id'] }}</th>
                     <th>{{ row['name'] }}</th>
                     <th>{{ row['password'] }}</th>
                     <th>{{ row['emails'] }}</th>
-                    <th>{{ row['phone_numbers'] }}</th>
+                    <th>{{ pnf }}</th>
                 </tr>
             {% endfor %}
         </table>
