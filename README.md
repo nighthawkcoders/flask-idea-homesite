@@ -1,3 +1,6 @@
+IntelliJ IDEA Python Development
+-------------
+
 # How to develop code for this Project
 ## This project was developed using IntelliJ IDEA with Python Plugin.  Following are tool requirements.
 
@@ -9,7 +12,12 @@
     To start web service look for run symbol in wsgi.py
     Dependencies are in requirements.txt
     Imports are in views.py and typically a hover of any red underlined object will enable import
-    
+
+
+
+Flask/Python Webserver Deployment
+-------------
+
 # How to initially deploy a Production Web Site on Raspberry Pi or Ubuntu
 ```diff
 + As a biginner this should take approximately 1 hour, just 15 minutes as you acquire experience  
@@ -187,6 +195,11 @@ reboot to verify Nginx server config is permanent ...
 
 next task is port forward Nginx server via public IP address on the internet ...
 
+
+
+Flask/Python Webserver Update (aka Refresh)
+-------------
+
 # How to update Production Web Site on Raspberry Pi after initial setup
 ```diff
 + 5 minutes to do an update; if you have good branch managment this could be auto sceduled with crontab  
@@ -211,6 +224,10 @@ pi@raspberrypi:~/flask-idea-homesite $ ```  source homesite/bin/activate```
 pi@raspberrypi:~ $ ```sudo systemctl restart  homesite.service```
 
 
+
+Raspberry Pi Purchase
+-------------
+
 # Instruction on purchasing a Raspberry Pi and preparing for Webserver deployment
 Raspberry Pi 4 specification
 <OL> 
@@ -231,6 +248,8 @@ Runtime Notes: Mostly I use VNC Viewer to connect to the RPi.  This is a full de
 
 
 
+AWS EC2 Setup
+-------------
 
 # Instruction on preparing AWS EC2 instance for Webserver deployment
 Login into your AWS IAM user, search for EC2.
@@ -277,6 +296,9 @@ Review your instance launch details. Click Launch to assign a key pair to your i
 
 
 
+MacOS and AWS Ubuntu
+-------------
+
 ## MacOS SSH (secure shell) and FTP (file transfer protocol) to your EC2 Ubuntu machine
 
 ### MacOS login into the EC2 instance using SSH
@@ -308,6 +330,11 @@ Uploading serving-web-content-0.0.1-SNAPSHOT.jar to /home/ubuntu/serving-web-con
 serving-web-content-0.0.1-SNAPSHOT.jar        100%   18MB   1.8MB/s   00:09  
 
 ## Window puTTY (popular SSH and telnet client) and SCP (secure copy) to your EC2 Ubuntu machine
+
+
+
+Windows and AWS Ubuntu
+-------------
 
 ### Windoss login into ECW using SSH using puTTY
 To SSH on a windows machine you will need to use [puTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). (Download correct bit installer and keep default settings).
