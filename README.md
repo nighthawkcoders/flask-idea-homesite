@@ -283,26 +283,24 @@ Review your instance launch details. Click Launch to assign a key pair to your i
 
 Manage your PEM file, rename and move to SSH configuration directory, setting permission on my PEM file to protect it:
 
-    MacBook-Pro-2:~ johnmortensen$ '''cd'''
-    MacBook-Pro-2:~ johnmortensen$ '''sudo mv ~/Downloads/ec2ubuntu.pem ~/.ssh/ec2ubuntu.pem'''
-    MacBook-Pro-2:~ johnmortensen$ '''sudo chmod 600 .ssh/ec2ubuntu.pem'''
+MacBook-Pro-2:~ johnmortensen$ '''sudo mv ~/Downloads/ec2ubuntu.pem ~/.ssh/ec2ubuntu.pem'''
+MacBook-Pro-2:~ johnmortensen$ '''sudo chmod 600 .ssh/ec2ubuntu.pem'''
 
 SSH command
 
-    MacBook-Pro-2:~ johnmortensen$ '''cd'''
-    MacBook-Pro-2:~ johnmortensen$ '''sudo ssh -i ~/.ssh/ec2ubuntu.pem ubuntu@52.34.146.159'''
+MacBook-Pro-2:~ johnmortensen$ ''' sudo ssh -i ~/.ssh/ec2ubuntu.pem ubuntu@52.34.146.159 '''
 
 This should lead you to a NEW terminal prompt on ubuntu:
 
-    ubuntu@ip-172-31-30-21:~$
+ubuntu@ip-172-31-30-21:~$
 
-### Move JAR file to your deployment host with sftp (secure file transfer protocol).  This procedure shows an option for JAR file from MacOS to Ubuntu on AWS
+### Move JAR file to your deployment host with sftp (secure file transfer protocol).  This procedure shows a file from MacOS to Ubuntu on AWS.  
 
-    MacBook-Pro-2:~ sftp -i ~/.ssh/ec2spring.pem ubuntu@52.34.146.159
-    Connected to ubuntu@52.34.146.159.
-    sftp> '''put serving-web-content-0.0.1-SNAPSHOT.jar'''
-    Uploading serving-web-content-0.0.1-SNAPSHOT.jar to /home/ubuntu/serving-web-content-0.0.1-SNAPSHOT.jar
-    serving-web-content-0.0.1-SNAPSHOT.jar        100%   18MB   1.8MB/s   00:09  
+MacBook-Pro-2:~ sftp -i ~/.ssh/ec2spring.pem ubuntu@52.34.146.159
+Connected to ubuntu@52.34.146.159.
+sftp> ''' put serving-web-content-0.0.1-SNAPSHOT.jar '''
+Uploading serving-web-content-0.0.1-SNAPSHOT.jar to /home/ubuntu/serving-web-content-0.0.1-SNAPSHOT.jar
+serving-web-content-0.0.1-SNAPSHOT.jar        100%   18MB   1.8MB/s   00:09  
 
 ## Window puTTY (popular SSH and telnet client) and SCP (secure copy) to your EC2 Ubuntu machine
 
