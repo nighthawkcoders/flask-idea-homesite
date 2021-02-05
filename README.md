@@ -10,7 +10,7 @@
     Dependencies are in requirements.txt
     Imports are in views.py and typically a hover of any red underlined object will enable import
     
-# How to initially deploy a Production Web Site on Raspberry Pi
+# How to initially deploy a Production Web Site on Raspberry Pi or Ubuntu
 ```diff
 + As a biginner this should take approximately 1 hour, just 15 minutes as you acquire experience  
 ```
