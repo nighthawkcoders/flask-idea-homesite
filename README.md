@@ -236,10 +236,12 @@ Runtime Notes: Mostly I use VNC Viewer to connect to the RPi.  This is a full de
 Login into your AWS IAM user, search for EC2.
 
 To get started, launch an Amazon EC2 instance, which is a virtual server in the cloud.
+
 ![Launch EC2 instance](assets/ec2launch.png)
 
 ## Step 1: Choose an Amazon Machine Image (AMI)Cancel and Exit
 An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. Pick Ubuntu free tier operating system that uses the Linux kernel.  Note, this is very compatible Raspberry Pi's OS.
+
 ![Select EC2 OS](assets/ec2os.png)
 
 ## Step 2: Choose an Instance Type
@@ -254,10 +256,12 @@ Stick with default.  Your instance will be launched with 8gb of storage.
 
 ## Step 5: Add Tags
 Tag your Amazon EC2 resources.  This is not required but you could name your volume for future identification.
+
 ![Tag EC2](assets/ec2tags.png)
 
 ## Step 6: Configure Security Group
 A security group is a set of firewall rules that control the traffic for your instance. On this page, you can add rules to allow specific traffic to reach your instance. In this example, a web server is setup to allow Internet traffic to reach EC2 instance, this allows unrestricted access to the HTTP and HTTPS ports.  Also, this example restricts SSH from my IP.
+
 ![Select EC2 OS](assets/ec2security.png)
 
 ## Step 7: Review Instance Launch
@@ -273,7 +277,7 @@ Review your instance launch details. Click Launch to assign a key pair to your i
 
 
 
-## SSH (secure shell) to your EC2 machine
+## MacOS SSH (secure shell) and FTP (file transfer protocol) to your EC2 Ubuntu machine
 
 ### MacOS login into the EC2 instance using SSH
 
@@ -300,6 +304,7 @@ This should lead you to a NEW terminal prompt on ubuntu:
     Uploading serving-web-content-0.0.1-SNAPSHOT.jar to /home/ubuntu/serving-web-content-0.0.1-SNAPSHOT.jar
     serving-web-content-0.0.1-SNAPSHOT.jar        100%   18MB   1.8MB/s   00:09  
 
+## Window puTTY (popular SSH and telnet client) and SCP (secure copy) to your EC2 Ubuntu machine
 
 ### Windoss login into ECW using SSH using puTTY
 To SSH on a windows machine you will need to use [puTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html). (Download correct bit installer and keep default settings).
@@ -320,11 +325,14 @@ In the navigation bar at the left, expand "SSH" and select "Auth". Under "privat
 ### If you are using windows you can transfer files from your computer to your AWS ubuntu machine using [WinSCP](https://winscp.net/eng/index.php). Download and install the version for your computer. Once the program opens, click the "New Session" button. Put your IPV4 address in the hostname box and "ubuntu" as the username.
 
 Download and install the version for your computer. Once the program opens, click the "New Session" button. Put your IPV4 address in the hostname box and "ubuntu" as the username.
+
 ![](https://github.com/nighthawkcoders/spring-idea/blob/master/assets/winscp.png)
 
 To load your private key click "Advanced" then open the "SSH" dropdown and choose "Authentication". Choose your private key here...
+
 ![](https://github.com/nighthawkcoders/spring-idea/blob/master/assets/advancedppk.png)
 
 Then click "Login" to start the SFTP server connection. Your files will be on the left and your virtual machines files will be on the right. Drag your JAR file from your desktop into the your ubuntu machine.
+
 ![](https://github.com/nighthawkcoders/spring-idea/blob/master/assets/jarupload.png)
 
