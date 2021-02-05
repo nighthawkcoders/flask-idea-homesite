@@ -236,11 +236,11 @@ Runtime Notes: Mostly I use VNC Viewer to connect to the RPi.  This is a full de
 Login into your AWS IAM user, search for EC2.
 
 To get started, launch an Amazon EC2 instance, which is a virtual server in the cloud.
-![Launch EC2 instance](../flask-idea-homesiteAA/models/assets/ec2launch.png)
+![Launch EC2 instance](assets/ec2launch.png)
 
 ## Step 1: Choose an Amazon Machine Image (AMI)Cancel and Exit
 An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch your instance. Pick Ubuntu free tier operating system that uses the Linux kernel.  Note, this is very compatible Raspberry Pi's OS.
-![Select EC2 OS](../flask-idea-homesiteAA/models/assets/ec2os.png)
+![Select EC2 OS](assets/ec2os.png)
 
 ## Step 2: Choose an Instance Type
 Amazon EC2 provides a wide selection of instance types optimized to fit different use cases. Instances have varying combinations of CPU, memory, storage, and networking capacity.   Stick with Free Tier options, as of this writing t2.mico with free tier designation is suggested.
@@ -254,11 +254,11 @@ Stick with default.  Your instance will be launched with 8gb of storage.
 
 ## Step 5: Add Tags
 Tag your Amazon EC2 resources.  This is not required but you could name your volume for future identification.
-![Tag EC2](../flask-idea-homesiteAA/models/assets/ec2tags.png)
+![Tag EC2](assets/ec2tags.png)
 
 ## Step 6: Configure Security Group
 A security group is a set of firewall rules that control the traffic for your instance. On this page, you can add rules to allow specific traffic to reach your instance. In this example, a web server is setup to allow Internet traffic to reach EC2 instance, this allows unrestricted access to the HTTP and HTTPS ports.  Also, this example restricts SSH from my IP.
-![Select EC2 OS](../flask-idea-homesiteAA/models/assets/ec2security.png)
+![Select EC2 OS](assets/ec2security.png)
 
 ## Step 7: Review Instance Launch
 Review your instance launch details. Click Launch to assign a key pair to your instance and complete the launch process.
