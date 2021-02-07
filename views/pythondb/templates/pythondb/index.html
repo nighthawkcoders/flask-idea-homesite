@@ -100,11 +100,11 @@
                 {% set pn = "" ~ row['phone_numbers'] %}
                 {% set pnf = "(" ~ pn[0:3] ~ ")" ~ pn[3:6] ~ "-" ~ pn[6:10] %}
                 <tr>
-                    <th>{{ row['id'] }}</th>
-                    <th>{{ row['name'] }}</th>
-                    <th>{{ row['password'] }}</th>
-                    <th>{{ row['emails'] }}</th>
-                    <th>{{ pnf }}</th>
+                    <td>{{ row['id'] }}</td>
+                    <td>{{ row['name'] }}</td>
+                    <td>{{ row['password'] }}</td>
+                    <td>{{ row['emails'] }}</td>
+                    <td>{{ pnf }}</td>
                 </tr>
             {% endfor %}
         </table>
@@ -131,11 +131,11 @@
                         <th><label for="phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
-                        <th><input type="text" name="username" id="username" required></th>
-                        <th><input type="password" name="password" id="password" required></th>
-                        <th><input type="email" name="email" id="email" placeholder="abc@xyz.org"></th>
-                        <th><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
-                        <th><input type="submit" value="Add"></th>
+                        <td><input type="text" name="username" id="username" required></td>
+                        <td><input type="password" name="password" id="password" required></td>
+                        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org"></td>
+                        <td><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
+                        <td><input type="submit" value="Add"></td>
                     </tr>
                 </table>
                 <p id="pswError"></p>
@@ -201,9 +201,9 @@
                             </optgroup>
                         </select>
                         </td>
-                        <th><input type="email" name="email" id="email" placeholder="abc@xyz.org"></th>
-                        <th><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></th>
-                        <th><input type="submit" value="Update"></th>
+                        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org"></td>
+                        <td><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
+                        <td><input type="submit" value="Update"></td>
                     </tr>
                 </table>
             </form>
