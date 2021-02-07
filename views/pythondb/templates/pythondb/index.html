@@ -27,16 +27,47 @@
 
 <!-- SCRIPT (in <head>), script enhancements for page -->
 {% block script %}
+  <!-- Password verification and error message -->
     <script>
-        <!-- Password verification and error message -->
-        function verifyPassword() {
-            const psw =  document.getElementById("password").value;
+        //adding dom event listener to allow the verifyPassword funtion to be attached to the form. This is so we can keep our JS separate from our html and not have onsubmit in the form.
+
+        'use strict' //ensures best environment to prevent JS programmer error and tells browser to use most modern version of JS interpreter it has. 
+
+        document.addEventListener("DOMContentLoaded", function(){
+            // event listener fires when the DOM is fully loaded. This way you can write scripts that are before the elements are loaded into the dom, but waits to be added to the page until the dom is fully loaded.
+
+            document.querySelector('#create').addEventListener('submit', verifyPassword );
+            //querySelector selects elements with CSS selectors. id="create" gets selected with the code above.
+
+        // pulled this function in here to keep it private from the window object/global scope. This is one way to protect your variables and functions from being hijacked by xss. Declared function names do act like variables in a way.
+
+        function verifyPassword(event) {
+            /*
+            because this is being called by an event, the event object is automatically
+            passed and captured as seen above. We are capturing it with the 'event' parameter in this function.
+
+            This is frequently represented in the following ways in JS: e, evt and event. 
+            
+            As a variable, it could be called anything - but it makes more sense to call it event rather than banana... etc. 
+            
+            Name your variables well, my friends.
+            */
+
+            const psw =  document.getElementById("password").value; 
 
             if (psw.length < 6 || psw.length > 20) {
                 document.getElementById("pswError").innerHTML = "Password must be between 6 and 20 characters";
-                return false;
+                event.preventDefault(); 
+                //prevents submission of form when password length is not valid.
             }
-        }
+
+        } //this function could be expanded upon, where we use JS to completely validate the form and have HTML5 as a fallback. Let me know if you want to have me expand this. - T
+
+        //additional listeners and functions could/should be put in here.
+
+        }); //end DOMContentLoaded listener
+
+        
     </script>
 {% endblock %}
 
@@ -121,8 +152,8 @@
         </div>
 
         <div class="row courses-buttons justify-content-center">
-
-            <form method="POST" ID="create" onsubmit ="return verifyPassword()" action={{url_for('.create')}} >
+<!-- onsubmit ="return verifyPassword()" -->
+            <form method="POST" ID="create" action={{url_for('.create')}} >
                 <table>
                     <tr>
                         <th><label for="username">Name</label></th>
@@ -133,8 +164,8 @@
                     <tr>
                         <td><input type="text" name="username" id="username" required></td>
                         <td><input type="password" name="password" id="password" required></td>
-                        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org"></td>
-                        <td><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
+                        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org" required></td>
+                        <td><input required type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
                         <td><input type="submit" value="Add"></td>
                     </tr>
                 </table>
@@ -187,13 +218,13 @@
             <form method="POST" ID="update" action={{url_for('.update')}} >
                 <table id="links">
                     <tr>
-                        <th><label for="ID">ID</label></th>
-                        <th><label for="email">Email</label></th>
-                        <th><label for="phone_number">Phone Number</label></th>
+                        <th><label for="Update_ID">ID</label></th>
+                        <th><label for="Update_email">Email</label></th>
+                        <th><label for="Update_phone_number">Phone Number</label></th>
                     </tr>
                     <tr>
                         <td>
-                        <select name="ID" id="ID">
+                        <select name="ID" id="update_ID">
                             <optgroup label="userid">
                                 {% for row in table %}
                                     <option label="{{ row['id'] }}">{{ row['id'] }}</option>
@@ -201,8 +232,8 @@
                             </optgroup>
                         </select>
                         </td>
-                        <td><input type="email" name="email" id="email" placeholder="abc@xyz.org"></td>
-                        <td><input type="tel" name="phone_number" id="phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
+                        <td><input type="email" name="email" id="update_email" placeholder="abc@xyz.org"></td>
+                        <td><input type="tel" name="phone_number" id="update_phone_number" pattern="[0-9]{10}" placeholder="1234567890"></td>
                         <td><input type="submit" value="Update"></td>
                     </tr>
                 </table>
@@ -224,8 +255,8 @@
 
             <form method="POST" ID="delete" action={{url_for('.delete')}} >
                 <table id="links">
-                    <tr><th><label for="ID">ID</label></th></tr>
-                    <tr><td><select name="ID" id="ID">
+                    <tr><th><label for="delete_ID">ID</label></th></tr>
+                    <tr><td><select name="ID" id="delete_ID">
                         <optgroup label="userid">
                             {% for row in table %}
                                 <option label="{{ row['id'] }}">{{ row['id'] }}</option>
