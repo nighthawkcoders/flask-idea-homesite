@@ -6,8 +6,25 @@ from flask_login import login_required
 from models import login_manager
 from models.lessons import menus
 from models.crud import model_create, model_read, model_update, model_delete, model_query_all, model_query_emails, \
-    model_query_phones
+    model_query_phones, temps_query_count, temps_query_max, temps_query_min, temps_query_meanhigh, temps_query_meanlow, \
+    temps_query_table
 from models.login import model_authorize, model_login, model_logout
+
+
+# def register(fm_request):
+@pythondb_bp.route('/temps/', methods=["GET", "POST"])
+def temps():
+    if request.form.get("txtCity") is not None:
+        city = request.form.get("txtCity")
+    else:
+        city = ''
+    count = temps_query_count()         # gets the count of records for this filtered set, and sets the module variable
+    maxt = temps_query_max()            # gets the maximum temp in the filtered set
+    mint = temps_query_min()            # gets the minimum temp in the filtered set
+    meanh = temps_query_meanhigh()      # gets the mean high temp in the filtered set
+    meanl = temps_query_meanlow()       # gets the mean low temp in the filtered set
+    table = temps_query_table()         # gets the table of data
+    return render_template('pythondb/temps.html', count=count, maxt=maxt, mint=mint, meanh=meanh, meanl=meanl, city=city, table=table)
 
 
 # connects default URL to a function

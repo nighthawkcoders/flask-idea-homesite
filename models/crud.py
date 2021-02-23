@@ -1,5 +1,9 @@
 from sqlalchemy import func
-from models import db, Users, Emails, PhoneNumbers
+from models import db, Users, Emails, PhoneNumbers, Temps
+from flask import request
+import my_module as m
+
+m.fullCount = 0  # this is a module wide variable - can be seen within all functions
 
 
 # CRUD create/add a new record to the table
@@ -117,3 +121,193 @@ def model_query_phones():
         user_dict = {'id': phone.UserID, 'phone_numbers': phone.phone_number}
         records.append(user_dict)
     return records
+
+
+# TEMPS count: filter the temps as required, and return the count of the records
+def temps_query_count():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(Temps)
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+    print("Fil: " + str(my_filters))
+    count = query.count()
+    m.fullCount = count  # module wide variable set here
+    return count
+
+
+# TEMPS Max Temp query
+def temps_query_max():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(func.max(Temps.MaxTemp))
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+
+    print("Fil: " + str(my_filters))
+    if m.fullCount != 0:  # this ensures there are results in this filtered set
+        myresult = query.first()
+        strResult = extract_value(str(myresult))
+        maxtemp = int(strResult)
+    else:
+        maxtemp = 0
+    return maxtemp
+
+
+# TEMPS Min Temp query
+def temps_query_min():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(func.min(Temps.MinTemp))
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+    # count = db.engine.execute('select count(id) from temps').scalar()
+    if m.fullCount != 0:  # this ensures there are results in this filtered set
+        myresult = query.first()
+        strResult = extract_value(str(myresult))
+        mintemp = int(strResult)
+    else:
+        mintemp = 0
+    return mintemp
+
+
+# TEMPS mean Hign Temp query
+def temps_query_meanhigh():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(func.avg(Temps.MaxTemp))
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+    # count = db.engine.execute('select count(id) from temps').scalar()
+    print("Fil: " + str(my_filters))
+    if m.fullCount != 0:  # this ensures there are results in this filtered set
+        myresult = query.first()
+        strResult = extract_value(str(myresult))
+        meanhigh = round(float(strResult), 2)
+    else:
+        meanhigh = 0
+
+    return meanhigh
+
+
+# TEMPS mean low Temp query
+def temps_query_meanlow():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(func.avg(Temps.MinTemp))
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+    # count = db.engine.execute('select count(id) from temps').scalar()
+    print("Fil: " + str(my_filters))
+    if m.fullCount != 0:  # this ensures there are results in this filtered set
+        myresult = query.first()
+        strResult = extract_value(str(myresult))
+        meanlow = round(float(strResult), 2)
+    else:
+        meanlow = 0
+    return meanlow
+
+def temps_query_table():
+    my_filters = {}
+    if request.form.get("txtCity") != '' and request.form.get("txtCity") is not None:
+        my_filters["City"] = request.form.get("txtCity")
+    if request.form.get("txtMin") != '' and request.form.get("txtMin") is not None:
+        my_filters["MinTemp"] = int(request.form.get("txtMin"))
+    if request.form.get("txtMax") != '' and request.form.get("txtMax") is not None:
+        my_filters["MaxTemp"] = int(request.form.get("txtMax"))
+    if request.form.get("txtDate") != '' and request.form.get("txtDate") is not None:
+        my_filters["DateRecorded"] = str(request.form.get("txtDate"))
+    query = db.session.query(Temps)
+    for attr, value in my_filters.items():
+        if attr == "MinTemp":
+            query = query.filter(getattr(Temps, attr) >= value)
+        else:
+            if attr == "MaxTemp":
+                query = query.filter(getattr(Temps, attr) <= value)
+            else:
+                query = query.filter(getattr(Temps, attr) == value)
+    # count = db.engine.execute('select count(id) from temps').scalar()
+    print("Fil: " + str(my_filters))
+    records = []
+    if m.fullCount != 0:  # this ensures there are results in this filtered set
+        mytable = query.all()
+        for record in mytable:
+            temp_dict = {'id': record.ID, 'city': record.City, 'daterecorded': record.DateRecorded, 'mintemp': record.MinTemp, 'maxtemp': record.MaxTemp}
+            # append to records
+            records.append(temp_dict)
+    else:
+        temp_dict = {'id': 0, 'city': '', 'mintemp': 0, 'maxtempt': 0}
+        records.append(temp_dict)
+    return records
+
+
+# extract the numeric value from the result
+# this splits the string between "(" and ",)", which are in the DB result
+def extract_value(in_result):
+    m = in_result.split('(', 1)[1].split(',)', 1)[0]
+    return m

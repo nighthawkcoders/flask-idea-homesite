@@ -14,6 +14,15 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 
+# declare the temps DB model
+class Temps(db.Model):
+    ID = db.Column(db.Integer, primary_key=True)
+    City = db.Column(db.String, nullable=False)
+    DateRecorded = db.Column(db.String, nullable=False)
+    MaxTemp = db.Column(db.Integer, nullable=False)
+    MinTemp = db.Column(db.Integer, nullable=False)
+
+
 # declare the users database model
 class Users(db.Model):
     UserID = db.Column(db.Integer, primary_key=True)
