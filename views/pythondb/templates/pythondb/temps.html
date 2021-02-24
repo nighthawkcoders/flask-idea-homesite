@@ -1,0 +1,76 @@
+
+{% block content %}
+<style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+
+<h1>Temperatures</h1>
+<br>
+<form>
+    <table>
+        <tr>
+            <th>Count</th>
+            <td><input type="text" name="txtCount" disabled="true" maxlength="5" size="5" value={{ count }}> </td>
+            <th>Min Low Temp</th></td>
+            <td><input type="text" name="txtMin" disabled="true" maxlength="5" size="5" value={{ mint }}> </td>
+            <th>Max High Temp</th>
+            <td><input type="text" name="txtMax" disabled="true" maxlength="5" size="5" value={{ maxt }}> </td>
+            <th>Mean Low Temp</th></td>
+            <td><input type="text" name="txtML" disabled="true" maxlength="5" size="5" value={{ meanl }}> </td>
+            <th>Mean High Temp</th></td>
+            <td><input type="text" name="txtMU" disabled="true" maxlength="5" size="5" value={{ meanh }}> </td>
+            <td colspan="10">{{ filter }}</td>
+        </tr>
+    </table>
+</form>
+<div class="row courses-buttons justify-content-center">
+    <form action={{url_for('.temps')}} method="post">
+        <table border="0">
+            <tr><th>City</th><th>Date</th><th>Min Temp</th><th>Max Temp</th><th>Query</th></tr>
+            <tr><td><input type="text" name="txtCity" value={{ city }}></td>
+                <td><input type="text" name="txtDate"></td>
+                <td><input type="text" name="txtMin" value={{ mint }}></td>
+                <td><input type="text" name="txtMax" value={{ maxt }}></td>
+                <td><input type="submit" value="Submit"></td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>Date Recorded</th>
+                <th>Low Temp</th>
+                <th>High Temp</th>
+            </tr>
+            <!-- Loop through rows in table -->
+            {% for row in table %}
+            <!-- build elements in table -->
+            <tr>
+                <th>{{ row['id'] }}</th>
+                <th>{{ row['city'] }}</th>
+                <th>{{ row['daterecorded'] }}</th>
+                <th>{{ row['mintemp'] }}</th>
+                <th>{{ row['maxtemp'] }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+<br>
+
+{% endblock %}
